@@ -3,107 +3,79 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portafolio — Gleny Condori | Programación Numérica</title>
+  <title>Gleny Condori — Programación Numérica</title>
   <style>
-    :root{ --bg:#f6f7fb; --card:#ffffff; --accent:#0f6efd; --muted:#6b7280; }
-    *{box-sizing:border-box}
-    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial; margin:0; background:var(--bg); color:#0b1220}
-    .container{max-width:900px;margin:36px auto;padding:24px}
-    header{display:flex;align-items:center;gap:18px}
-    .avatar{width:88px;height:88px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6c63ff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:28px}
-    h1{margin:0;font-size:22px}
-    .sub{color:var(--muted);font-size:14px}
-    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
-    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(11,18,32,0.06)}
-    nav ul{list-style:none;padding:0;margin:0;display:flex;gap:8px}
-    nav a{color:var(--accent);text-decoration:none;font-weight:600;font-size:14px}
-    .activities ul{padding-left:18px;margin:8px 0}
-    .activity{padding:10px;border-radius:8px;border:1px solid #eef2ff;margin-bottom:10px}
-    .small{font-size:13px;color:var(--muted)}
-    .project-list{display:flex;flex-direction:column;gap:10px}
-    .project{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fbfcff,#ffffff);border:1px solid #eef2ff}
-    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
-    /* responsive */
-    @media (max-width:880px){.grid{grid-template-columns:1fr;}.avatar{width:72px;height:72px}}
+    :root{--bg:#f9fafc;--primary:#2563eb;--text:#1e293b;--muted:#64748b;--card:#fff;--radius:14px;}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    header{background:linear-gradient(135deg,var(--primary),#4f46e5);color:white;padding:40px 20px;text-align:center}
+    header h1{font-size:2rem;margin-bottom:6px}
+    header p{color:#e0e7ff;font-size:1rem}
+    nav{background:white;padding:10px 0;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+    nav ul{list-style:none;display:flex;justify-content:center;gap:20px}
+    nav a{text-decoration:none;color:var(--primary);font-weight:600}
+    .container{max-width:1000px;margin:auto;padding:20px;display:grid;grid-template-columns:1fr 300px;gap:20px}
+    .card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:0 4px 12px rgba(0,0,0,0.04)}
+    h2{margin-bottom:10px;color:var(--primary)}
+    ul.activities{list-style:none}
+    ul.activities li{padding:10px;border-bottom:1px solid #f1f5f9}
+    .sidebar h3{margin-bottom:10px;color:var(--primary)}
+    .project{padding:12px;margin-bottom:10px;background:#f8fafc;border-radius:var(--radius);border:1px solid #e2e8f0}
+    footer{text-align:center;padding:20px;color:var(--muted);font-size:0.9rem;margin-top:20px}
+    @media(max-width:900px){.container{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
+  <header>
+    <h1>Gleny Condori</h1>
+    <p>Estudiante de la Facultad de Ingeniería Estadística e Informática — UNA PUNO</p>
+    <p>Portafolio del Curso: Programación Numérica</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#sobre">Sobre mí</a></li>
+      <li><a href="#actividades">Actividades</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
   <div class="container">
-    <header>
-      <div class="avatar">GC</div>
-      <div>
-        <h1>Gleny Condori</h1>
-        <div class="sub">Portafolio — Curso: Programación Numérica • FINESI, UNA PUNO</div>
-        <div class="small">Prepared to list and track course activities, exercises and projects.</div>
-      </div>
-    </header>
+    <main class="card">
+      <section id="sobre">
+        <h2>Sobre mí</h2>
+        <p>Soy Gleny Condori, estudiante apasionada por el análisis numérico y la programación. Este sitio documenta mis actividades y proyectos realizados en el curso de Programación Numérica.</p>
+      </section>
 
-    <div style="margin-top:16px">
-      <nav>
-        <ul>
-          <li><a href="#about">Sobre</a></li>
-          <li><a href="#activities">Actividades</a></li>
-          <li><a href="#projects">Proyectos</a></li>
-          <li><a href="#contact">Contacto</a></li>
+      <section id="actividades" style="margin-top:20px">
+        <h2>Actividades</h2>
+        <ul class="activities">
+          <li><strong>Actividad 1:</strong> Análisis de errores numéricos — 2025-03-15</li>
+          <li><strong>Actividad 2:</strong> Método de Bisección — 2025-04-02</li>
+          <li><strong>Actividad 3:</strong> Método de Newton-Raphson — 2025-04-18</li>
         </ul>
-      </nav>
-    </div>
+      </section>
 
-    <div class="grid">
-      <main class="card">
-        <section id="about">
-          <h2 style="margin-top:0">Sobre este portafolio</h2>
-          <p class="small">Este sitio es un registro simple para listar las actividades, prácticas y proyectos realizados durante el curso <strong>Programación Numérica</strong> en FINESI - UNA Puno. Usa las secciones para mantener tu trabajo organizado.</p>
-        </section>
+      <section id="proyectos" style="margin-top:20px">
+        <h2>Proyectos</h2>
+        <div class="project"><strong>Proyecto 1:</strong> Comparación de métodos para raíces de ecuaciones</div>
+        <div class="project"><strong>Proyecto 2:</strong> Simulación numérica de ecuaciones diferenciales</div>
+      </section>
+    </main>
 
-        <section id="activities" class="activities" style="margin-top:14px">
-          <h3>Actividades del curso</h3>
-          <p class="small">Añade cada actividad como un ítem. Ejemplos abajo — reemplaza con tus entradas reales.</p>
-          <ul>
-            <li class="activity"><strong>Actividad 1:</strong> Análisis numérico de errores — entrega: 2025-03-15</li>
-            <li class="activity"><strong>Actividad 2:</strong> Implementación de métodos de bisección — entrega: 2025-04-02</li>
-            <li class="activity"><strong>Actividad 3:</strong> Solución de EDO por Runge-Kutta — entrega: 2025-04-20</li>
-          </ul>
-
-          <details style="margin-top:8px">
-            <summary style="cursor:pointer">Agregar nueva actividad (ejemplo)</summary>
-            <div style="margin-top:8px" class="small">Título — Descripción breve — Fecha de entrega — Estado (pendiente/entregado).</div>
-          </details>
-        </section>
-
-        <section id="projects" style="margin-top:14px">
-          <h3>Proyectos</h3>
-          <div class="project-list">
-            <div class="project"><strong>Proyecto A:</strong> Comparación de métodos para raíces — (archivo: proyectoA.ipynb)</div>
-            <div class="project"><strong>Proyecto B:</strong> Optimización numérica para ajuste de curvas — (archivo: proyectoB.zip)</div>
-          </div>
-        </section>
-      </main>
-
-      <aside class="card">
-        <h4 style="margin-top:0">Resumen rápido</h4>
-        <p class="small">Curso: <strong>Programación Numérica</strong><br>Facultad: <strong>FINESI, UNA PUNO</strong></p>
-
-        <h5 style="margin-bottom:6px">Estado de actividades</h5>
-        <ul class="small">
-          <li>Entregadas: 2</li>
-          <li>Pendientes: 1</li>
-          <li>Proyectos: 2</li>
-        </ul>
-
-        <h5 style="margin-top:12px">Links útiles</h5>
-        <p class="small">- Repositorio GitHub (añadir enlace)<br>- Drive: carpeta de entregas (añadir enlace)</p>
-
-        <div style="margin-top:14px">
-          <h5>Contacto</h5>
-          <p class="small">Correo: <em>tu-email@una.edu.pe</em><br>Teléfono: <em>—</em></p>
-        </div>
-      </aside>
-    </div>
-
-    <footer>
-      <div class="small">© Gleny Condori — Portafolio del curso Programación Numérica — FINESI, UNA PUNO</div>
-    </footer>
+    <aside class="card sidebar">
+      <h3>Resumen</h3>
+      <p><strong>Curso:</strong> Programación Numérica<br><strong>Facultad:</strong> FINESI<br><strong>Universidad:</strong> UNA PUNO</p>
+      <h3 style="margin-top:20px">Estado</h3>
+      <p>Actividades completadas: 2<br>Pendientes: 1<br>Proyectos: 2</p>
+    </aside>
   </div>
+
+  <footer id="contacto">
+    <p>Contacto: tu-email@una.edu.pe</p>
+    <p>© 2025 Gleny Condori — Portafolio de Programación Numérica</p>
+  </footer>
 </body>
 </html>
+
