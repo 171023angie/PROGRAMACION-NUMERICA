@@ -6,9 +6,10 @@
     <title>Portafolio Kawaii - Gleny Condori</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body { 
-            font-family: 'Comic Sans MS', cursive, sans-serif; 
+            font-family: 'Poppins', sans-serif; 
             background: linear-gradient(to bottom, #ffe6f0, #fff0f5); 
         }
         header { 
@@ -19,9 +20,10 @@
             border-bottom-left-radius: 50px;
             border-bottom-right-radius: 50px;
             box-shadow: 0 4px 15px rgba(255, 102, 178, 0.5);
+            font-family: 'Baloo 2', cursive;
         }
         h1 { font-weight: bold; font-size: 2.5rem; text-shadow: 2px 2px #ff66b2;}
-        h5 { font-weight: bold; color: #ff3399; margin-top: 25px;}
+        h5 { font-weight: bold; color: #ff3399; margin-top: 25px; font-family: 'Baloo 2', cursive;}
         .card { 
             box-shadow: 0 6px 20px rgba(255, 102, 178, 0.3); 
             border-radius: 25px; 
@@ -70,6 +72,7 @@
             border-top-left-radius: 50px;
             border-top-right-radius: 50px;
             box-shadow: 0 -4px 15px rgba(255, 102, 178, 0.4);
+            font-family: 'Baloo 2', cursive;
         }
         footer a { 
             color: #fff; 
@@ -103,7 +106,7 @@
     <h5 class="tema-title"><i class="fa-solid fa-cube"></i> VARIABLES ✨</h5>
     <div class="card text-left rounded-0">
         <div class="card-body">
-            <p>La programación numérica es una rama de la programación que busca resolver problemas matemáticos mediante aproximaciones, usando algoritmos que permiten trabajar con cálculos complejos cuando no es posible obtener una solución exacta.</p>
+            <p>La programación numérica utiliza variables para almacenar valores y realizar cálculos matemáticos en los algoritmos.</p>
         </div>
     </div>
 
@@ -152,7 +155,7 @@ if __name__ == "__main__":
     <h5 class="tema-title"><i class="fa-solid fa-shield-halved"></i> RESTRICCIONES 🔒</h5>
     <div class="card text-left rounded-0">
         <div class="card-body">
-            <p>Las restricciones son condiciones o limitaciones que debe cumplir un problema matemático o de programación lineal. Estas limitaciones establecen los valores posibles que pueden tomar las variables, y definen la región factible donde se buscará la mejor solución.</p>
+            <p>Las restricciones limitan los valores que pueden tomar las variables, definiendo la región factible para resolver problemas matemáticos o de programación lineal.</p>
         </div>
     </div>
 
@@ -214,41 +217,10 @@ def graficar_restricciones(restricciones, fronteras, ancho=80, alto=25, escala=2
     <div class="card text-left rounded-0">
         <div class="card-body">
             <p><strong>Definición:</strong> Se utilizan métodos numéricos para encontrar los valores de <code>x</code> que satisfacen <code>f(x)=0</code>, especialmente cuando no es posible resolver la ecuación de manera algebraica.</p>
-            <pre><button class="copy-btn" onclick="copiarCodigo('codigo3')">📋 Copiar</button><code id="codigo3">
-def f(x):
-    return x**3 + x - 1
 
-def df(x):
-    return 3*x**2 + 1
+            <h6>🔹 Método de Newton-Raphson</h6>
+            <p>Permite aproximar raíces de funciones <code>f(x)=0</code> usando la fórmula: <code>xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ)</code>. Requiere derivada de la función.</p>
 
-def newton_raphson(x0, tol=1e-6, max_iter=100):
-    xn = x0
-    for n in range(max_iter):
-        fxn = f(xn)
-        dfxn = df(xn)
-        if dfxn == 0:
-            print("Derivada cero. No se puede continuar.")
-            return None
-        xn1 = xn - fxn/dfxn
-        print(f"Iteración {n+1}: x = {xn1}, f(x) = {f(xn1)}")
-        if abs(xn1 - xn) < tol:
-            print(f"\nLa raíz aproximada es: {xn1}")
-            return xn1
-        xn = xn1
-    print("No se alcanzó la tolerancia requerida")
-    return None
+            <pre><button class="copy-btn" onclick="copiarCodigo('codigo_newton')">📋 Copiar</button><code id="codigo_newton">
+#
 
-x0 = 0.5
-newton_raphson(x0)
-            </code></pre>
-        </div>
-    </div>
-
-</div>
-
-<footer>
-    &copy; 2025 Gleny Condori 🌸 | <a href="#">Inicio</a> | <a href="#">Contacto</a>
-</footer>
-
-</body>
-</html>
