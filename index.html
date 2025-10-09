@@ -40,8 +40,7 @@
     <h5 class="text-primary tema-title"><i class="fa-solid fa-cube"></i> TEMA: VARIABLES</h5>
     <div class="card text-left rounded-0 mb-3">
         <div class="card-body">
-            <p>La programación numérica es una rama de la programación que busca resolver problemas matemáticos mediante aproximaciones, usando algoritmos que permiten trabajar con cálculos complejos cuando no es posible obtener una solución exacta. Se basa en métodos como integración, derivación, optimización o resolución de ecuaciones, y tiene como objetivo dar resultados confiables de forma eficiente con la ayuda de la computadora.</p>
-            <p>En cuanto a sus aplicaciones, en Ingeniería Estadística se emplea para estimar parámetros de modelos a través de algoritmos de optimización y también en simulaciones Monte Carlo para analizar la incertidumbre. En Ingeniería Informática, se utiliza en el entrenamiento de modelos de inteligencia artificial y machine learning mediante métodos numéricos como el descenso de gradiente, así como en el área de gráficos y visión por computadora para realizar interpolaciones, transformaciones y simulaciones visuales.</p>
+            <p>La programación numérica es una rama de la programación que busca resolver problemas matemáticos mediante aproximaciones, usando algoritmos que permiten trabajar con cálculos complejos cuando no es posible obtener una solución exacta.</p>
         </div>
     </div>
 
@@ -51,7 +50,6 @@
             <h6 class="text-dark pl-3 mb-0">Actividad: Programa f(x,y) = 2*y + x</h6>
         </div>
         <div class="card-body">
-            <p>Este programa pide dos números, calcula <code>r = 2*y</code> y finalmente <code>f(x,y) = 2*y + x</code>:</p>
             <pre><button class="copy-btn" onclick="copiarCodigo('codigo1')">Copiar</button><code id="codigo1">
 import re
 
@@ -94,24 +92,15 @@ if __name__ == "__main__":
     <div class="card text-left rounded-0 mb-3">
         <div class="card-body">
             <p>Las restricciones son condiciones o limitaciones que debe cumplir un problema matemático o de programación lineal. Estas limitaciones establecen los valores posibles que pueden tomar las variables, y definen la región factible donde se buscará la mejor solución.</p>
-            <p>En forma general, una restricción se escribe como:</p>
-            <p><code>a₁x₁ + a₂x₂ + ... + aₙxₙ (≤, =, ≥) b</code></p>
-            <p>Tipos de restricciones:</p>
-            <ul>
-                <li>Desigualdad (≤ o ≥): limita el uso de un recurso.</li>
-                <li>Igualdad (=): indica una cantidad exacta.</li>
-                <li>No negatividad: variables no pueden ser negativas.</li>
-            </ul>
         </div>
     </div>
 
     <!-- Actividad Restricciones -->
     <div class="card text-left rounded-0 mb-3">
         <div class="card-header bg-success p-1">
-            <h6 class="text-dark pl-3 mb-0">Actividad: Graficador ASCII de restricciones</h6>
+            <h6 class="text-dark pl-3 mb-0">Actividad: Graficar restricciones</h6>
         </div>
         <div class="card-body">
-            <p>Este programa grafica funciones y restricciones en un plano usando caracteres ASCII:</p>
             <pre><button class="copy-btn" onclick="copiarCodigo('codigo2')">Copiar</button><code id="codigo2">
 import math
 import re
@@ -154,121 +143,85 @@ def graficar_restricciones(restricciones, fronteras, ancho=80, alto=25, escala=2
         </div>
     </div>
 
-    <!-- Ejercicios Propuestos -->
+    <!-- Actividad 2: Ejercicios Propuestos -->
     <h5 class="text-warning tema-title"><i class="fa-solid fa-clipboard-list"></i> ACTIVIDAD 2: EJERCICIOS PROPUESTOS</h5>
     <div class="card text-left rounded-0 mb-3">
         <div class="card-body">
             <ol>
-                <li>Desarrollador: tiempo de front-end y back-end.</li>
-                <li>Servidores: horas máximas según presupuesto.</li>
-                <li>Reuniones y documentación: región factible.</li>
-                <li>Producción de assets: Modelos 3D y Texturas.</li>
-                <li>Dispositivos de hardware: componentes A y B.</li>
+                <li>Desarrollador: tiempo de front-end (x) y back-end (y). Restricciones: x ≥ 5, x+y ≤ 15. Representar gráficamente y analizar combinaciones posibles.</li>
+                <li>Servidores A (x) y B (y). Presupuesto máximo S/20: 3x + 5y ≤ 20. Representar gráficamente y analizar combinaciones posibles.</li>
+                <li>Reuniones (x) y documentación (y): x ≥ 4, y ≥ 6, x+y ≤ 12. Representar gráficamente la región factible.</li>
+                <li>Producción de assets: Modelos 3D (x) y Texturas (y): 2x + 3y ≤ 18, x≥0, y≥0. Representar gráficamente y analizar combinaciones.</li>
+                <li>Dispositivos de hardware: tipo A (x) y tipo B (y): 5x + 10y ≤ 50, x≥0, y≥0. Representar gráficamente y analizar combinaciones posibles.</li>
             </ol>
-            <p>Se puede usar el código anterior para graficar cada ejercicio en ASCII.</p>
+            <pre><button class="copy-btn" onclick="copiarCodigo('codigo3')">Copiar</button><code id="codigo3">
+# Código para graficar los 5 ejercicios
+# (Usa la función graficar_restricciones definida anteriormente)
+
+# Ejercicio 1
+restricciones_1 = ["x >= 5", "y >= 0", "x + y <= 15"]
+fronteras_1 = ["15 - x", "0", "5"]
+graficar_restricciones(restricciones_1, fronteras_1)
+
+# Ejercicio 2
+restricciones_2 = ["3*x + 5*y <= 20", "x >= 0", "y >= 0"]
+fronteras_2 = ["(20 - 3*x)/5", "0", "0"]
+graficar_restricciones(restricciones_2, fronteras_2)
+
+# Ejercicio 3
+restricciones_3 = ["x >= 4", "y >= 6", "x + y <= 12"]
+fronteras_3 = ["12 - x", "6", "4"]
+graficar_restricciones(restricciones_3, fronteras_3)
+
+# Ejercicio 4
+restricciones_4 = ["2*x + 3*y <= 18", "x >= 0", "y >= 0"]
+fronteras_4 = ["(18 - 2*x)/3", "0", "0"]
+graficar_restricciones(restricciones_4, fronteras_4)
+
+# Ejercicio 5
+restricciones_5 = ["5*x + 10*y <= 50", "x >= 0", "y >= 0"]
+fronteras_5 = ["(50 - 5*x)/10", "0", "0"]
+graficar_restricciones(restricciones_5, fronteras_5)
+            </code></pre>
         </div>
     </div>
 
-    <!-- Trabajos -->
-    <h5 class="text-primary tema-title"><i class="fa-solid fa-book-open"></i> MIS TRABAJOS</h5>
-    <div class="card text-left rounded-0 mb-3">
-        <div class="card-header bg-warning p-1">
-            <h6 class="text-dark pl-3 mb-0">Método de Euler <small class="text-muted float-right">Programación Numérica</small></h6>
-        </div>
-        <div class="card-body">
-            <p>Implementación del método de Euler para resolver EDOs y análisis de precisión comparado con otros métodos.</p>
-            <a href="trabajos/metodo-euler.pdf" class="btn btn-sm btn-primary" target="_blank">📄 Ver PDF</a>
-        </div>
-    </div>
-
-    <div class="card text-left rounded-0 mb-3">
-        <div class="card-header bg-warning p-1">
-            <h6 class="text-dark pl-3 mb-0">Interpolación de Lagrange <small class="text-muted float-right">Programación Numérica</small></h6>
-        </div>
-        <div class="card-body">
-            <p>Aplicación de la interpolación polinómica de Lagrange con gráficos comparativos y validación de resultados.</p>
-            <a href="trabajos/interpolacion-lagrange.pdf" class="btn btn-sm btn-primary" target="_blank">📄 Ver PDF</a>
-        </div>
-    </div>
-
-    <!-- Métodos Numéricos para Encontrar Raíces -->
-    <h5 class="text-warning tema-title mt-4"><i class="fa-solid fa-calculator"></i> 🌟 Métodos Numéricos para Encontrar Raíces</h5>
+    <!-- Actividad 3: Método Newton-Raphson -->
+    <h5 class="text-danger tema-title"><i class="fa-solid fa-calculator"></i> ACTIVIDAD 3: MÉTODO DE NEWTON-RAPHSON</h5>
     <div class="card text-left rounded-0 mb-3">
         <div class="card-body">
-            <p><strong>Definición:</strong> Se utilizan métodos numéricos para encontrar los valores de <code>x</code> que satisfacen <code>f(x)=0</code>, especialmente cuando no es posible resolver la ecuación de manera algebraica. Estos métodos buscan aproximar la raíz con la precisión deseada mediante iteraciones.</p>
-
-            <h6>🔹 Clasificación de Métodos</h6>
-
-            <p><strong>Métodos Cerrados (de intervalo):</strong></p>
-            <p>Requieren un intervalo <code>[a, b]</code> donde la función cambia de signo (<code>f(a)f(b)&lt;0</code>). Garantizan la convergencia.</p>
-
-            <ul>
-                <li><strong>Método de Bisección:</strong> Divide el intervalo a la mitad y selecciona el subintervalo donde la función cambia de signo. Se repite hasta alcanzar la precisión deseada. <em>Ventaja:</em> siempre converge. <em>Desventaja:</em> lento.</li>
-                <li><strong>Método de Regla Falsa (Falsa Posición):</strong> Aproxima la raíz usando la línea recta que une los extremos del intervalo. Más rápido que la bisección en muchos casos.</li>
-            </ul>
-
-            <p><strong>Métodos Abiertos (sin necesidad de intervalo):</strong> No requieren conocer un intervalo inicial donde la función cambie de signo. La convergencia no siempre está garantizada.</p>
-
-            <ul>
-                <li><strong>Método de Newton-Raphson:</strong> Fórmula: <code>xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ)</code>. Requiere derivada de la función. <em>Ventaja:</em> muy rápido si la aproximación inicial es buena. <em>Desventaja:</em> puede fallar si la derivada es cero o la aproximación inicial está lejos de la raíz.</li>
-                <li><strong>Método de la Secante:</strong> Similar a Newton-Raphson pero no requiere la derivada; usa dos aproximaciones iniciales. Fórmula: <code>xₙ₊₁ = xₙ - f(xₙ) * (xₙ - xₙ₋₁)/(f(xₙ) - f(xₙ₋₁))</code>.</li>
-                <li><strong>Método de Punto Fijo:</strong> Se transforma <code>f(x)=0</code> en <code>x=g(x)</code> y se usa <code>xₙ₊₁ = g(xₙ)</code>. Converge si <code>|g'(x)| &lt; 1</code> cerca de la raíz.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Actividad Newton-Raphson -->
-    <div class="card text-left rounded-0 mb-3">
-        <div class="card-header bg-warning p-1">
-            <h6 class="text-dark pl-3 mb-0">Actividad: Método Newton-Raphson</h6>
-        </div>
-        <div class="card-body">
-            <p>Este programa aproxima la raíz de una función <code>f(x)=0</code> usando el método de Newton-Raphson:</p>
-            <pre><button class="copy-btn" onclick="copiarCodigo('codigoNR')">Copiar</button><code id="codigoNR">
-import re
-
-NUM_REGEX = r'^[+-]?(\d+(\.\d*)?|\.\d+)$'
-
-def pedir_numero(nombre):
-    while True:
-        s = input(f"Ingrese {nombre}: ").strip()
-        if re.match(NUM_REGEX, s):
-            return float(s)
-        print("Entrada inválida. Introduce un número válido (ej: 2, -1.5)")
+            <p>Implementación del método de Newton-Raphson para encontrar raíces de <code>f(x) = 0</code>:</p>
+            <pre><button class="copy-btn" onclick="copiarCodigo('codigo4')">Copiar</button><code id="codigo4">
+# Método de Newton-Raphson para encontrar raíces de f(x) = 0
 
 def f(x):
-    # Ejemplo: f(x) = x^3 + x - 1
-    return x**3 + x - 1
+    return x**3 + x - 1  # Función a evaluar
 
 def df(x):
-    # Derivada de f(x)
-    return 3*x**2 + 1
+    return 3*x**2 + 1    # Derivada de la función
 
 def newton_raphson(x0, tol=1e-6, max_iter=100):
-    x = x0
-    for i in range(max_iter):
-        fx = f(x)
-        dfx = df(x)
-        if dfx == 0:
+    xn = x0
+    for n in range(max_iter):
+        fxn = f(xn)
+        dfxn = df(xn)
+        if dfxn == 0:
             print("Derivada cero. No se puede continuar.")
             return None
-        x_new = x - fx/dfx
-        if abs(x_new - x) < tol:
-            return x_new
-        x = x_new
-    print("No converge en el número máximo de iteraciones")
+        xn1 = xn - fxn/dfxn
+        print(f"Iteración {n+1}: x = {xn1}, f(x) = {f(xn1)}")
+        if abs(xn1 - xn) < tol:
+            print(f"\nLa raíz aproximada es: {xn1}")
+            return xn1
+        xn = xn1
+    print("No se alcanzó la tolerancia requerida")
     return None
 
-def main():
-    print("Método Newton-Raphson para f(x) = x^3 + x - 1")
-    x0 = pedir_numero("aproximación inicial x0")
-    raiz = newton_raphson(x0)
-    if raiz is not None:
-        print(f"Raíz aproximada: {raiz}")
-        print(f"f(raíz) = {f(raiz)}")
+# Aproximación inicial
+x0 = 0.5
 
-if __name__ == "__main__":
-    main()
+# Ejecutar el método
+newton_raphson(x0)
             </code></pre>
         </div>
     </div>
@@ -276,7 +229,7 @@ if __name__ == "__main__":
 </div>
 
 <footer>
-    &copy; 2025 Gleny Condori - <a href="#">LinkedIn</a> | <a href="#">GitHub</a>
+    &copy; 2025 Gleny Condori
 </footer>
 
 </body>
