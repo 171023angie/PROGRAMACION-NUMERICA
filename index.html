@@ -3,108 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio de Gleny Condori - Estudiante de Programación Numérica en FINESI, UNA PUNO">
     <title>Portafolio - Gleny Condori</title>
-    
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
     <style>
-        body {
-            background-color: #f0f8ff; /* celeste suave */
-            font-family: Arial, sans-serif;
-        }
-        header {
-            background: linear-gradient(135deg, #004080, #00bfff);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            position: relative;
-        }
-        h1, h5 {
-            font-weight: bold;
-        }
-        .card {
-            box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-        }
-        pre {
-            background-color: #001f3f;
-            color: #00ffff;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-size: 14px;
-            position: relative;
-        }
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #00bfff;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            cursor: pointer;
-        }
-        footer {
-            background-color: #004080;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            margin-top: 40px;
-        }
-        footer a {
-            color: #00bfff;
-            margin: 0 8px;
-            text-decoration: none;
-        }
+        body { font-family: Arial, sans-serif; background-color: #f0f8ff; }
+        header { background: linear-gradient(135deg, #004080, #00bfff); color: white; padding: 30px 20px; text-align: center; position: relative; }
+        header img.perfil { width: 130px; height: 130px; border-radius: 50%; border: 4px solid white; margin-bottom: 10px; }
+        h1, h5 { font-weight: bold; }
+        .card { box-shadow: 0px 2px 6px rgba(0,0,0,0.1); }
+        pre { background-color: #001f3f; color: #00ffff; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 14px; position: relative; }
+        .copy-btn { position: absolute; top: 10px; right: 10px; background: #00bfff; color: #fff; border: none; padding: 5px 10px; border-radius: 5px; font-size: 12px; cursor: pointer; }
+        footer { background-color: #004080; color: white; padding: 15px; text-align: center; margin-top: 40px; }
+        footer a { color: #00bfff; margin: 0 8px; text-decoration: none; }
+        .tema-title { margin-top: 30px; }
     </style>
+    <script>
+        function copiarCodigo(id) {
+            const codigo = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(codigo).then(() => alert("Código copiado al portapapeles"));
+        }
+    </script>
 </head>
 <body>
 
 <header>
+    <img src="perfil.jpg" class="perfil" alt="Foto de Gleny Condori">
     <h1>Gleny Condori</h1>
     <p>Estudiante - Facultad de Ingeniería Estadística e Informática</p>
     <p>Curso: Programación Numérica - FINESI, UNA PUNO</p>
 </header>
 
 <div class="container my-4">
-    <div class="row">
-        <!-- Actividad 1: Trabajos -->
-        <div class="col-md-6">
-            <h5 class="text-left text-primary mt-4"><i class="fa-solid fa-book"></i> Actividad 1: Mis Trabajos</h5>
-            <div class="card text-left rounded-0 mb-3">
-                <div class="card-header bg-info p-1">
-                    <h6 class="text-dark pl-3 mb-0">
-                        Trabajo 1 - Introducción a la Programación Numérica
-                        <small class="text-muted float-right">Programación Numérica</small>
-                    </h6>
-                </div>
-                <div class="card-body">
-                    <p class="card-text text-justify">
-                        La programación numérica es una rama de la programación que busca resolver problemas matemáticos mediante aproximaciones, usando algoritmos que permiten trabajar con cálculos complejos cuando no es posible obtener una solución exacta. Se basa en métodos como integración, derivación, optimización o resolución de ecuaciones, y tiene como objetivo dar resultados confiables de forma eficiente con la ayuda de la computadora.
-                    </p>
-                    <p class="card-text text-justify">
-                        En cuanto a sus aplicaciones, en Ingeniería Estadística se emplea para estimar parámetros de modelos a través de algoritmos de optimización y también en simulaciones Monte Carlo para analizar la incertidumbre. En Ingeniería Informática, se utiliza en el entrenamiento de modelos de inteligencia artificial y machine learning mediante métodos numéricos como el descenso de gradiente, así como en el área de gráficos y visión por computadora para realizar interpolaciones, transformaciones y simulaciones visuales.
-                    </p>
-                </div>
-            </div>
-        </div>
 
-        <!-- Actividad 2: Ejemplo en Python -->
-        <div class="col-md-6">
-            <h5 class="text-left text-primary mt-4"><i class="fa-solid fa-code"></i> Actividad 2: Ejemplo en Python</h5>
-            <div class="card text-left rounded-0 mb-3">
-                <div class="card-header bg-info p-1">
-                    <h6 class="text-dark pl-3 mb-0">Programa: f(x,y) = 2*y + x</h6>
-                </div>
-                <div class="card-body">
-                    <p>Este programa pide dos números, calcula <code>r = 2*y</code> y finalmente <code>f(x,y) = 2*y + x</code>:</p>
-                    <pre><button class="copy-btn" onclick="copiarCodigo('codigo1')">Copiar</button><code id="codigo1">
+    <!-- Tema Variables -->
+    <h5 class="text-primary tema-title"><i class="fa-solid fa-cube"></i> TEMA: VARIABLES</h5>
+    <div class="card text-left rounded-0 mb-3">
+        <div class="card-body">
+            <p>La programación numérica es una rama de la programación que busca resolver problemas matemáticos mediante aproximaciones, usando algoritmos que permiten trabajar con cálculos complejos cuando no es posible obtener una solución exacta. Se basa en métodos como integración, derivación, optimización o resolución de ecuaciones, y tiene como objetivo dar resultados confiables de forma eficiente con la ayuda de la computadora.</p>
+            <p>En cuanto a sus aplicaciones, en Ingeniería Estadística se emplea para estimar parámetros de modelos a través de algoritmos de optimización y también en simulaciones Monte Carlo para analizar la incertidumbre. En Ingeniería Informática, se utiliza en el entrenamiento de modelos de inteligencia artificial y machine learning mediante métodos numéricos como el descenso de gradiente, así como en el área de gráficos y visión por computadora para realizar interpolaciones, transformaciones y simulaciones visuales.</p>
+        </div>
+    </div>
+
+    <!-- Actividad Variables -->
+    <div class="card text-left rounded-0 mb-3">
+        <div class="card-header bg-info p-1">
+            <h6 class="text-dark pl-3 mb-0">Actividad: Programa f(x,y) = 2*y + x</h6>
+        </div>
+        <div class="card-body">
+            <p>Este programa pide dos números, calcula <code>r = 2*y</code> y finalmente <code>f(x,y) = 2*y + x</code>:</p>
+            <pre><button class="copy-btn" onclick="copiarCodigo('codigo1')">Copiar</button><code id="codigo1">
 import re
 
 NUM_REGEX = r'^[+-]?(\d+(\.\d*)?|\.\d+)$'
@@ -137,93 +85,199 @@ def main():
 
 if __name__ == "__main__":
     main()
-                    </code></pre>
-                </div>
-            </div>
+            </code></pre>
         </div>
     </div>
 
-    <!-- Actividad 3: Graficador ASCII -->
-    <h5 class="text-left text-primary mt-4"><i class="fa-solid fa-chart-line"></i> Actividad 3: Graficador ASCII</h5>
+    <!-- Tema Restricciones -->
+    <h5 class="text-success tema-title"><i class="fa-solid fa-shield-halved"></i> TEMA: RESTRICCIONES</h5>
     <div class="card text-left rounded-0 mb-3">
-        <div class="card-header bg-info p-1">
-            <h6 class="text-dark pl-3 mb-0">Programa: Graficador ASCII de funciones</h6>
+        <div class="card-body">
+            <p>Las restricciones son condiciones o limitaciones que debe cumplir un problema matemático o de programación lineal. Estas limitaciones establecen los valores posibles que pueden tomar las variables, y definen la región factible donde se buscará la mejor solución.</p>
+            <p>En forma general, una restricción se escribe como:</p>
+            <p><code>a₁x₁ + a₂x₂ + ... + aₙxₙ (≤, =, ≥) b</code></p>
+            <p>Tipos de restricciones:</p>
+            <ul>
+                <li>Desigualdad (≤ o ≥): limita el uso de un recurso.</li>
+                <li>Igualdad (=): indica una cantidad exacta.</li>
+                <li>No negatividad: variables no pueden ser negativas.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Actividad Restricciones -->
+    <div class="card text-left rounded-0 mb-3">
+        <div class="card-header bg-success p-1">
+            <h6 class="text-dark pl-3 mb-0">Actividad: Graficador ASCII de restricciones</h6>
         </div>
         <div class="card-body">
-            <p>Este programa grafica funciones matemáticas en un plano cartesiano usando caracteres ASCII:</p>
+            <p>Este programa grafica funciones y restricciones en un plano usando caracteres ASCII:</p>
             <pre><button class="copy-btn" onclick="copiarCodigo('codigo2')">Copiar</button><code id="codigo2">
 import math
 import re
 
 def preparar_funcion(expr):
-    # Quitar espacios
     expr = expr.replace(" ", "")
-    # Insertar * donde falte (ej: 5x -> 5*x)
     expr = re.sub(r"(\d)([a-zA-Z])", r"\1*\2", expr)
     return expr
 
-def graficar(funciones):
-    ancho = 80   # columnas (eje X)
-    alto = 25    # filas (eje Y)
-    escala = 5   # cuántas unidades por división
-
-    # Matriz vacía
+def graficar_restricciones(restricciones, fronteras, ancho=80, alto=25, escala=2):
     plano = [[" " for _ in range(ancho)] for _ in range(alto)]
-
-    # Dibujar ejes
     for x in range(ancho):
-        plano[alto//2][x] = "-"  # eje X
+        plano[alto//2][x] = "-"
     for y in range(alto):
-        plano[y][ancho//2] = "|"  # eje Y
-    plano[alto//2][ancho//2] = "+"  # origen
-
-    # Colores simulados con símbolos diferentes
-    simbolos = ["*", "#"]
-
-    for idx, (funcion, simbolo) in enumerate(zip(funciones, simbolos)):
-        if funcion.strip() == "":
-            continue
-
-        funcion = preparar_funcion(funcion)
-
+        plano[y][ancho//2] = "|"
+    plano[alto//2][ancho//2] = "+"
+    simbolos = ["*", "#", "+", "x"]
+    for idx, expr in enumerate(fronteras):
+        expr = preparar_funcion(expr)
+        simbolo = simbolos[idx % len(simbolos)]
         for col in range(ancho):
-            # convertir pixel en valor x real
             x = (col - ancho//2) / escala
             try:
-                y = eval(funcion, {"x": x, "math": math})
+                y = eval(expr, {"x": x, "math": math})
                 fila = int(alto//2 - y * escala)
                 if 0 <= fila < alto:
                     plano[fila][col] = simbolo
-            except Exception as e:
-                print("Error en función:", funcion, e)
-
-    # Imprimir
+            except Exception:
+                try:
+                    vx = float(expr)
+                    col_v = int(round(vx * escala + ancho//2))
+                    if 0 <= col_v < ancho:
+                        for fila_v in range(alto):
+                            plano[fila_v][col_v] = simbolo
+                except Exception:
+                    pass
     for fila in plano:
         print("".join(fila))
-
-# Ejemplo
-funciones = ["2*x+5", "x**2/5"]
-graficar(funciones)
             </code></pre>
         </div>
     </div>
+
+    <!-- Ejercicios Propuestos -->
+    <h5 class="text-warning tema-title"><i class="fa-solid fa-clipboard-list"></i> ACTIVIDAD 2: EJERCICIOS PROPUESTOS</h5>
+    <div class="card text-left rounded-0 mb-3">
+        <div class="card-body">
+            <ol>
+                <li>Desarrollador: tiempo de front-end y back-end.</li>
+                <li>Servidores: horas máximas según presupuesto.</li>
+                <li>Reuniones y documentación: región factible.</li>
+                <li>Producción de assets: Modelos 3D y Texturas.</li>
+                <li>Dispositivos de hardware: componentes A y B.</li>
+            </ol>
+            <p>Se puede usar el código anterior para graficar cada ejercicio en ASCII.</p>
+        </div>
+    </div>
+
+    <!-- Trabajos -->
+    <h5 class="text-primary tema-title"><i class="fa-solid fa-book-open"></i> MIS TRABAJOS</h5>
+    <div class="card text-left rounded-0 mb-3">
+        <div class="card-header bg-warning p-1">
+            <h6 class="text-dark pl-3 mb-0">Método de Euler <small class="text-muted float-right">Programación Numérica</small></h6>
+        </div>
+        <div class="card-body">
+            <p>Implementación del método de Euler para resolver EDOs y análisis de precisión comparado con otros métodos.</p>
+            <a href="trabajos/metodo-euler.pdf" class="btn btn-sm btn-primary" target="_blank">📄 Ver PDF</a>
+        </div>
+    </div>
+
+    <div class="card text-left rounded-0 mb-3">
+        <div class="card-header bg-warning p-1">
+            <h6 class="text-dark pl-3 mb-0">Interpolación de Lagrange <small class="text-muted float-right">Programación Numérica</small></h6>
+        </div>
+        <div class="card-body">
+            <p>Aplicación de la interpolación polinómica de Lagrange con gráficos comparativos y validación de resultados.</p>
+            <a href="trabajos/interpolacion-lagrange.pdf" class="btn btn-sm btn-primary" target="_blank">📄 Ver PDF</a>
+        </div>
+    </div>
+
+    <!-- Métodos Numéricos para Encontrar Raíces -->
+    <h5 class="text-warning tema-title mt-4"><i class="fa-solid fa-calculator"></i> 🌟 Métodos Numéricos para Encontrar Raíces</h5>
+    <div class="card text-left rounded-0 mb-3">
+        <div class="card-body">
+            <p><strong>Definición:</strong> Se utilizan métodos numéricos para encontrar los valores de <code>x</code> que satisfacen <code>f(x)=0</code>, especialmente cuando no es posible resolver la ecuación de manera algebraica. Estos métodos buscan aproximar la raíz con la precisión deseada mediante iteraciones.</p>
+
+            <h6>🔹 Clasificación de Métodos</h6>
+
+            <p><strong>Métodos Cerrados (de intervalo):</strong></p>
+            <p>Requieren un intervalo <code>[a, b]</code> donde la función cambia de signo (<code>f(a)f(b)&lt;0</code>). Garantizan la convergencia.</p>
+
+            <ul>
+                <li><strong>Método de Bisección:</strong> Divide el intervalo a la mitad y selecciona el subintervalo donde la función cambia de signo. Se repite hasta alcanzar la precisión deseada. <em>Ventaja:</em> siempre converge. <em>Desventaja:</em> lento.</li>
+                <li><strong>Método de Regla Falsa (Falsa Posición):</strong> Aproxima la raíz usando la línea recta que une los extremos del intervalo. Más rápido que la bisección en muchos casos.</li>
+            </ul>
+
+            <p><strong>Métodos Abiertos (sin necesidad de intervalo):</strong> No requieren conocer un intervalo inicial donde la función cambie de signo. La convergencia no siempre está garantizada.</p>
+
+            <ul>
+                <li><strong>Método de Newton-Raphson:</strong> Fórmula: <code>xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ)</code>. Requiere derivada de la función. <em>Ventaja:</em> muy rápido si la aproximación inicial es buena. <em>Desventaja:</em> puede fallar si la derivada es cero o la aproximación inicial está lejos de la raíz.</li>
+                <li><strong>Método de la Secante:</strong> Similar a Newton-Raphson pero no requiere la derivada; usa dos aproximaciones iniciales. Fórmula: <code>xₙ₊₁ = xₙ - f(xₙ) * (xₙ - xₙ₋₁)/(f(xₙ) - f(xₙ₋₁))</code>.</li>
+                <li><strong>Método de Punto Fijo:</strong> Se transforma <code>f(x)=0</code> en <code>x=g(x)</code> y se usa <code>xₙ₊₁ = g(xₙ)</code>. Converge si <code>|g'(x)| &lt; 1</code> cerca de la raíz.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Actividad Newton-Raphson -->
+    <div class="card text-left rounded-0 mb-3">
+        <div class="card-header bg-warning p-1">
+            <h6 class="text-dark pl-3 mb-0">Actividad: Método Newton-Raphson</h6>
+        </div>
+        <div class="card-body">
+            <p>Este programa aproxima la raíz de una función <code>f(x)=0</code> usando el método de Newton-Raphson:</p>
+            <pre><button class="copy-btn" onclick="copiarCodigo('codigoNR')">Copiar</button><code id="codigoNR">
+import re
+
+NUM_REGEX = r'^[+-]?(\d+(\.\d*)?|\.\d+)$'
+
+def pedir_numero(nombre):
+    while True:
+        s = input(f"Ingrese {nombre}: ").strip()
+        if re.match(NUM_REGEX, s):
+            return float(s)
+        print("Entrada inválida. Introduce un número válido (ej: 2, -1.5)")
+
+def f(x):
+    # Ejemplo: f(x) = x^3 + x - 1
+    return x**3 + x - 1
+
+def df(x):
+    # Derivada de f(x)
+    return 3*x**2 + 1
+
+def newton_raphson(x0, tol=1e-6, max_iter=100):
+    x = x0
+    for i in range(max_iter):
+        fx = f(x)
+        dfx = df(x)
+        if dfx == 0:
+            print("Derivada cero. No se puede continuar.")
+            return None
+        x_new = x - fx/dfx
+        if abs(x_new - x) < tol:
+            return x_new
+        x = x_new
+    print("No converge en el número máximo de iteraciones")
+    return None
+
+def main():
+    print("Método Newton-Raphson para f(x) = x^3 + x - 1")
+    x0 = pedir_numero("aproximación inicial x0")
+    raiz = newton_raphson(x0)
+    if raiz is not None:
+        print(f"Raíz aproximada: {raiz}")
+        print(f"f(raíz) = {f(raiz)}")
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+        </div>
+    </div>
+
 </div>
 
 <footer>
-    &copy; 2025 Gleny Condori - Portafolio Programación Numérica - FINESI, UNA PUNO <br>
-    <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-    <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    &copy; 2025 Gleny Condori - <a href="#">LinkedIn</a> | <a href="#">GitHub</a>
 </footer>
-
-<!-- Script copiar código -->
-<script>
-function copiarCodigo(id) {
-    const codigo = document.getElementById(id).innerText;
-    navigator.clipboard.writeText(codigo).then(() => {
-        alert("✅ Código copiado al portapapeles");
-    });
-}
-</script>
 
 </body>
 </html>
