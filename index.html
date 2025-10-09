@@ -132,7 +132,136 @@ def graficar_restricciones(restricciones, fronteras, ancho=80, alto=25, escala=2
                 <li>Componentes: A y B, 5x+10y≤50, x≥0, y≥0.</li>
             </ol>
             <pre><button class="copy-btn" onclick="copiarCodigo('codigo3')">Copiar</button><code id="codigo3">
-# Aquí puedes agregar el código Python de graficar restricciones y soluciones de los 5 ejercicios
+import math
+import re
+
+def preparar_funcion(expr):
+    # Quitar espacios
+    expr = expr.replace(" ", "")
+    # Insertar * donde falte (ej: 5x -> 5*x)
+    expr = re.sub(r"(\d)([a-zA-Z])", r"\1*\2", expr)
+    return expr
+
+def graficar_restricciones(restricciones, fronteras, ancho=80, alto=25, escala=2):
+    # Matriz vacía
+    plano = [[" " for _ in range(ancho)] for _ in range(alto)]
+
+    # Dibujar ejes
+    for x in range(ancho):
+        plano[alto//2][x] = "-"  # eje X
+    for y in range(alto):
+        plano[y][ancho//2] = "|"  # eje Y
+    plano[alto//2][ancho//2] = "+"  # origen
+
+    # Sombrar región factible
+    for col in range(ancho):
+        for fila in range(alto):
+            x = (col - ancho//2) / escala
+            y = (alto//2 - fila) / escala
+            try:
+                if all(eval(cond, {"x":x,"y":y,"math":math}) for cond in restricciones):
+                    plano[fila][col] = "."
+            except Exception:
+                pass
+
+    # Dibujar fronteras (rectas o verticales)
+    simbolos = ["*", "#", "+", "x"]
+    for idx, expr in enumerate(fronteras):
+        expr = preparar_funcion(expr)
+        simbolo = simbolos[idx % len(simbolos)]
+        for col in range(ancho):
+            x = (col - ancho//2) / escala
+            try:
+                y = eval(expr, {"x": x, "math": math})
+                fila = int(alto//2 - y * escala)
+                if 0 <= fila < alto:
+                    plano[fila][col] = simbolo
+            except Exception:
+                # Interpretar como vertical x = constante
+                try:
+                    vx = float(expr)
+                    col_v = int(round(vx * escala + ancho//2))
+                    if 0 <= col_v < ancho:
+                        for fila_v in range(alto):
+                            plano[fila_v][col_v] = simbolo
+                except Exception:
+                    pass
+
+    # Imprimir plano
+    for fila in plano:
+        print("".join(fila))
+
+# EJERCICIO 1
+print("\n=== Ejercicio 1: Desarrollador (front-end=x, back-end=y) ===")
+restricciones_1 = [
+    "x >= 5",
+    "y >= 0",
+    "x + y <= 15"
+]
+fronteras_1 = [
+    "15 - x",  # x+y=15
+    "0",       # y=0
+    "5"        # x=5 (vertical)
+]
+graficar_restricciones(restricciones_1, fronteras_1)
+
+# EJERCICIO 2
+print("\n=== Ejercicio 2: Servidores (A=x, B=y) ===")
+restricciones_2 = [
+    "3*x + 5*y <= 20",
+    "x >= 0",
+    "y >= 0"
+]
+fronteras_2 = [
+    "(20 - 3*x)/5",  # 3x+5y=20
+    "0",
+    "0"
+]
+graficar_restricciones(restricciones_2, fronteras_2)
+
+# EJERCICIO 3
+print("\n=== Ejercicio 3: Reuniones (x), Documentación (y) ===")
+restricciones_3 = [
+    "x >= 4",
+    "y >= 6",
+    "x + y <= 12"
+]
+fronteras_3 = [
+    "12 - x",  # x+y=12
+    "6",       # y=6
+    "4"        # x=4 (vertical)
+]
+graficar_restricciones(restricciones_3, fronteras_3)
+
+# EJERCICIO 4
+print("\n=== Ejercicio 4: Assets (Modelos=x, Texturas=y) ===")
+restricciones_4 = [
+    "2*x + 3*y <= 18",
+    "x >= 0",
+    "y >= 0"
+]
+fronteras_4 = [
+    "(18 - 2*x)/3",  # 2x+3y=18
+    "0",
+    "0"
+]
+graficar_restricciones(restricciones_4, fronteras_4)
+
+# EJERCICIO 5
+print("\n=== Ejercicio 5: Componentes (A=x, B=y) ===")
+restricciones_5 = [
+    "5*x + 10*y <= 50",
+    "x >= 0",
+    "y >= 0"
+]
+fronteras_5 = [
+    "(50 - 5*x)/10",  # 5x+10y=50
+    "0",
+    "0"
+]
+graficar_restricciones(restricciones_5, fronteras_5)
+
+print("\n--- Fin de los gráficos ---")
             </code></pre>
         </div>
     </div>
