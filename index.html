@@ -10,42 +10,53 @@
 
 <style>
   body {
-    background-color: #ffe6f2;
+    background: linear-gradient(to bottom right, #ffe6f2, #fff0f6, #ffffff);
     color: #4a235a;
     font-family: 'Comic Neue', cursive;
     line-height: 1.7;
     margin: 40px;
   }
+
+  /* Encabezados */
   h1, h2, h3 {
     color: #d63384;
     text-align: center;
+    transition: transform 0.3s ease, color 0.3s ease;
   }
+  h1:hover, h2:hover {
+    color: #ff80ab;
+    transform: scale(1.05);
+  }
+
   h1 {
     font-size: 36px;
     text-shadow: 2px 2px #fff;
   }
-  h2 {
-    font-size: 28px;
-  }
-  h3 {
-    font-size: 22px;
-  }
+  h2 { font-size: 28px; }
+  h3 { font-size: 22px; }
+
   p, li, pre {
     font-size: 18px;
   }
+
+  /* Secciones */
   section {
     background-color: #fff0f6;
     border-radius: 20px;
     padding: 25px;
     margin-bottom: 30px;
-    box-shadow: 0 0 10px rgba(255, 128, 171, 0.4);
+    box-shadow: 0 0 10px rgba(255, 128, 171, 0.3);
   }
+
+  /* Código */
   pre {
     background: #fde2f3;
     padding: 15px;
     border-radius: 10px;
     overflow-x: auto;
   }
+
+  /* Tablas */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -56,9 +67,39 @@
     padding: 8px;
     text-align: left;
   }
+
+  /* Menú kawai */
+  nav {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  nav a {
+    text-decoration: none;
+    color: #d63384;
+    font-weight: bold;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #ff80ab;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #d63384;
+    font-weight: bold;
+  }
 </style>
 </head>
 <body>
+
+<!-- MENÚ DE NAVEGACIÓN -->
+<nav>
+  <a href="#variables">Variables y Funciones</a> |
+  <a href="#restricciones">Restricciones</a> |
+  <a href="#metodos">Métodos Numéricos</a>
+</nav>
 
 <!-- ENCABEZADO -->
 <h1>🌸 Curso: Programación Numérica 🌸</h1>
@@ -71,9 +112,8 @@
 <!-- ==================== -->
 <!-- TEMA: VARIABLES Y FUNCIONES -->
 <!-- ==================== -->
-<section>
+<section id="variables">
 <h2>TEMA: VARIABLES Y FUNCIONES</h2>
-
 <h3>SUBTEMA 🔹 ¿Qué es una variable?</h3>
 <p>Una variable es un símbolo o elemento que puede cambiar de valor dentro de un problema o sistema. 
 En estadística, una variable representa una característica que puede medirse u observarse y que varía entre individuos o elementos de una población. 
@@ -87,9 +127,7 @@ Ejemplo: y = 2x + 3 → si x = 5, entonces y = 13.
 En informática, una función es un bloque de código reutilizable que realiza una tarea específica y puede recibir datos (parámetros) y retornar un resultado.</p>
 
 <h3>SUBTEMA 🔹 ¿Dónde se aplican en Ingeniería Estadística e Informática?</h3>
-<p>
-<b>Campo:</b> Aplicación de Variables y Funciones
-</p>
+<p><b>Campo:</b> Aplicación de Variables y Funciones</p>
 
 <table>
 <tr><th>Ingeniería Estadística</th><th>Ingeniería Informática</th></tr>
@@ -114,7 +152,7 @@ print("El resultado de f(x, y) = 2y + x es:", resultado)
 <!-- ==================== -->
 <!-- TEMA: RESTRICCIONES -->
 <!-- ==================== -->
-<section>
+<section id="restricciones">
 <h2>TEMA: RESTRICCIONES</h2>
 <p>Las restricciones son condiciones o limitaciones que debe cumplir un problema matemático o de programación lineal, delimitando la región factible.</p>
 
@@ -130,56 +168,37 @@ print("El resultado de f(x, y) = 2y + x es:", resultado)
 
 <h3>SUBTEMA 🔹 2. Sistemas de Ecuaciones</h3>
 <p>Un sistema de ecuaciones es un conjunto de ecuaciones que tienen las mismas variables.</p>
-
 <pre>
 {x + y = 10
  2x - y = 5}
 </pre>
-
 <p>Solución: x=5, y=5.</p>
 
 <h3>ACTIVIDAD: Graficar restricciones</h3>
 <p><b>Ejercicios Propuestos:</b></p>
 
 <ol>
-  <li>
-    <b>Ejercicio 1:</b> Un desarrollador tiene 15 horas semanales para dedicar al desarrollo de software de
-    front-end (x) y back-end (y). Además:
+  <li><b>Ejercicio 1:</b> Un desarrollador tiene 15 horas semanales para dedicar al desarrollo de software de front-end (x) y back-end (y). Además:
     <ul>
-      <li>Debe dedicar al menos 5 horas al desarrollo de front-end para cumplir con los entregables del cliente.</li>
-      <li>El tiempo total no puede exceder 15 horas por restricciones del sprint.</li>
+      <li>Debe dedicar al menos 5 horas al desarrollo de front-end.</li>
+      <li>El tiempo total no puede exceder 15 horas.</li>
     </ul>
-    <p><b>Tarea:</b> Formule las restricciones, represéntelas gráficamente e identifique las combinaciones posibles de tiempo a invertir en cada actividad.</p>
+    <p><b>Tarea:</b> Formule las restricciones, represéntelas gráficamente e identifique las combinaciones posibles de tiempo.</p>
   </li>
-
-  <li>
-    <b>Ejercicio 2:</b> Un ingeniero de datos administra dos tipos de servidores en la nube: Servidores A y Servidores B.
-    El costo por hora de Servidor A es S/3 y de Servidor B es S/5.
-    El presupuesto máximo semanal asignado para mantener los servidores es de S/20.
-    <p><b>Tarea:</b> Determine cuántas horas puede mantener activos cada tipo de servidor, formule el sistema de ecuaciones y represéntelo gráficamente.</p>
+  <li><b>Ejercicio 2:</b> Un ingeniero de datos administra dos tipos de servidores: A y B. El costo por hora de Servidor A es S/3 y de Servidor B es S/5. El presupuesto máximo semanal es de S/20.
+    <p><b>Tarea:</b> Determine cuántas horas puede mantener activos cada tipo de servidor, formule el sistema y represéntelo gráficamente.</p>
   </li>
-
-  <li>
-    <b>Ejercicio 3:</b> Un administrador de proyectos tecnológicos organiza su tiempo entre reuniones
-    con <i>stakeholders</i> (x) y trabajo en documentación técnica (y).
-    Las reuniones requieren al menos 4 horas semanales y la documentación al menos 6 horas.
-    Si dispone de 12 horas en total:
+  <li><b>Ejercicio 3:</b> Un administrador de proyectos tecnológicos organiza su tiempo entre reuniones (x) y documentación técnica (y). Las reuniones requieren al menos 4 horas y la documentación 6 horas. Si dispone de 12 horas:
     <p><b>Tarea:</b> Determine la región factible y analice las combinaciones posibles de tiempo.</p>
   </li>
-
-  <li>
-    <b>Ejercicio 4:</b> Una empresa de desarrollo de videojuegos produce dos tipos de <i>assets</i>: Modelos 3D (P1) y Texturas (P2).
-    Cada modelo 3D requiere 2 horas de trabajo y cada textura requiere 3 horas.
-    El equipo de arte tiene un total de 18 horas disponibles semanalmente.
-    <p><b>Tarea:</b> Formule las restricciones, represéntelas gráficamente y determine cuántos assets de cada tipo pueden producirse en función del tiempo disponible.</p>
+  <li><b>Ejercicio 4:</b> Una empresa de videojuegos produce Modelos 3D (P1) y Texturas (P2). Cada modelo requiere 2 horas y cada textura 3 horas. Se dispone de 18 horas.
+    <p><b>Tarea:</b> Formule las restricciones, represéntelas gráficamente y determine cuántos assets de cada tipo pueden producirse.</p>
   </li>
-
-  <li>
-    <b>Ejercicio 5:</b> Una startup de hardware dispone de un máximo de 50 unidades de componentes electrónicos.
-    Para ensamblar un dispositivo tipo A se necesitan 5 unidades y para uno tipo B se necesitan 10 unidades.
-    <p><b>Tarea:</b> Determine cuántos dispositivos de cada tipo puede ensamblar sin exceder las 50 unidades de componentes. Formule el problema, resuélvalo gráficamente y explique las posibles combinaciones de producción.</p>
+  <li><b>Ejercicio 5:</b> Una startup de hardware dispone de 50 unidades de componentes electrónicos. Tipo A usa 5 unidades y tipo B usa 10.
+    <p><b>Tarea:</b> Determine cuántos dispositivos de cada tipo puede ensamblar sin exceder las 50 unidades.</p>
   </li>
 </ol>
+
 <pre>
 # Código Python
 import math
@@ -318,24 +337,23 @@ print("\n--- Fin de los gráficos ---")
 <!-- ==================== -->
 <!-- TEMA: MÉTODOS NUMÉRICOS PARA ENCONTRAR RAÍCES -->
 <!-- ==================== -->
-<section>
+<section id="metodos">
 <h2>TEMA: MÉTODOS NUMÉRICOS PARA ENCONTRAR RAÍCES</h2>
-<p><b>Definición:</b> Se utilizan métodos numéricos para encontrar los valores de x que satisfacen f(x)=0, especialmente cuando no es posible resolver la ecuación de manera algebraica. 
-Estos métodos buscan aproximar la raíz con la precisión deseada mediante iteraciones.</p>
+<p><b>Definición:</b> Se utilizan métodos numéricos para encontrar los valores de x que satisfacen f(x)=0, especialmente cuando no es posible resolver la ecuación de manera algebraica.</p>
 
 <h3>SUBTEMA 🔹 Método de Newton-Raphson</h3>
 <p>Fórmula: xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ).<br>
 Requiere derivada de la función.<br>
-Ventaja: muy rápido si la aproximación inicial es buena.<br>
+Ventaja: rápido si la aproximación inicial es buena.<br>
 Desventaja: puede fallar si la derivada es cero o la aproximación inicial está lejos de la raíz.</p>
 
 <h3>ACTIVIDAD: CÓDIGO</h3>
 <pre>
 def f(x):
-    return x**3 + x - 1  # Función a evaluar
+    return x**3 + x - 1
 
 def df(x):
-    return 3*x**2 + 1    # Derivada de la función
+    return 3*x**2 + 1
 
 def newton_raphson(x0, tol=1e-6, max_iter=100):
     xn = x0
@@ -354,15 +372,14 @@ def newton_raphson(x0, tol=1e-6, max_iter=100):
     print("No se alcanzó la tolerancia requerida")
     return None
 
-# Aproximación inicial
 x0 = 0.5
-
-# Ejecutar el método
 newton_raphson(x0)
 </pre>
+
+<p><b>Interpretación:</b> Este método aproxima la raíz de una función usando derivadas. Es ampliamente utilizado en ingeniería para resolver ecuaciones no lineales con rapidez y precisión.</p>
 </section>
 
-<footer style="text-align:center; margin-top:40px; color:#d63384;">
+<footer>
   🌷 Portafolio elaborado por Gleny Angelica Condori Mamani 🌷
 </footer>
 
