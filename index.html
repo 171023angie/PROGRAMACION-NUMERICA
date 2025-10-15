@@ -287,10 +287,78 @@ print("\n--- Fin de los gráficos ---")
             <li><strong>Método de la Secante:</strong> Similar a Newton-Raphson pero no requiere la derivada; usa dos aproximaciones iniciales. Fórmula: <code>xₙ₊₁ = xₙ - f(xₙ) * (xₙ - xₙ₋₁)/(f(xₙ) - f(xₙ₋₁))</code>.</li>
             <li><strong>Método de Punto Fijo:</strong> Se transforma <code>f(x)=0</code> en <code>x=g(x)</code> y se usa <code>xₙ₊₁ = g(xₙ)</code>. Converge si <code>|g'(x)| &lt; 1</code> cerca de la raíz.</li>
         </ul>
+        # 🧮 Método de Newton-Raphson
+
+## 📘 Descripción
+
+El **método de Newton-Raphson** es un algoritmo **numérico iterativo** que permite encontrar **raíces reales** de una función \( f(x) = 0 \).  
+Se basa en aproximar la función mediante su **tangente** y actualizar sucesivamente el valor de la raíz.
+
+---
+
+## 🧠 Fundamento Teórico
+
+A partir de la ecuación de la tangente en el punto \( (x_n, f(x_n)) \):
+
+\[
+y = f(x_n) + f'(x_n)(x - x_n)
+\]
+
+Si \( y = 0 \), entonces:
+
+\[
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+\]
+
+Esta fórmula permite calcular una nueva aproximación de la raíz a partir de la anterior.
+
+---
+
+## ⚙️ Procedimiento
+
+1. Elegir una **aproximación inicial** \( x_0 \).  
+2. Evaluar la función \( f(x_n) \) y su derivada \( f'(x_n) \).  
+3. Calcular \( x_{n+1} \) con la fórmula de Newton-Raphson.  
+4. Repetir el proceso hasta que el **error** sea menor a la tolerancia deseada.  
+
+---
+
+## 💻 Implementación en Python
+
+```python
+# Método de Newton-Raphson para encontrar raíces de f(x) = 0
+
+def f(x):
+    return x**3 + x - 1  # Función
+
+def df(x):
+    return 3*x**2 + 1    # Derivada
+
+def newton_raphson(x0, tol=1e-6, max_iter=100):
+    xn = x0
+    for n in range(max_iter):
+        fxn = f(xn)
+        dfxn = df(xn)
+        if dfxn == 0:
+            print("Derivada cero. No se puede continuar.")
+            return None
+        xn1 = xn - fxn / dfxn
+        print(f"Iteración {n+1}: x = {xn1:.6f}, f(x) = {f(xn1):.6f}")
+        if abs(xn1 - xn) < tol:
+            print(f"\nRaíz aproximada: {xn1:.6f}")
+            return xn1
+        xn = xn1
+    print("No se alcanzó la tolerancia requerida")
+    return None
+
+# Ejemplo de uso
+x0 = 0.5
+newton_raphson(x0)
+
 
         <h6>🔹 Ejemplo de Newton-Raphson en Python</h6>
         <pre><code>
-# Método de Newton-Raphson para encontrar raíces de f(x) = 0
+#  CODIGO Método de Newton-Raphson para encontrar raíces de f(x) = 0
 
 def f(x):
     return x**3 + x - 1  # Función a evaluar
@@ -320,6 +388,7 @@ x0 = 0.5
 
 # Ejecutar el método
 newton_raphson(x0)
+            
         </code></pre>
     </div>
 </div>
