@@ -120,13 +120,13 @@ En estadística, una variable representa una característica que puede medirse u
 Ejemplo: edad, salario, temperatura, número de fallas, tiempo de ejecución de un programa. 
 En informática, una variable es un espacio de memoria que guarda un valor que puede cambiar durante la ejecución de un programa.</p>
 
-<h3>SUBTEMA 🔹 ¿Qué es una función?</h3>
+<h3>🔹 ¿Qué es una función?</h3>
 <p>Una función es una relación entre variables, donde a cada valor de la variable independiente (x) le corresponde un solo valor de la variable dependiente (y). 
 En estadística e ingeniería, una función se usa para modelar relaciones entre fenómenos. 
 Ejemplo: y = 2x + 3 → si x = 5, entonces y = 13. 
 En informática, una función es un bloque de código reutilizable que realiza una tarea específica y puede recibir datos (parámetros) y retornar un resultado.</p>
 
-<h3>SUBTEMA 🔹 ¿Dónde se aplican en Ingeniería Estadística e Informática?</h3>
+<h3>🔹 ¿Dónde se aplican en Ingeniería Estadística e Informática?</h3>
 <p><b>Campo:</b> Aplicación de Variables y Funciones</p>
 
 <table>
@@ -135,7 +135,7 @@ En informática, una función es un bloque de código reutilizable que realiza u
 <td>- En programación (uso de variables y funciones en algoritmos).<br>- En desarrollo de software y bases de datos.<br>- En inteligencia artificial y análisis de datos (funciones que transforman o procesan información).</td></tr>
 </table>
 
-<h3>SUBTEMA 🔹 Programa</h3>
+<h3>🔹 Programa</h3>
 <pre>
 f(x,y) = 2y + x 
 # Definimos la función
@@ -156,7 +156,7 @@ print("El resultado de f(x, y) = 2y + x es:", resultado)
 <h2>TEMA: RESTRICCIONES</h2>
 <p>Las restricciones son condiciones o limitaciones que debe cumplir un problema matemático o de programación lineal, delimitando la región factible.</p>
 
-<h3>SUBTEMA 🔹 1.1 Tipos de Restricciones</h3>
+<h3>🔹 1.1 Tipos de Restricciones</h3>
 <p><b>a) Restricciones de Igualdad:</b> Son condiciones que deben cumplirse exactamente.</p>
 <p>Ejemplo: x + y = 10</p>
 
@@ -166,7 +166,7 @@ print("El resultado de f(x, y) = 2y + x es:", resultado)
 <p><b>c) Restricciones de Límites:</b> Definen un rango permitido para cada variable.</p>
 <p>Ejemplo: 0 ≤ x ≤ 5</p>
 
-<h3>SUBTEMA 🔹 2. Sistemas de Ecuaciones</h3>
+<h3>🔹 2. Sistemas de Ecuaciones</h3>
 <p>Un sistema de ecuaciones es un conjunto de ecuaciones que tienen las mismas variables.</p>
 <pre>
 {x + y = 10
@@ -175,7 +175,7 @@ print("El resultado de f(x, y) = 2y + x es:", resultado)
 <p>Solución: x=5, y=5.</p>
 
 <h3>ACTIVIDAD: Graficar restricciones</h3>
-<p><b>Ejercicios Propuestos:</b></p>
+<p><b>EJERCICIOS PROPUESTOS:</b></p>
 
 <ol>
   <li><b>Ejercicio 1:</b> Un desarrollador tiene 15 horas semanales para dedicar al desarrollo de software de front-end (x) y back-end (y). Además:
@@ -341,7 +341,7 @@ print("\n--- Fin de los gráficos ---")
 <h2>TEMA: MÉTODOS NUMÉRICOS PARA ENCONTRAR RAÍCES</h2>
 <p><b>Definición:</b> Se utilizan métodos numéricos para encontrar los valores de x que satisfacen f(x)=0, especialmente cuando no es posible resolver la ecuación de manera algebraica.</p>
 
-<h3>SUBTEMA 🔹 Método de Newton-Raphson</h3>
+<h3>🔹 Método de Newton-Raphson</h3>
 <p>Fórmula: xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ).<br>
 Requiere derivada de la función.<br>
 Ventaja: rápido si la aproximación inicial es buena.<br>
@@ -378,6 +378,212 @@ newton_raphson(x0)
 
 <p><b>Interpretación:</b> Este método aproxima la raíz de una función usando derivadas. Es ampliamente utilizado en ingeniería para resolver ecuaciones no lineales con rapidez y precisión.</p>
 </section>
+<h3>🔹 Método de Bisección</h3>
+<p>El <b>Método de Bisección</b> es un procedimiento numérico que permite encontrar una raíz de una función continua en un intervalo <i>[a, b]</i> donde los valores de la función cambian de signo (es decir, f(a)·f(b) &lt; 0).</p>
+
+<p><b>Fórmula:</b><br>
+Sea el punto medio m = (a + b) / 2.<br>
+Si f(a)·f(m) &lt; 0, entonces la raíz está en [a, m].<br>
+Si f(m)·f(b) &lt; 0, entonces la raíz está en [m, b].<br>
+El proceso se repite hasta que el intervalo sea suficientemente pequeño.</p>
+
+<p><b>Ventajas:</b> Método simple, seguro y siempre converge si se cumple el cambio de signo.<br>
+<b>Desventajas:</b> Es más lento comparado con Newton-Raphson.</p>
+
+<h3>ACTIVIDAD: CÓDIGO</h3>
+<pre>
+def f(x):
+    return x**3 + x - 1  # Puedes cambiar la función según el ejercicio
+
+def biseccion(a, b, tol=1e-6, max_iter=100):
+    if f(a) * f(b) >= 0:
+        print("El método no es aplicable: f(a) y f(b) deben tener signos opuestos.")
+        return None
+
+    for n in range(1, max_iter+1):
+        m = (a + b) / 2
+        fm = f(m)
+        print(f"Iteración {n}: a = {a:.6f}, b = {b:.6f}, m = {m:.6f}, f(m) = {fm:.6f}")
+
+        if abs(fm) < tol or (b - a) / 2 < tol:
+            print(f"\nLa raíz aproximada es: {m:.6f}")
+            return m
+
+        if f(a) * fm < 0:
+            b = m
+        else:
+            a = m
+
+    print("No se alcanzó la tolerancia requerida.")
+    return None
+
+# Ejemplo de uso:
+a = 0
+b = 1
+biseccion(a, b)
+</pre>
+
+<p><b>Interpretación:</b> Este método divide el intervalo en mitades sucesivas hasta encontrar una raíz con la precisión deseada. 
+Es muy usado en ingeniería porque garantiza convergencia si existe cambio de signo entre los extremos del intervalo.</p>
+<h3>🔹 Método de la Secante</h3>
+<p>El <b>Método de la Secante</b> es una técnica numérica para encontrar raíces de una función 
+que, a diferencia del método de Newton-Raphson, <b>no requiere calcular la derivada</b>. 
+En lugar de usar f'(x), utiliza una aproximación con dos puntos cercanos.</p>
+
+<p><b>Fórmula:</b><br>
+xₙ₊₁ = xₙ - f(xₙ) * (xₙ - xₙ₋₁) / (f(xₙ) - f(xₙ₋₁))</p>
+
+<p><b>Ventajas:</b>  
+• No requiere derivadas.  
+• Converge más rápido que la bisección.  
+<br>
+<b>Desventajas:</b>  
+• Puede fallar si f(xₙ) ≈ f(xₙ₋₁).  
+• Menos estable que Newton-Raphson si la función es irregular.</p>
+
+<h3>ACTIVIDAD: CÓDIGO</h3>
+<pre>
+def f(x):
+    return x**3 + x - 1  # Puedes modificar la función según el problema
+
+def secante(x0, x1, tol=1e-6, max_iter=100):
+    for n in range(1, max_iter+1):
+        f0 = f(x0)
+        f1 = f(x1)
+        if f1 - f0 == 0:
+            print("División por cero. No se puede continuar.")
+            return None
+
+        x2 = x1 - f1 * (x1 - x0) / (f1 - f0)
+        print(f"Iteración {n}: x0 = {x0:.6f}, x1 = {x1:.6f}, x2 = {x2:.6f}, f(x2) = {f(x2):.6f}")
+
+        if abs(x2 - x1) < tol:
+            print(f"\nLa raíz aproximada es: {x2:.6f}")
+            return x2
+
+        x0, x1 = x1, x2
+
+    print("No se alcanzó la tolerancia requerida.")
+    return None
+
+# Ejemplo de uso:
+x0 = 0
+x1 = 1
+secante(x0, x1)
+</pre>
+
+<p><b>Interpretación:</b> Este método aproxima la raíz de una función usando dos puntos sucesivos 
+para estimar la pendiente de la curva. Es útil cuando no se dispone de la derivada y 
+ofrece una buena velocidad de convergencia en comparación con otros métodos básicos.</p>
+<h3>🔹 Método de Punto Fijo</h3>
+<p>El <b>Método de Punto Fijo</b> transforma una ecuación f(x)=0 en una forma equivalente x = g(x), 
+donde se busca que las sucesivas iteraciones de g(x) converjan hacia la raíz buscada. 
+Este método es uno de los más básicos y se utiliza como base para otros métodos numéricos.</p>
+
+<p><b>Fórmula general:</b><br>
+xₙ₊₁ = g(xₙ)</p>
+
+<p><b>Condición de convergencia:</b>  
+El método converge si |g'(x)| &lt; 1 en el entorno de la raíz.</p>
+
+<p><b>Ventajas:</b><br>
+• Fácil de implementar.<br>
+• No requiere derivadas.<br>
+<b>Desventajas:</b><br>
+• Puede no converger si g(x) no está bien elegida.<br>
+• Requiere un análisis previo de estabilidad.</p>
+
+<h3>ACTIVIDAD: CÓDIGO</h3>
+<pre>
+# Ejemplo: f(x) = cos(x) - x = 0
+# Transformamos a la forma x = g(x) = cos(x)
+
+import math
+
+def g(x):
+    return math.cos(x)
+
+def punto_fijo(x0, tol=1e-6, max_iter=100):
+    print(f"{'Iteración':<10}{'x':<15}{'g(x)':<15}{'Error':<15}")
+    print("-"*50)
+    for n in range(1, max_iter+1):
+        x1 = g(x0)
+        error = abs(x1 - x0)
+        print(f"{n:<10}{x1:<15.8f}{g(x1):<15.8f}{error:<15.8f}")
+
+        if error < tol:
+            print(f"\nLa raíz aproximada es: {x1:.8f}")
+            return x1
+        x0 = x1
+    print("\nNo se alcanzó la tolerancia requerida.")
+    return None
+
+# Ejemplo de uso:
+x0 = 0.5
+punto_fijo(x0)
+</pre>
+
+<p><b>Interpretación:</b>  
+El método de Punto Fijo busca un valor que se mantenga invariable al aplicar g(x). 
+En ingeniería y estadística, se usa para resolver ecuaciones no lineales y modelos iterativos 
+cuando es posible expresar la variable como una función de sí misma.</p>
+<h3>🔹 Método de Regula Falsi (Falsa Posición)</h3>
+<p>El <b>Método de Regula Falsi</b> o <b>Método de la Falsa Posición</b> es una técnica numérica para encontrar raíces de ecuaciones no lineales.  
+Combina la idea del <b>Método de Bisección</b> con una <b>interpolación lineal</b> para estimar la raíz con mayor precisión.</p>
+
+<p><b>Fórmula:</b><br>
+xₙ = b - f(b) * (a - b) / (f(a) - f(b))</p>
+
+<p><b>Procedimiento:</b><br>
+1. Se eligen dos valores iniciales <b>a</b> y <b>b</b> tales que f(a)·f(b) &lt; 0 (la raíz está entre ellos).<br>
+2. Se calcula una nueva aproximación xₙ usando la fórmula.<br>
+3. Se reemplaza uno de los extremos por xₙ dependiendo del signo de f(xₙ).<br>
+4. Se repite el proceso hasta cumplir la tolerancia deseada.</p>
+
+<p><b>Ventajas:</b><br>
+• Más rápido que el método de bisección.<br>
+• Siempre mantiene el intervalo que encierra la raíz.<br>
+<b>Desventajas:</b><br>
+• Puede converger lentamente si f(x) no cambia rápido de signo.</p>
+
+<h3>ACTIVIDAD: CÓDIGO</h3>
+<pre>
+def f(x):
+    return x**3 - x - 2  # Ejemplo de función
+
+def regula_falsi(a, b, tol=1e-6, max_iter=100):
+    if f(a) * f(b) >= 0:
+        print("No se cumple el teorema del valor intermedio.")
+        return None
+
+    print(f"{'Iteración':<10}{'a':<12}{'b':<12}{'x':<12}{'f(x)':<12}")
+    print("-"*55)
+
+    for n in range(1, max_iter + 1):
+        x = b - (f(b) * (a - b)) / (f(a) - f(b))
+        fx = f(x)
+        print(f"{n:<10}{a:<12.6f}{b:<12.6f}{x:<12.6f}{fx:<12.6f}")
+
+        if abs(fx) < tol:
+            print(f"\nLa raíz aproximada es: {x:.6f}")
+            return x
+        elif f(a) * fx < 0:
+            b = x
+        else:
+            a = x
+    print("\nNo se alcanzó la tolerancia requerida.")
+    return None
+
+# Ejemplo de uso:
+a = 1
+b = 2
+regula_falsi(a, b)
+</pre>
+
+<p><b>Interpretación:</b>  
+El método de Regula Falsi busca una raíz dentro de un intervalo aplicando rectas secantes entre los puntos del intervalo.  
+A diferencia del método de Bisección, usa una interpolación más realista del comportamiento de la función, lo que puede acelerar la convergencia.</p>
+
 
 <footer>
   🌷 Portafolio elaborado por Gleny Angelica Condori Mamani 🌷
