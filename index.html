@@ -87,6 +87,52 @@
 <h3>Facultad de Ingeniería Estadística e Informática</h3>
 <h3>👩‍💻 Estudiante: Gleny Angelica Condori Mamani 👩‍💻</h3>
 
+  <!-- 🌸 BOTÓN VOLVER AL INICIO -->
+<button id="btnInicio" title="Volver arriba">⬆️</button>
+
+<!-- 💅 ESTILO DEL BOTÓN -->
+<style>
+  #btnInicio {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 99;
+    font-size: 22px;
+    border: none;
+    outline: none;
+    background-color: #f48fb1;
+    color: white;
+    cursor: pointer;
+    padding: 14px 18px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+  #btnInicio:hover {
+    background-color: #ec407a;
+    transform: scale(1.1);
+  }
+</style>
+
+<!-- ⚙️ SCRIPT DE FUNCIONAMIENTO -->
+<script>
+  // Mostrar el botón al hacer scroll
+  window.onscroll = function() {
+    const btn = document.getElementById("btnInicio");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+
+  // Volver al inicio suavemente
+  document.getElementById("btnInicio").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
 <!-- 🌸 MENÚ DE NAVEGACIÓN -->
 <nav style="
   background: linear-gradient(90deg, #f8bbd0, #fce4ec);
