@@ -1,119 +1,461 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio Académico - Gleny Angelica Condori Mamani</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gleny A. Condori — Portafolio Numérico</title>
+  <meta name="description" content="Portafolio académico de Programación Numérica — Gleny Angélica Condori Mamani" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
   <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #ffe6f2, #fad0c4, #fff0f6);
-      color: #4a235a;
-      line-height: 1.6;
-      padding: 0 10%;
+    /* ====== Soft Pink Theme ====== */
+    :root{
+      --bg1: #fff0f6;
+      --bg2: #ffe6f2;
+      --accent1: #d81b60;
+      --accent2: #f48fb1;
+      --card: #ffffff;
+      --muted: #6b2f49;
+      --glass: rgba(255,255,255,0.7);
+      --shadow: 0 8px 24px rgba(184, 58, 122, 0.08);
+      --radius: 16px;
+      --maxw: 1100px;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 36px;
-      color: #d81b60;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(135deg, var(--bg2), var(--bg1));
+      color: #3d1630;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding: 28px;
+      display:flex;
+      justify-content:center;
     }
 
-    h2, h3 {
-      color: #ad1457;
-      background: linear-gradient(to right, #f8bbd0, #fce4ec);
-      padding: 8px 15px;
-      border-radius: 15px;
+    .site{
+      width:100%;
+      max-width:var(--maxw);
     }
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      margin: 30px 0;
+    header{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,245,250,0.9));
+      padding:22px;
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom:20px;
+      position:sticky;
+      top:18px;
+      z-index:1000;
+      border: 1px solid rgba(216,27,96,0.06);
     }
 
-    pre {
-      background: #fff5fa;
-      border-left: 6px solid #f48fb1;
-      padding: 15px;
-      border-radius: 10px;
-      overflow-x: auto;
+    .hero-left{
+      display:flex;
+      gap:18px;
+      align-items:center;
     }
 
-    nav {
-      background: linear-gradient(90deg, #f8bbd0, #fce4ec);
-      padding: 15px;
-      border-radius: 40px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    .photo{
+      width:92px;
+      height:92px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#ffd7e8,#ffecf6);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      border: 2px solid rgba(244,143,177,0.22);
+    }
+    .photo img{width:100%;height:100%;object-fit:cover}
+
+    h1{font-size:1.4rem;margin:0;color:var(--accent1)}
+    .meta{font-size:0.9rem;color:var(--muted);margin-top:4px}
+
+    nav.top-nav{
+      margin-left:auto;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    nav.top-nav a{
+      text-decoration:none;
+      color:var(--accent1);
+      background: linear-gradient(90deg, transparent, transparent);
+      padding:8px 12px;border-radius:12px;font-weight:600;
+      transition:all .18s ease;
+    }
+    nav.top-nav a:hover{background:var(--accent2);color:white;transform:translateY(-2px)}
+
+    /* ====== Grid Layout ====== */
+    main{display:grid;grid-template-columns: 320px 1fr; gap:22px; align-items:start}
+
+    aside{
+      position:sticky; top:120px;
+      align-self:start;
     }
 
-    nav a {
-      text-decoration: none;
-      color: #ad1457;
-      font-weight: bold;
-      margin: 0 12px;
-      transition: 0.3s;
+    .card{
+      background:var(--card);
+      border-radius:14px;
+      padding:18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+      border: 1px solid rgba(216,27,96,0.04);
     }
 
-    nav a:hover {
-      color: white;
-      background: #f48fb1;
-      padding: 6px 10px;
-      border-radius: 8px;
+    .toc h2{margin:0 0 12px 0;color:var(--accent1)}
+    .toc a{display:block;color:#6b2f49;text-decoration:none;padding:8px;border-radius:10px}
+    .toc a:hover{background:linear-gradient(90deg,#fff0f6,#ffe6f2);color:var(--accent1)}
+
+    section.content{padding:0}
+    section.content h2{color:var(--accent1);font-size:1.2rem;margin:0 0 10px 0}
+    section.content p{color:#482233;line-height:1.6}
+    .example pre{background:linear-gradient(180deg,#fff5fa,#fffafc);padding:12px;border-radius:10px;overflow:auto;border-left:4px solid var(--accent2)}
+
+    /* Grid cards for projects */
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:12px}
+    .project{
+      border-radius:12px;padding:14px;background:linear-gradient(180deg,#fff,#fffaf6);
+      border:1px solid rgba(244,143,177,0.08);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .project:hover{transform:translateY(-6px); box-shadow:0 12px 30px rgba(180,60,110,0.08)}
+
+    .small{font-size:0.85rem;color:#6b2f49}
+    .muted{color:#7a435e;font-size:0.95rem}
+
+    /* back to top */
+    #backTop{
+      position:fixed; right:18px; bottom:18px; z-index:2000;
+      width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,var(--accent2),var(--accent1));
+      color:white;border:none;font-size:20px;display:none;cursor:pointer;box-shadow:0 8px 22px rgba(216,27,96,0.22)
     }
 
-    footer {
-      text-align: center;
-      font-size: 14px;
-      padding: 40px 0;
-      color: #6a1b9a;
+    footer{margin-top:30px;text-align:center;color:#6b2f49;padding:20px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      main{grid-template-columns:1fr; padding-bottom:80px}
+      aside{position:relative; top:0}
+      header{flex-wrap:wrap; gap:12px}
     }
   </style>
 </head>
 <body>
+  <div class="site">
+    <!-- Header -->
+    <header>
+      <div class="hero-left">
+        <div class="photo">
+          <!-- Reemplaza src por tu foto: assets/foto.jpg -->
+          <img src="assets/foto.jpg" alt="Gleny A. Condori" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2292%22 height=%2292%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffd7e8%22/><text x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%227%22 fill=%22%23881e4f%22>G</text></svg>'">
+        </div>
+        <div>
+          <h1>Gleny Angélica Condori Mamani</h1>
+          <div class="meta">Facultad de Ingeniería Estadística e Informática — UNAP · Curso: Programación Numérica</div>
+        </div>
+      </div>
 
-  <h1>🌸 Portafolio de Programación Numérica 🌸</h1>
-  <h2>Universidad Nacional del Altiplano - Puno</h2>
-  <h3>👩‍💻 Estudiante: Gleny Angelica Condori Mamani</h3>
+      <nav class="top-nav" aria-label="navegación principal">
+        <a href="#indice">Índice</a>
+        <a href="#gradiente">Gradiente</a>
+        <a href="#dulces">Dulces</a>
+        <a href="#metodos">Métodos</a>
+      </nav>
+    </header>
 
-  <nav>
-    <a href="#unidad1">Unidad 1</a>
-    <a href="#gradiente">Gradiente</a>
-    <a href="#dulces">Simulación de Dulces</a>
-  </nav>
+    <main>
+      <!-- LEFT: INDEX / NAV -->
+      <aside>
+        <div class="card toc">
+          <h2>📚 Índice</h2>
+          <a href="#variables">Variables y Funciones</a>
+          <a href="#restricciones">Restricciones</a>
+          <a href="#metodos">Métodos Numéricos</a>
+          <a href="#gradiente">Gradiente Descendente</a>
+          <a href="#dulces">Simulación Dulces</a>
+          <a href="#ejercicios">Ejercicios</a>
+          <a href="#indiceH">Índice H</a>
+          <a href="#investigadores">Investigadores</a>
+          <a href="#contacto">Contacto</a>
+        </div>
 
-  <section id="unidad1" class="card">
-    <h2>📌 Unidad 1: Fundamentos</h2>
-    <p>Contenido introductorio del curso, variables, funciones y restricciones.</p>
-  </section>
+        <div style="height:12px"></div>
 
-  <section id="gradiente" class="card">
-    <h2>📉 Método del Gradiente Descendente</h2>
-    <p>Resumen, fórmula y ejemplo aplicado con f(x) = x².</p>
-    <pre>
-# Ejemplo en R
-gradiente <- function(x, lr=0.01) { x - lr * (2*x) }
-    </pre>
-  </section>
+        <div class="card small">
+          <strong>Datos</strong>
+          <p class="muted">Gleny Angélica Condori Mamani<br>Estudiante - Ingeniería Estadística e Informática<br>UNAP - Puno</p>
+          <p class="small">Email: <a href="mailto:tu.email@ejemplo.com">tu.email@ejemplo.com</a></p>
+          <p class="small">GitHub: <a href="https://github.com/tu-usuario" target="_blank">tu-usuario</a></p>
+        </div>
+      </aside>
 
-  <section id="dulces" class="card">
-    <h2>🍭 Simulación de Reparto de Dulces</h2>
-    <pre>
+      <!-- RIGHT: MAIN CONTENT -->
+      <section class="content">
+        <!-- Variables y funciones -->
+        <section id="variables" class="card">
+          <h2>Variables y Funciones</h2>
+          <p>Definición, uso en programación y en estadística. Variables que cambian, funciones matemáticas y bloques reutilizables en código.</p>
+          <div class="example">
+            <pre><code># Ejemplo Python
+def f(x,y):
+  return 2*y + x
+print(f(3,4))  # 11
+</code></pre>
+          </div>
+        </section>
+
+        <!-- Restricciones -->
+        <section id="restricciones" class="card" style="margin-top:18px">
+          <h2>Restricciones y regiones factibles</h2>
+          <p>Modelar límites con desigualdades y representar gráficamente la región factible.</p>
+          <div class="example">
+            <pre><code># Ejemplo: x + y <= 15, x>=5, y>=0
+            </code></pre>
+          </div>
+        </section>
+
+        <!-- Methods -->
+        <section id="metodos" class="card" style="margin-top:18px">
+          <h2>Métodos Numéricos para encontrar raíces</h2>
+          <p>Newton-Raphson, Bisección, Secante, Punto Fijo y Regula Falsi — con código y ejemplos.</p>
+          <div class="cards">
+            <div class="project">
+              <h3>Newton-Raphson</h3>
+              <p class="small">x_{n+1} = x_n - f(x_n)/f'(x_n)</p>
+              <div class="example"><pre><code>def newton(f, df, x0): ...</code></pre></div>
+            </div>
+
+            <div class="project">
+              <h3>Bisección</h3>
+              <p class="small">Divide el intervalo hasta alcanzar tolerancia</p>
+            </div>
+
+            <div class="project">
+              <h3>Secante</h3>
+              <p class="small">No necesita derivada analítica</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Gradiente -->
+        <section id="gradiente" class="card" style="margin-top:18px">
+          <h2>Gradiente Descendente</h2>
+          <p>Usamos como ejemplo f(x) = x<sup>2</sup>, con tasa n = 0.01 y x<sub>0</sub> = 3.</p>
+
+          <div class="example">
+<pre><code>f(x) = x^2
+f'(x) = 2x
+x_{i+1} = x_i - n * f'(x_i)
+n = 0.01, x0 = 3
+</code></pre>
+          </div>
+
+          <!-- Tabla de iteraciones (extraída de tus datos) -->
+          <div style="overflow:auto; margin-top:12px">
+            <table style="width:100%; border-collapse:collapse; font-size:0.92rem">
+              <thead style="background:linear-gradient(90deg,#ffeaf0,#fff2f8);">
+                <tr>
+                  <th style="padding:8px;border-bottom:1px solid #fde6ef">Iter</th>
+                  <th style="padding:8px;border-bottom:1px solid #fde6ef">x_i</th>
+                  <th style="padding:8px;border-bottom:1px solid #fde6ef">f(x_i)</th>
+                  <th style="padding:8px;border-bottom:1px solid #fde6ef">f'(x_i)</th>
+                  <th style="padding:8px;border-bottom:1px solid #fde6ef">Δx</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- insertamos unas filas ejemplo -->
+                <tr><td style="padding:8px">0</td><td>3.000000</td><td>9.000000</td><td>6.000000</td><td>2.940000</td></tr>
+                <tr><td style="padding:8px">1</td><td>2.940000</td><td>8.643600</td><td>5.880000</td><td>2.881200</td></tr>
+                <tr><td style="padding:8px">2</td><td>2.881200</td><td>8.301313</td><td>5.762400</td><td>2.823576</td></tr>
+                <tr><td style="padding:8px">3</td><td>2.823576</td><td>7.972581</td><td>5.647152</td><td>2.767104</td></tr>
+                <tr><td style="padding:8px">…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- small script to plot using canvas (simple) -->
+          <div style="margin-top:14px">
+            <canvas id="gradCanvas" width="800" height="220" style="width:100%;border-radius:10px;background:linear-gradient(180deg,#fff,#fffaf6);border:1px solid rgba(244,143,177,0.06)"></canvas>
+            <small class="small">Gráfico: evolución de x<sub>i</sub> y f(x<sub>i</sub>)</small>
+          </div>
+        </section>
+
+        <!-- Simulation Dulces -->
+        <section id="dulces" class="card" style="margin-top:18px">
+          <h2>Simulación: Reparto de Dulces y Chupetines</h2>
+          <p>Simulación en JavaScript interactiva — haz clic en \"Repartir\" para ver cómo se asignan caramelos a 9 alumnos.</p>
+
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px">
+            <button id="runSim" style="background:linear-gradient(180deg,var(--accent2),var(--accent1));border:none;color:white;padding:10px 14px;border-radius:10px;cursor:pointer">🎲 Repartir</button>
+            <button id="resetSim" style="background:#fff;border:1px solid var(--accent2);padding:10px 12px;border-radius:10px;cursor:pointer">🔄 Nuevo Sorteo</button>
+          </div>
+
+          <div id="simOutput" style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px"></div>
+
+          <div class="example" style="margin-top:12px">
+            <pre><code># Código R (versión original)
 set.seed(123)
-caramelos <- c("Blanco","Rojo","Amarillo")
-    </pre>
-  </section>
+tipos <- c("Blanco","Redondo","Amarillo")
+bolsa <- sample(tipos,60,replace=TRUE)
+# ... obtener chupetines ...
+</code></pre>
+          </div>
+        </section>
 
-  <footer>
-    © 2025 | Portafolio Académico - Ingeniería Estadística e Informática
-  </footer>
+        <!-- Ejercicios -->
+        <section id="ejercicios" class="card" style="margin-top:18px">
+          <h2>Ejercicios Propuestos (Resueltos)</h2>
 
+          <h3 style="color:#b22a57;margin:0">Diferencia Centrada — Ejercicio Resuelto</h3>
+          <p><strong>Enunciado:</strong> Población (miles): 800,900,1020,1160,1300. Calcular f'(3) con h=1.</p>
+          <div class="example">
+            <pre><code>f'(3) ≈ (f(4) - f(2)) / (2h) = (1160 - 900)/(2*1) = 130 (miles/año)</code></pre>
+          </div>
+
+          <h3 style="color:#b22a57">Diferencia Adelante — Ejercicio Resuelto</h3>
+          <p><strong>Enunciado:</strong> Ventas semanales: 20,25,33,46. Calcular tasa en semana 2 (h=1).</p>
+          <div class="example"><pre><code>f'(2) ≈ (f(3)-f(2))/1 = (33-25) = 8 (miles/semana)</code></pre></div>
+
+          <h3 style="color:#b22a57">Segunda derivada — Ejercicio Resuelto</h3>
+          <p><strong>Enunciado:</strong> Distancia (m): 0,2,8,18,32. Calcular f''(2) con h=1.</p>
+          <div class="example"><pre><code>f''(2) ≈ (d(3)-2d(2)+d(1))/1^2 = (18 - 2*8 + 2) = 4 (m/s^2)</code></pre></div>
+
+        </section>
+
+        <!-- ÍNDICE H -->
+        <section id="indiceH" class="card" style="margin-top:18px">
+          <h2>Índice H — Docentes</h2>
+          <div style="overflow:auto">
+            <table style="width:100%;border-collapse:collapse">
+              <thead style="background:linear-gradient(90deg,#fff0f6,#fff2f8)">
+                <tr><th style="padding:8px">N</th><th style="padding:8px">Docente</th><th style="padding:8px">Índice H</th></tr>
+              </thead>
+              <tbody>
+                <tr><td style="padding:8px">1</td><td>CRUZ TORRES, Fred</td><td>4</td></tr>
+                <tr><td style="padding:8px">2</td><td>CARPIO VARGAS, Edgar</td><td>3</td></tr>
+                <tr><td style="padding:8px">3</td><td>MENDOZA MOLLOCONDO, Charles</td><td>3</td></tr>
+                <tr><td style="padding:8px">4</td><td>... (otros)</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Investigadores -->
+        <section id="investigadores" class="card" style="margin-top:18px">
+          <h2>Investigadores destacados</h2>
+          <div class="project" style="margin-top:6px">
+            <h3>Hugo Alatrista Salas</h3>
+            <p class="small">Investigador — principales publicaciones sobre series temporales y ML.</p>
+          </div>
+          <div class="project" style="margin-top:8px">
+            <h3>Lingfeng Wang</h3>
+            <p class="small">Investigador internacional — energía y redes inteligentes.</p>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contacto" class="card" style="margin-top:18px">
+          <h2>Contacto</h2>
+          <p>Email: <a href="mailto:tu.email@ejemplo.com">tu.email@ejemplo.com</a></p>
+          <p>GitHub: <a href="https://github.com/tu-usuario" target="_blank">github.com/tu-usuario</a></p>
+          <p><small class="small">Descargar CV / PDF: <a href="assets/CV.pdf" download>Descargar</a> (reemplaza por tu PDF)</small></p>
+        </section>
+
+        <footer>
+          © 2025 — Gleny Angélica Condori Mamani — Facultad de Ingeniería Estadística e Informática (UNAP)
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <!-- Back to top -->
+  <button id="backTop" title="Volver arriba">⬆</button>
+
+  <!-- ====== Scripts: interactividad (gradiente canvas + dulces) ====== -->
+  <script>
+    // Back to top button
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 240) backTop.style.display = 'block';
+      else backTop.style.display = 'none';
+    });
+    backTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+    // Simple canvas plot for gradiente (xi and fxi)
+    (function(){
+      const canvas = document.getElementById('gradCanvas');
+      if(!canvas) return;
+      const ctx = canvas.getContext('2d');
+      // Sample data from your table (Xi and fXi)
+      const Xi = [3.000000,2.94,2.8812,2.823576,2.76710448,2.71176239,2.657527143,2.6043766,2.552289068,2.501243286,2.451218421,2.402194052,2.354150171,2.307067168];
+      const fXi = Xi.map(x => x*x);
+      // Scale and draw
+      const w = canvas.width, h = canvas.height, pad = 30;
+      ctx.clearRect(0,0,w,h);
+      // axes
+      ctx.strokeStyle = '#f1c2d9';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pad,h-pad); ctx.lineTo(w-pad,h-pad); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(pad,pad); ctx.lineTo(pad,h-pad); ctx.stroke();
+      // map function
+      const mapX = (i) => pad + (i/(Xi.length-1))*(w-2*pad);
+      const minY = Math.min(...fXi.concat(Xi)), maxY = Math.max(...fXi.concat(Xi));
+      const mapY = (v) => h - pad - ((v - minY) / (maxY - minY)) * (h - 2*pad);
+      // draw Xi (pink)
+      ctx.strokeStyle = '#d81b60'; ctx.lineWidth=2; ctx.beginPath();
+      Xi.forEach((v,i)=>{ const x=mapX(i), y=mapY(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+      ctx.stroke();
+      // draw fXi (soft)
+      ctx.strokeStyle = '#f48fb1'; ctx.lineWidth=2; ctx.beginPath();
+      fXi.forEach((v,i)=>{ const x=mapX(i), y=mapY(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+      ctx.stroke();
+      // legend
+      ctx.fillStyle='#d81b60'; ctx.fillRect(w-pad-120,pad-6,10,10); ctx.fillStyle='#3d1630'; ctx.fillText('Xi',w-pad-100,pad+4);
+      ctx.fillStyle='#f48fb1'; ctx.fillRect(w-pad-60,pad-6,10,10); ctx.fillStyle='#3d1630'; ctx.fillText('f(Xi)',w-pad-40,pad+4);
+    })();
+
+    // Simulación de dulces (JS)
+    (function(){
+      const tipos = ["Blanco","Redondo","Amarillo"];
+      const btn = document.getElementById('runSim');
+      const resetBtn = document.getElementById('resetSim');
+      const out = document.getElementById('simOutput');
+
+      function repartir(){
+        out.innerHTML = '';
+        const bolsa = Array.from({length:60},()=>tipos[Math.floor(Math.random()*3)]);
+        for(let i=1;i<=9;i++){
+          const picks = [bolsa[Math.floor(Math.random()*60)], bolsa[Math.floor(Math.random()*60)]];
+          // contar
+          const nBlanco = picks.filter(p=>p==='Blanco').length;
+          const nRed = picks.filter(p=>p==='Redondo').length;
+          const nAma = picks.filter(p=>p==='Amarillo').length;
+          let chupetines=0;
+          if(nBlanco>=1 && nRed>=1 && nAma>=1) chupetines=1;
+          else if(nBlanco>=2 && nRed>=2 && nAma>=2) chupetines=2;
+          else chupetines=1;
+          const card = document.createElement('div');
+          card.className='project';
+          card.innerHTML = `<strong>Alumno ${i}</strong>
+            <div class="small" style="margin-top:6px">Dulces: ${picks.join(' , ')}</div>
+            <div style="margin-top:8px">Chupetines: ${'🍭'.repeat(chupetines)}</div>`;
+          out.appendChild(card);
+        }
+      }
+
+      btn.addEventListener('click', repartir);
+      resetBtn.addEventListener('click', repartir);
+
+      // initial
+      repart = repartir;
+    })();
+  </script>
 </body>
 </html>
