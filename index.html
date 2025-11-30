@@ -1,131 +1,56 @@
-<!-- ================================================= -->
-<!-- 🌸 CAJÓN DE ÍNDICE LATERAL MEJORADO + FUNCIONES EXTRA -->
-<!-- ================================================= -->
-
-<!-- BOTÓN PARA MOSTRAR ÍNDICE EN CELULAR -->
-<button id="toggleIndice">📚 Índice</button>
-
-<!-- CAJÓN COMPLETO -->
-<div id="sidebar-indice">
-  <h2>📚 Índice</h2>
-
-  <button class="btn-unidad" onclick="location.href='#unidad1'">Ir a Unidad 1</button>
-  <button class="btn-unidad" onclick="location.href='#unidad2'">Ir a Unidad 2</button>
-
-  <h3>🌼 UNIDAD 1</h3>
-  <ul>
-    <li><a href="#variables">Variables y Funciones</a></li>
-    <li><a href="#restricciones">Restricciones</a></li>
-    <li><a href="#actividad">Actividad: Graficar Restricciones</a></li>
-    <li><a href="#metodos">Métodos Numéricos</a></li>
-    <ul>
-      <li><a href="#newton">Newton-Raphson</a></li>
-      <li><a href="#biseccion">Bisección</a></li>
-      <li><a href="#secante">Secante</a></li>
-      <li><a href="#puntofijo">Punto Fijo</a></li>
-      <li><a href="#regulafalsi">Regula Falsi</a></li>
-      <li><a href="#indiceH">Índice H Docentes</a></li>
-    </ul>
-  </ul>
-
-  <h3>🌺 UNIDAD 2</h3>
-  <ul>
-    <li><a href="#gradiente">Método del Gradiente Descendente</a></li>
-    <li><a href="#simulacion-dulces">Simulación de Reparto de Dulces</a></li>
-    <li><a href="#investigadores">Investigadores</a></li>
-  </ul>
-</div>
-
-<!-- ================================================= -->
-<!-- 🌸 ESTILOS COMPLETOS -->
-<!-- ================================================= -->
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Portafolio | Gleny Angélica</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-/* CAJÓN SOFT PINK */
-#sidebar-indice {
-  position: fixed;
-  top: 120px;
-  left: 15px;
-  width: 260px;
-  background: linear-gradient(180deg, #ffe6f2, #ffd9ec);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
-  border: 2px solid #f8bbd0;
+
+/* ===========================
+      ESTILO GENERAL SOFT PINK
+=========================== */
+body {
+  margin: 0;
   font-family: "Poppins", sans-serif;
-  animation: fadeIn 0.9s ease;
-  z-index: 999;
+  background: #fff5fa;
+  color: #4a004e;
 }
 
-/* ANIMACIÓN */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-#sidebar-indice h2 {
-  text-align: center;
-  color: #ad1457;
-  margin-bottom: 15px;
-  font-size: 22px;
-}
-
-#sidebar-indice h3 {
-  color: #880e4f;
-  margin-top: 15px;
-  margin-bottom: 8px;
-  border-left: 5px solid #f48fb1;
-  padding-left: 8px;
-  font-size: 18px;
-}
-
-#sidebar-indice ul {
-  list-style: none;
-  padding-left: 10px;
-}
-
-#sidebar-indice li { margin: 6px 0; }
-
-#sidebar-indice a {
-  text-decoration: none;
-  color: #ad1457;
-  font-weight: 500;
-  display: block;
-  padding: 6px 10px;
-  border-radius: 10px;
-  transition: 0.25s ease;
-}
-
-#sidebar-indice a:hover {
-  background: #f48fb1;
-  color: white;
-  transform: translateX(10px);
-  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
-}
-
-/* BOTONES IR A UNIDAD */
-.btn-unidad {
-  width: 100%;
+/* ===========================
+      MENÚ SUPERIOR
+=========================== */
+header {
   background: #f8bbd0;
-  border: none;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: bold;
+  padding: 18px;
+  text-align: center;
   color: #880e4f;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 4px 8px rgba(255, 105, 180, 0.25);
+  font-size: 24px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(255,105,180,0.3);
 }
 
-.btn-unidad:hover {
-  background: #f06292;
-  color: white;
-  transform: scale(1.05);
+/* ===========================
+      PORTADA
+=========================== */
+.portada {
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, #ffe6f2, #ffd9ec);
 }
 
-/* BOTÓN MOSTRAR ÍNDICE EN CELULAR */
+.portada h1 {
+  font-size: 42px;
+  color: #880e4f;
+}
+
+.portada p {
+  font-size: 20px;
+}
+
+/* ===========================
+      CAJÓN LATERAL ÍNDICE
+=========================== */
+
 #toggleIndice {
   display: none;
   position: fixed;
@@ -139,16 +64,73 @@
   color: #880e4f;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
-  z-index: 1000;
+  z-index: 1500;
 }
 
-/* RESPONSIVE */
+#sidebar-indice {
+  position: fixed;
+  top: 120px;
+  left: 15px;
+  width: 260px;
+  background: linear-gradient(180deg, #ffe6f2, #ffd9ec);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+  border: 2px solid #f8bbd0;
+  animation: fadeIn 0.9s ease;
+  z-index: 999;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+#sidebar-indice h2 {
+  text-align: center;
+  color: #ad1457;
+}
+
+/* Botones de unidad */
+.btn-unidad {
+  width: 100%;
+  background: #f8bbd0;
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #880e4f;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.btn-unidad:hover {
+  background: #f06292;
+  color: white;
+}
+
+/* Enlaces */
+#sidebar-indice a {
+  text-decoration: none;
+  display: block;
+  color: #880e4f;
+  padding: 6px;
+  border-radius: 8px;
+}
+#sidebar-indice a:hover {
+  background: #f48fb1;
+  color: white;
+}
+
+/* Responsive índice */
 @media(max-width: 900px){
   #toggleIndice { display: block; }
   #sidebar-indice { display: none; }
 }
 
-/* BOTÓN IR ARRIBA */
+/* ===========================
+      BOTÓN IR ARRIBA
+=========================== */
 #btnTop {
   position: fixed;
   bottom: 25px;
@@ -160,45 +142,126 @@
   border-radius: 50%;
   font-size: 20px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
-  transition: 0.3s;
   display: none;
-  z-index: 1000;
 }
 
-#btnTop:hover {
-  background: #ec407a;
-  transform: scale(1.15);
+/* ===========================
+      SECCIONES
+=========================== */
+.section {
+  margin-left: 320px;
+  padding: 40px 40px;
 }
 
-/* SECCIONES ILUMINADAS */
 .section-highlight {
-  transition: 0.5s ease;
-  border-left: 8px solid transparent;
+  transition: 0.5s;
+  border-left: 10px solid transparent;
 }
 
 .section-highlight.active {
   background: #ffe6f2;
-  border-left: 8px solid #f06292;
-  box-shadow: 0 4px 15px rgba(255,105,180,0.25);
+  border-left: 10px solid #f06292;
+  box-shadow: 0 4px 15px rgba(255,105,180,0.3);
 }
 
-/* ÍCONOS ANIMADOS */
-.icon-spin {
-  display: inline-block;
-  transition: 0.4s;
+/* ===========================
+      FOOTER
+=========================== */
+footer {
+  background: #f8bbd0;
+  padding: 15px;
+  text-align: center;
+  margin-top: 50px;
+  color: #880e4f;
 }
-.icon-spin:hover {
-  transform: rotate(15deg) scale(1.15);
-}
+
 </style>
 
+</head>
+<body>
 
-<!-- ================================================= -->
-<!-- 🌸 SCRIPTS -->
-<!-- ================================================= -->
+<header>🌸 Portafolio Digital – Gleny Angélica Condori Mamani</header>
+
+<!-- PORTADA -->
+<section class="portada">
+  <h1>Bienvenida a mi Portafolio</h1>
+  <p>Estudiante de la Universidad Nacional del Altiplano – Puno</p>
+</section>
+
+<!-- BOTÓN MOSTRAR ÍNDICE -->
+<button id="toggleIndice">📚 Índice</button>
+
+<!-- ÍNDICE LATERAL -->
+<div id="sidebar-indice">
+  <h2>Índice</h2>
+
+  <button class="btn-unidad" onclick="location.href='#unidad1'">Ir a Unidad 1</button>
+  <button class="btn-unidad" onclick="location.href='#unidad2'">Ir a Unidad 2</button>
+
+  <h3>UNIDAD 1</h3>
+  <a href="#variables">Variables y Funciones</a>
+  <a href="#restricciones">Restricciones</a>
+  <a href="#actividad">Actividad</a>
+  <a href="#metodos">Métodos Numéricos</a>
+  <a href="#indiceH">Índice H</a>
+
+  <h3>UNIDAD 2</h3>
+  <a href="#gradiente">Gradiente</a>
+  <a href="#simulacion-dulces">Simulación de Dulces</a>
+  <a href="#investigadores">Investigadores</a>
+</div>
+
+<!-- ===========================
+      CONTENIDO PRINCIPAL
+=========================== -->
+
+<div class="section">
+
+<!-- UNIDAD 1 -->
+<h1 id="unidad1" class="section-highlight">🌼 UNIDAD 1</h1>
+
+<h2 id="variables" class="section-highlight">Variables y Funciones</h2>
+<p>Contenido aquí…</p>
+
+<h2 id="restricciones" class="section-highlight">Restricciones</h2>
+<p>Contenido aquí…</p>
+
+<h2 id="actividad" class="section-highlight">Actividad</h2>
+<p>Explicación…</p>
+
+<h2 id="metodos" class="section-highlight">Métodos Numéricos</h2>
+<p>Todos tus métodos aquí…</p>
+
+<h2 id="indiceH" class="section-highlight">Índice H</h2>
+<p>Tabla de ejemplo…</p>
+
+<!-- UNIDAD 2 -->
+<h1 id="unidad2" class="section-highlight">🌺 UNIDAD 2</h1>
+
+<h2 id="gradiente" class="section-highlight">Método del Gradiente Descendente</h2>
+<p>Aquí va tu explicación del gradiente descendente.</p>
+
+<h2 id="simulacion-dulces" class="section-highlight">Simulación de Dulces</h2>
+<p>Aquí va tu código de dulces.</p>
+
+<h2 id="investigadores" class="section-highlight">Investigadores</h2>
+<p>Aquí van los investigadores.</p>
+
+</div>
+
+<!-- BOTÓN IR ARRIBA -->
+<button id="btnTop" onclick="scrollToTop()">⬆</button>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 | Portafolio de Gleny Angélica | Soft Pink Theme 🌸
+</footer>
+
+<!-- ===========================
+      SCRIPTS
+=========================== -->
 <script>
-/* Mostrar/Ocultar índice en celular */
+/* Mostrar índice */
 document.getElementById("toggleIndice").onclick = function(){
   const box = document.getElementById("sidebar-indice");
   box.style.display = (box.style.display === "block") ? "none" : "block";
@@ -214,8 +277,8 @@ window.addEventListener("scroll", function(){
       window.scrollY > 300 ? "block" : "none";
 });
 
-/* Iluminación de secciones */
-window.addEventListener("scroll", function() {
+/* Iluminar secciones */
+window.addEventListener("scroll", function(){
   document.querySelectorAll(".section-highlight").forEach(sec => {
     const pos = sec.getBoundingClientRect().top;
     if(pos < window.innerHeight - 200){
@@ -225,5 +288,5 @@ window.addEventListener("scroll", function() {
 });
 </script>
 
-<!-- BOTÓN IR ARRIBA -->
-<button id="btnTop" onclick="scrollToTop()">⬆</button>
+</body>
+</html>
