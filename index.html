@@ -6,14 +6,24 @@
   <title>Portafolio - Programación Numérica</title>
 
   <style>
-    /* Fondo elegante rosa */
+    /* Fondo degradado elegante */
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
       background: linear-gradient(135deg, #ffe6f2, #fad0c4, #fff0f6);
       color: #4a235a;
       line-height: 1.6;
+      box-shadow: inset 0 0 20px rgba(255, 192, 203, 0.3);
       padding: 0 10%;
+    }
+
+    /* Animación suave al aparecer */
+    section {
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
@@ -30,40 +40,116 @@
       border-radius: 15px;
     }
 
+    h3 {
+      margin-top: 25px;
+    }
+
     pre {
       background: #fff5fa;
       border-left: 6px solid #f48fb1;
       padding: 15px;
       border-radius: 10px;
-      overflow-x: auto;
+      font-family: "Consolas", monospace;
       color: #4a235a;
+      overflow-x: auto;
+      transition: transform 0.2s ease-in-out;
     }
 
-    /* Botón subir */
-    #btnInicio {
-      display: none;
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      font-size: 22px;
-      background-color: #f48fb1;
-      color: white;
-      padding: 14px 18px;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      border: none;
+    pre:hover {
+      transform: scale(1.01);
     }
 
-    nav {
-      background: linear-gradient(90deg, #f8bbd0, #fce4ec);
-      padding: 15px 25px;
-      border-radius: 35px;
+    footer {
       text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      margin-top: 25px;
+      margin: 50px 0 30px;
+      font-size: 14px;
+      color: #6a1b9a;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #f48fb1; }
+      to { text-shadow: 0 0 15px #f8bbd0; }
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 5%; font-size: 16px; }
+      h1 { font-size: 28px; }
+      h2 { font-size: 22px; }
+      h3 { font-size: 18px; }
+    }
+  </style>
+</head>
+
+<!-- ENCABEZADO -->
+<h1>🌸 💻Curso: Programación Numérica 💻🌸</h1>
+<h2>Universidad Nacional del Altiplano - Puno</h2>
+<h3>Facultad de Ingeniería Estadística e Informática</h3>
+<h3>👩‍💻 Estudiante: Gleny Angelica Condori Mamani 👩‍💻</h3>
+
+  <!-- 🌸 BOTÓN VOLVER AL INICIO -->
+<button id="btnInicio" title="Volver arriba">⬆️</button>
+
+<!-- 💅 ESTILO DEL BOTÓN -->
+<style>
+  #btnInicio {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 99;
+    font-size: 22px;
+    border: none;
+    outline: none;
+    background-color: #f48fb1;
+    color: white;
+    cursor: pointer;
+    padding: 14px 18px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+  #btnInicio:hover {
+    background-color: #ec407a;
+    transform: scale(1.1);
+  }
+</style>
+
+<!-- ⚙️ SCRIPT DE FUNCIONAMIENTO -->
+<script>
+  // Mostrar el botón al hacer scroll
+  window.onscroll = function() {
+    const btn = document.getElementById("btnInicio");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+
+  // Volver al inicio suavemente
+  document.getElementById("btnInicio").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<!-- 🌸 MENÚ DE NAVEGACIÓN -->
+<nav style="
+  background: linear-gradient(90deg, #f8bbd0, #fce4ec);
+  padding: 15px 25px;
+  border-radius: 35px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 25px;
+">
+
+  <style>
+    html {
+      scroll-behavior: smooth; /* 🌸 efecto de desplazamiento suave */
     }
 
     nav a {
@@ -71,144 +157,327 @@
       text-decoration: none;
       color: #ad1457;
       font-weight: bold;
-      padding: 6px 10px;
+      transition: all 0.3s ease;
       border-radius: 8px;
-      transition: 0.3s;
+      padding: 6px 10px;
     }
 
     nav a:hover {
       background: linear-gradient(to right, #f48fb1, #f8bbd0);
       color: white;
+      box-shadow: 0 0 10px rgba(248, 187, 208, 0.6);
+      transform: scale(1.08);
     }
 
-    html {
-      scroll-behavior: smooth;
+    nav a:active {
+      transform: scale(0.97);
+      background: #d81b60;
+      color: white;
+    }
+
+    nav span {
+      color: #ec407a;
+      font-weight: normal;
     }
   </style>
-</head>
 
-<body>
+<!-- 🌸 ÍNDICE GENERAL DIVIDIDO POR UNIDADES -->
+<section id="indice" style="margin: 50px auto; max-width: 850px; background: #fff0f6; padding: 40px; border-radius: 25px; box-shadow: 0 6px 18px rgba(0,0,0,0.1);">
+  <h2 style="text-align: center; color: #ad1457; font-size: 30px; margin-bottom: 30px; font-family: 'Poppins', sans-serif;">
+    📚 ÍNDICE DE CONTENIDOS
+  </h2>
 
-<h1>🌸 💻 Curso: Programación Numérica 💻🌸</h1>
-<h2>Universidad Nacional del Altiplano – Puno</h2>
-<h3>👩‍💻 Estudiante: Gleny Angélica Condori Mamani 👩‍💻</h3>
-
-<!-- Botón subir -->
-<button id="btnInicio">⬆</button>
-
-<script>
-  window.onscroll = function() {
-    const btn = document.getElementById("btnInicio");
-    if (window.scrollY > 200) btn.style.display = "block";
-    else btn.style.display = "none";
-  };
-
-  document.getElementById("btnInicio").onclick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-</script>
-
-<!-- Menú de navegación -->
-<nav>
-  <a href="#indice">Índice</a>
-  <a href="#variables">Variables</a>
-  <a href="#restricciones">Restricciones</a>
-  <a href="#metodos">Métodos Numéricos</a>
-  <a href="#gradiente">Gradiente</a>
-  <a href="#dulces">Dulces</a>
-</nav>
-
-<!-- ÍNDICE GENERAL -->
-<section id="indice">
-  <h2>📚 ÍNDICE DE CONTENIDOS</h2>
-
-  <h3>🌼 UNIDAD 1: Fundamentos y Métodos Numéricos</h3>
-  <ul>
-    <li><a href="#variables">Variables y Funciones</a></li>
-    <li><a href="#restricciones">Restricciones y Gráficas</a></li>
-    <li><a href="#metodos">Métodos Numéricos</a></li>
+  <!-- 🌼 UNIDAD 1 -->
+  <h3 style="color: #880e4f; border-left: 6px solid #f48fb1; padding-left: 10px; margin-bottom: 10px; font-size: 24px;">🌼 UNIDAD 1: Fundamentos y Métodos Numéricos</h3>
+  <ul style="list-style: none; padding-left: 20px; font-size: 18px; font-family: 'Poppins', sans-serif;">
+    <li><a href="#variables" class="tema-link">🔹 Variables y Funciones</a></li>
+    <li><a href="#restricciones" class="tema-link">🔹 Restricciones</a></li>
+    <li><a href="#actividad" class="tema-link">🔹 Actividad: Graficar Restricciones</a></li>
+    <li><a href="#metodos" class="tema-link">🔹 Métodos Numéricos</a></li>
+    <ul style="list-style-type: circle; margin-left: 40px;">
+      <li><a href="#newton" class="tema-link">Método de Newton-Raphson</a></li>
+      <li><a href="#biseccion" class="tema-link">Método de Bisección</a></li>
+      <li><a href="#secante" class="tema-link">Método de la Secante</a></li>
+      <li><a href="#puntofijo" class="tema-link">Método de Punto Fijo</a></li>
+      <li><a href="#regulafalsi" class="tema-link">Método de Regula Falsi</a></li>
+      <li><a href="#indiceH" class="tema-link">🔹 Índice H de Docentes de la Facultad</a></li>
+    </ul>
   </ul>
 
-  <h3>🌺 UNIDAD 2: Optimización y Simulación</h3>
-  <ul>
-    <li><a href="#gradiente">Método del Gradiente Descendente</a></li>
-    <li><a href="#dulces">Simulación de Reparto de Dulces</a></li>
+  <!-- 🌺 UNIDAD 2 -->
+  <h3 style="color: #880e4f; border-left: 6px solid #f48fb1; padding-left: 10px; margin-top: 25px; margin-bottom: 10px; font-size: 24px;">🌺 UNIDAD 2: Aplicaciones y Análisis</h3>
+  <ul style="list-style: none; padding-left: 20px; font-size: 18px; font-family: 'Poppins', sans-serif;">
+  <li><a href="#gradiente" class="tema-link">🔹 Método del Gradiente Descendente</a></li>
+  <li><a href="#🍭 Simulación de Reparto de Dulces y Chupetines" class="tema-link">🍭 Simulación de Reparto de Dulces y Chupetines </a></li>
   </ul>
 </section>
 
-<hr>
+<!-- 💅 ESTILOS DEL ÍNDICE -->
+<style>
+  .tema-link {
+    color: #ad1457;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  .tema-link:hover {
+    background-color: #f8bbd0;
+    color: #880e4f;
+    transform: translateX(10px);
+  }
+  #indice ul li {
+    margin: 6px 0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
 
-<!-- ====================== -->
-<!--  TEMA 1: VARIABLES     -->
-<!-- ====================== -->
+
+  
+<hr style="border: 2px solid #f06292; margin: 30px 0;">
+
+<!-- ==================== -->
+<!-- TEMA: VARIABLES Y FUNCIONES -->
+<!-- ==================== -->
 <section id="variables">
-<h2>🔹 VARIABLES Y FUNCIONES</h2>
-<p>
-Una variable es un símbolo que puede cambiar de valor. En programación y estadística,
-una función describe la relación entre variables.
-</p>
+<h2>TEMA: VARIABLES Y FUNCIONES</h2>
+<h3>🔹 ¿Qué es una variable?</h3>
+<p>Una variable es un símbolo o elemento que puede cambiar de valor dentro de un problema o sistema. 
+En estadística, una variable representa una característica que puede medirse u observarse y que varía entre individuos o elementos de una población. 
+Ejemplo: edad, salario, temperatura, número de fallas, tiempo de ejecución de un programa. 
+En informática, una variable es un espacio de memoria que guarda un valor que puede cambiar durante la ejecución de un programa.</p>
 
-<h3>📌 Ejemplo en Python</h3>
+<h3>🔹 ¿Qué es una función?</h3>
+<p>Una función es una relación entre variables, donde a cada valor de la variable independiente (x) le corresponde un solo valor de la variable dependiente (y). 
+En estadística e ingeniería, una función se usa para modelar relaciones entre fenómenos. 
+Ejemplo: y = 2x + 3 → si x = 5, entonces y = 13. 
+En informática, una función es un bloque de código reutilizable que realiza una tarea específica y puede recibir datos (parámetros) y retornar un resultado.</p>
+
+<h3>🔹 ¿Dónde se aplican en Ingeniería Estadística e Informática?</h3>
+<p><b>Campo:</b> Aplicación de Variables y Funciones</p>
+
+<table>
+<tr><th>Ingeniería Estadística</th><th>Ingeniería Informática</th></tr>
+<tr><td>- En modelos de regresión (relación entre variables).<br>- En análisis de datos (variables dependientes e independientes).<br>- En simulaciones y pronósticos.</td>
+<td>- En programación (uso de variables y funciones en algoritmos).<br>- En desarrollo de software y bases de datos.<br>- En inteligencia artificial y análisis de datos (funciones que transforman o procesan información).</td></tr>
+</table>
+
+<h3>🔹 Programa</h3>
 <pre>
+f(x,y) = 2y + x 
+# Definimos la función
 def f(x, y):
-    return 2*y + x
-
-print(f(3, 4))   # Resultado: 11
+    return 2 * y + x  
+# Ejemplo de uso
+x = float(input("Ingrese el valor de x: "))
+y = float(input("Ingrese el valor de y: "))
+resultado = f(x, y)
+print("El resultado de f(x, y) = 2y + x es:", resultado)
 </pre>
 </section>
 
-<hr>
-
-<!-- ====================== -->
-<!--  TEMA 2: RESTRICCIONES -->
-<!-- ====================== -->
+<!-- ==================== -->
+<!-- TEMA: RESTRICCIONES -->
+<!-- ==================== -->
 <section id="restricciones">
-<h2>🔹 RESTRICCIONES</h2>
-<p>Las restricciones limitan los valores permitidos para las variables.</p>
+<h2>TEMA: RESTRICCIONES</h2>
+<p>Las restricciones son condiciones o limitaciones que debe cumplir un problema matemático o de programación lineal, delimitando la región factible.</p>
 
-<h3>📌 Tipos de restricciones</h3>
-<ul>
-  <li><b>Igualdad:</b> x + y = 10</li>
-  <li><b>Desigualdad:</b> x ≥ 0</li>
-  <li><b>Rangos:</b> 0 ≤ x ≤ 5</li>
-</ul>
+<h3>🔹 1 Tipos de Restricciones</h3>
+<p><b>a) Restricciones de Igualdad:</b> Son condiciones que deben cumplirse exactamente.</p>
+<p>Ejemplo: x + y = 10</p>
 
-<h3>📌 Actividad con Python</h3>
+<p><b>b) Restricciones de Desigualdad:</b> Permiten límites máximos o mínimos.</p>
+<p>Ejemplo: x + y ≤ 10</p>
+
+<p><b>c) Restricciones de Límites:</b> Definen un rango permitido para cada variable.</p>
+<p>Ejemplo: 0 ≤ x ≤ 5</p>
+
+<h3>🔹 2. Sistemas de Ecuaciones</h3>
+<p>Un sistema de ecuaciones es un conjunto de ecuaciones que tienen las mismas variables.</p>
 <pre>
-# Graficado de restricciones en consola
-graficar_restricciones(
-  ["x>=0", "y>=0", "x+y<=10"],
-  ["10-x", "0", "0"]
-)
+{x + y = 10
+ 2x - y = 5}
+</pre>
+<p>Solución: x=5, y=5.</p>
+
+<h3>ACTIVIDAD: Graficar restricciones</h3>
+<p><b>EJERCICIOS PROPUESTOS:</b></p>
+
+<ol>
+  <li><b>Ejercicio 1:</b> Un desarrollador tiene 15 horas semanales para dedicar al desarrollo de software de front-end (x) y back-end (y). Además:
+    <ul>
+      <li>Debe dedicar al menos 5 horas al desarrollo de front-end.</li>
+      <li>El tiempo total no puede exceder 15 horas.</li>
+    </ul>
+    <p><b>Tarea:</b> Formule las restricciones, represéntelas gráficamente e identifique las combinaciones posibles de tiempo.</p>
+  </li>
+  <li><b>Ejercicio 2:</b> Un ingeniero de datos administra dos tipos de servidores: A y B. El costo por hora de Servidor A es S/3 y de Servidor B es S/5. El presupuesto máximo semanal es de S/20.
+    <p><b>Tarea:</b> Determine cuántas horas puede mantener activos cada tipo de servidor, formule el sistema y represéntelo gráficamente.</p>
+  </li>
+  <li><b>Ejercicio 3:</b> Un administrador de proyectos tecnológicos organiza su tiempo entre reuniones (x) y documentación técnica (y). Las reuniones requieren al menos 4 horas y la documentación 6 horas. Si dispone de 12 horas:
+    <p><b>Tarea:</b> Determine la región factible y analice las combinaciones posibles de tiempo.</p>
+  </li>
+  <li><b>Ejercicio 4:</b> Una empresa de videojuegos produce Modelos 3D (P1) y Texturas (P2). Cada modelo requiere 2 horas y cada textura 3 horas. Se dispone de 18 horas.
+    <p><b>Tarea:</b> Formule las restricciones, represéntelas gráficamente y determine cuántos assets de cada tipo pueden producirse.</p>
+  </li>
+  <li><b>Ejercicio 5:</b> Una startup de hardware dispone de 50 unidades de componentes electrónicos. Tipo A usa 5 unidades y tipo B usa 10.
+    <p><b>Tarea:</b> Determine cuántos dispositivos de cada tipo puede ensamblar sin exceder las 50 unidades.</p>
+  </li>
+</ol>
+
+<pre>
+# Código Python
+import math
+import re
+
+def preparar_funcion(expr):
+    # Quitar espacios
+    expr = expr.replace(" ", "")
+    # Insertar * donde falte (ej: 5x -> 5*x)
+    expr = re.sub(r"(\d)([a-zA-Z])", r"\1*\2", expr)
+    return expr
+
+def graficar_restricciones(restricciones, fronteras, ancho=80, alto=25, escala=2):
+    # Matriz vacía
+    plano = [[" " for _ in range(ancho)] for _ in range(alto)]
+
+    # Dibujar ejes
+    for x in range(ancho):
+        plano[alto//2][x] = "-"  # eje X
+    for y in range(alto):
+        plano[y][ancho//2] = "|"  # eje Y
+    plano[alto//2][ancho//2] = "+"  # origen
+
+    # Sombrar región factible
+    for col in range(ancho):
+        for fila in range(alto):
+            x = (col - ancho//2) / escala
+            y = (alto//2 - fila) / escala
+            try:
+                if all(eval(cond, {"x":x,"y":y,"math":math}) for cond in restricciones):
+                    plano[fila][col] = "."
+            except Exception:
+                pass
+
+    # Dibujar fronteras (rectas o verticales)
+    simbolos = ["*", "#", "+", "x"]
+    for idx, expr in enumerate(fronteras):
+        expr = preparar_funcion(expr)
+        simbolo = simbolos[idx % len(simbolos)]
+        for col in range(ancho):
+            x = (col - ancho//2) / escala
+            try:
+                y = eval(expr, {"x": x, "math": math})
+                fila = int(alto//2 - y * escala)
+                if 0 <= fila < alto:
+                    plano[fila][col] = simbolo
+            except Exception:
+                # Interpretar como vertical x = constante
+                try:
+                    vx = float(expr)
+                    col_v = int(round(vx * escala + ancho//2))
+                    if 0 <= col_v < ancho:
+                        for fila_v in range(alto):
+                            plano[fila_v][col_v] = simbolo
+                except Exception:
+                    pass
+
+    # Imprimir plano
+    for fila in plano:
+        print("".join(fila))
+
+# EJERCICIO 1
+print("\n=== Ejercicio 1: Desarrollador (front-end=x, back-end=y) ===")
+restricciones_1 = [
+    "x >= 5",
+    "y >= 0",
+    "x + y <= 15"
+]
+fronteras_1 = [
+    "15 - x",  # x+y=15
+    "0",       # y=0
+    "5"        # x=5 (vertical)
+]
+graficar_restricciones(restricciones_1, fronteras_1)
+
+# EJERCICIO 2
+print("\n=== Ejercicio 2: Servidores (A=x, B=y) ===")
+restricciones_2 = [
+    "3*x + 5*y <= 20",
+    "x >= 0",
+    "y >= 0"
+]
+fronteras_2 = [
+    "(20 - 3*x)/5",  # 3x+5y=20
+    "0",
+    "0"
+]
+graficar_restricciones(restricciones_2, fronteras_2)
+
+# EJERCICIO 3
+print("\n=== Ejercicio 3: Reuniones (x), Documentación (y) ===")
+restricciones_3 = [
+    "x >= 4",
+    "y >= 6",
+    "x + y <= 12"
+]
+fronteras_3 = [
+    "12 - x",  # x+y=12
+    "6",       # y=6
+    "4"        # x=4 (vertical)
+]
+graficar_restricciones(restricciones_3, fronteras_3)
+
+# EJERCICIO 4
+print("\n=== Ejercicio 4: Assets (Modelos=x, Texturas=y) ===")
+restricciones_4 = [
+    "2*x + 3*y <= 18",
+    "x >= 0",
+    "y >= 0"
+]
+fronteras_4 = [
+    "(18 - 2*x)/3",  # 2x+3y=18
+    "0",
+    "0"
+]
+graficar_restricciones(restricciones_4, fronteras_4)
+
+# EJERCICIO 5
+print("\n=== Ejercicio 5: Componentes (A=x, B=y) ===")
+restricciones_5 = [
+    "5*x + 10*y <= 50",
+    "x >= 0",
+    "y >= 0"
+]
+fronteras_5 = [
+    "(50 - 5*x)/10",  # 5x+10y=50
+    "0",
+    "0"
+]
+graficar_restricciones(restricciones_5, fronteras_5)
+
+print("\n--- Fin de los gráficos ---")
 </pre>
 </section>
-<!-- =============================== -->
-<!--    TEMA 3: MÉTODOS NUMÉRICOS    -->
-<!-- =============================== -->
+
+<!-- ==================== -->
+<!-- TEMA: MÉTODOS NUMÉRICOS PARA ENCONTRAR RAÍCES -->
+<!-- ==================== -->
 <section id="metodos">
-<h2>🔹 MÉTODOS NUMÉRICOS PARA ENCONTRAR RAÍCES</h2>
-<p>
-Los métodos numéricos permiten encontrar soluciones aproximadas a ecuaciones que
-no pueden resolverse de forma algebraica. En este curso aplicamos varios métodos
-para resolver ecuaciones de la forma:
-</p>
-<p style="text-align:center; font-size:20px;"><b>f(x) = 0</b></p>
+<h2>TEMA: MÉTODOS NUMÉRICOS PARA ENCONTRAR RAÍCES</h2>
+<p><b>Definición:</b> Se utilizan métodos numéricos para encontrar los valores de x que satisfacen f(x)=0, especialmente cuando no es posible resolver la ecuación de manera algebraica.</p>
 
-<hr>
+<h3>🔹 Método de Newton-Raphson</h3>
+<p>Fórmula: xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ).<br>
+Requiere derivada de la función.<br>
+Ventaja: rápido si la aproximación inicial es buena.<br>
+Desventaja: puede fallar si la derivada es cero o la aproximación inicial está lejos de la raíz.</p>
 
-<!-- MÉTODO NEWTON -->
-<h3 id="newton">📌 Método de Newton–Raphson</h3>
-
-<p>
-Es uno de los métodos más rápidos y usados. Utiliza derivadas para aproximar la raíz.
-</p>
-
-<p><b>Fórmula:</b></p>
-<p style="background:#fff0f6; padding:10px; border-radius:10px; text-align:center;">
-xₙ₊₁ = xₙ − f(xₙ) / f’(xₙ)
-</p>
-
-<h4>💻 Código en Python</h4>
+<h3>ACTIVIDAD: CÓDIGO</h3>
 <pre>
 def f(x):
     return x**3 + x - 1
@@ -216,533 +485,125 @@ def f(x):
 def df(x):
     return 3*x**2 + 1
 
-def newton(x0, tol=1e-6, max_iter=100):
-    x = x0
+def newton_raphson(x0, tol=1e-6, max_iter=100):
+    xn = x0
     for n in range(max_iter):
-        x1 = x - f(x)/df(x)
-        print(f"Iter {n+1}: x = {x1}, f(x) = {f(x1)}")
-        if abs(x1 - x) < tol:
-            return x1
-        x = x1
+        fxn = f(xn)
+        dfxn = df(xn)
+        if dfxn == 0:
+            print("Derivada cero. No se puede continuar.")
+            return None
+        xn1 = xn - fxn/dfxn
+        print(f"Iteración {n+1}: x = {xn1}, f(x) = {f(xn1)}")
+        if abs(xn1 - xn) < tol:
+            print(f"\nLa raíz aproximada es: {xn1}")
+            return xn1
+        xn = xn1
+    print("No se alcanzó la tolerancia requerida")
+    return None
 
-print(newton(0.5))
+x0 = 0.5
+newton_raphson(x0)
 </pre>
 
-<h4>📌 Interpretación</h4>
-<p>
-Newton converge rápido cuando el punto inicial es adecuado. Muy usado en ingeniería,
-estadística computacional y machine learning.
-</p>
+<p><b>Interpretación:</b> Este método aproxima la raíz de una función usando derivadas. Es ampliamente utilizado en ingeniería para resolver ecuaciones no lineales con rapidez y precisión.</p>
+</section>
+<h3>🔹 Método de Bisección</h3>
+<p>El <b>Método de Bisección</b> es un procedimiento numérico que permite encontrar una raíz de una función continua en un intervalo <i>[a, b]</i> donde los valores de la función cambian de signo (es decir, f(a)·f(b) &lt; 0).</p>
 
-<hr>
+<p><b>Fórmula:</b><br>
+Sea el punto medio m = (a + b) / 2.<br>
+Si f(a)·f(m) &lt; 0, entonces la raíz está en [a, m].<br>
+Si f(m)·f(b) &lt; 0, entonces la raíz está en [m, b].<br>
+El proceso se repite hasta que el intervalo sea suficientemente pequeño.</p>
 
-<!-- MÉTODO BISECCIÓN -->
-<h3 id="biseccion">📌 Método de Bisección</h3>
+<p><b>Ventajas:</b> Método simple, seguro y siempre converge si se cumple el cambio de signo.<br>
+<b>Desventajas:</b> Es más lento comparado con Newton-Raphson.</p>
 
-<p>
-Divide un intervalo en mitades sucesivas hasta encontrar una raíz.  
-Es lento pero seguro.
-</p>
-
-<h4>💻 Código</h4>
+<h3>ACTIVIDAD: CÓDIGO</h3>
 <pre>
 def f(x):
-    return x**3 + x - 1
+    return x**3 + x - 1  # Puedes cambiar la función según el ejercicio
 
-def biseccion(a, b, tol=1e-6):
-    for i in range(60):
-        m = (a+b)/2
-        if f(a)*f(m) < 0:
+def biseccion(a, b, tol=1e-6, max_iter=100):
+    if f(a) * f(b) >= 0:
+        print("El método no es aplicable: f(a) y f(b) deben tener signos opuestos.")
+        return None
+
+    for n in range(1, max_iter+1):
+        m = (a + b) / 2
+        fm = f(m)
+        print(f"Iteración {n}: a = {a:.6f}, b = {b:.6f}, m = {m:.6f}, f(m) = {fm:.6f}")
+
+        if abs(fm) < tol or (b - a) / 2 < tol:
+            print(f"\nLa raíz aproximada es: {m:.6f}")
+            return m
+
+        if f(a) * fm < 0:
             b = m
         else:
             a = m
-        print(i+1, m)
-    return m
 
-biseccion(0, 1)
+    print("No se alcanzó la tolerancia requerida.")
+    return None
+
+# Ejemplo de uso:
+a = 0
+b = 1
+biseccion(a, b)
 </pre>
 
-<h4>📌 Interpretación</h4>
-<p>
-Garantiza convergencia si existe un cambio de signo entre <b>a</b> y <b>b</b>.
-</p>
+<p><b>Interpretación:</b> Este método divide el intervalo en mitades sucesivas hasta encontrar una raíz con la precisión deseada. 
+Es muy usado en ingeniería porque garantiza convergencia si existe cambio de signo entre los extremos del intervalo.</p>
+<h3>🔹 Método de la Secante</h3>
+<p>El <b>Método de la Secante</b> es una técnica numérica para encontrar raíces de una función 
+que, a diferencia del método de Newton-Raphson, <b>no requiere calcular la derivada</b>. 
+En lugar de usar f'(x), utiliza una aproximación con dos puntos cercanos.</p>
 
-<hr>
+<p><b>Fórmula:</b><br>
+xₙ₊₁ = xₙ - f(xₙ) * (xₙ - xₙ₋₁) / (f(xₙ) - f(xₙ₋₁))</p>
 
-<!-- MÉTODO SECANTE -->
-<h3 id="secante">📌 Método de la Secante</h3>
+<p><b>Ventajas:</b>  
+• No requiere derivadas.  
+• Converge más rápido que la bisección.  
+<br>
+<b>Desventajas:</b>  
+• Puede fallar si f(xₙ) ≈ f(xₙ₋₁).  
+• Menos estable que Newton-Raphson si la función es irregular.</p>
 
-<p>
-Aproxima la derivada usando dos puntos en lugar de f'(x).  
-Es más rápido que la bisección.
-</p>
-
-<h4>💻 Código</h4>
+<h3>ACTIVIDAD: CÓDIGO</h3>
 <pre>
+def f(x):
+    return x**3 + x - 1  # Puedes modificar la función según el problema
+
 def secante(x0, x1, tol=1e-6, max_iter=100):
-    for n in range(max_iter):
-        f0, f1 = f(x0), f(x1)
-        x2 = x1 - f1 * (x1 - x0)/(f1 - f0)
-        print(f"Iter {n+1}: x = {x2}")
+    for n in range(1, max_iter+1):
+        f0 = f(x0)
+        f1 = f(x1)
+        if f1 - f0 == 0:
+            print("División por cero. No se puede continuar.")
+            return None
+
+        x2 = x1 - f1 * (x1 - x0) / (f1 - f0)
+        print(f"Iteración {n}: x0 = {x0:.6f}, x1 = {x1:.6f}, x2 = {x2:.6f}, f(x2) = {f(x2):.6f}")
+
         if abs(x2 - x1) < tol:
+            print(f"\nLa raíz aproximada es: {x2:.6f}")
             return x2
+
         x0, x1 = x1, x2
 
-print(secante(0, 1))
+    print("No se alcanzó la tolerancia requerida.")
+    return None
+
+# Ejemplo de uso:
+x0 = 0
+x1 = 1
+secante(x0, x1)
 </pre>
 
-<h4>📌 Interpretación</h4>
-<p>
-Es útil cuando la derivada es difícil de calcular.  
-Se usa muchísimo en optimización y modelos matemáticos.
-</p>
-
-<hr>
-
-<!-- MÉTODO PUNTO FIJO -->
-<h3 id="puntofijo">📌 Método de Punto Fijo</h3>
-
-<p>
-Transforma la ecuación f(x)=0 a la forma x = g(x), y luego itera.
-</p>
-
-<h4>💻 Código</h4>
-<pre>
-import math
-
-def g(x):
-    return math.cos(x)  # ejemplo
-
-def punto_fijo(x0, tol=1e-6, max_iter=50):
-    for n in range(max_iter):
-        x1 = g(x0)
-        print(f"Iter {n+1}: x = {x1}")
-        if abs(x1 - x0) < tol:
-            return x1
-        x0 = x1
-
-print(punto_fijo(0.5))
-</pre>
-
-<h4>📌 Interpretación</h4>
-<p>
-Converge si |g’(x)| &lt; 1.  
-Muy usado en modelos iterativos y ecuaciones no lineales.
-</p>
-
-<hr>
-
-<!-- MÉTODO REGULA FALSI -->
-<h3 id="regulafalsi">📌 Método de Regula Falsi</h3>
-
-<p>
-Similar a la bisección, pero usa interpolación lineal para acelerar la convergencia.
-</p>
-
-<h4>💻 Código</h4>
-<pre>
-def regula_falsi(a, b, tol=1e-6):
-    for n in range(80):
-        x = b - f(b)*(a-b)/(f(a)-f(b))
-        print(f"Iter {n+1}: x = {x}")
-        if abs(f(x)) < tol:
-            return x
-        if f(a)*f(x) < 0:
-            b = x
-        else:
-            a = x
-
-print(regula_falsi(0, 1))
-</pre>
-
-<h4>📌 Interpretación</h4>
-<p>
-Es más rápido que bisección y más estable que secante. Ideal para ecuaciones estables.
-</p>
-
-</section>
-<!-- =============================== -->
-<!--   TEMA: MÉTODO DEL GRADIENTE    -->
-<!-- =============================== -->
-<section id="gradiente">
-<h2>🌸 Método del Gradiente Descendente</h2>
-
-<p>
-El <b>Gradiente Descendente</b> es un método iterativo para encontrar el <b>mínimo de una función</b>.
-La idea principal es moverse en la dirección donde la función disminuye más rápido: es decir,
-en la dirección opuesta al gradiente (derivada).
-</p>
-
-<h3>📌 Fórmula general</h3>
-<p style="background:#fff0f6; padding:12px; border-radius:12px; text-align:center; font-size:18px;">
-<b>xₙ₊₁ = xₙ − η · f’(xₙ)</b>
-</p>
-
-<ul>
-  <li><b>xₙ</b> → valor actual</li>
-  <li><b>η</b> → tasa de aprendizaje (step size)</li>
-  <li><b>f’(xₙ)</b> → derivada de la función</li>
-</ul>
-
-<hr>
-
-<h3>📘 Ejemplo aplicado</h3>
-
-<p>Función usada:</p>
-<p style="background:#fce4ec; padding:10px; border-radius:10px; text-align:center;">
-<b>f(x) = x²</b> → mínima en x = 0  
-<br>Derivada: <b>f’(x) = 2x</b>
-</p>
-
-<p>
-Con un punto inicial: <b>x₀ = 3</b><br>
-Tasa de aprendizaje: <b>η = 0.01</b>
-</p>
-
-<h3>📊 Tabla de iteraciones (primeras 20)</h3>
-
-<table style="width:100%; border-collapse: collapse; background:#fff0f6;">
-<thead>
-<tr style="background:#f48fb1; color:white;">
-<th>Iteración</th>
-<th>Xi</th>
-<th>f(Xi)</th>
-<th>f’(Xi)</th>
-<th>Δf(Xi)</th>
-</tr>
-</thead>
-<tbody style="text-align:center;">
-
-<tr><td>0</td><td>3</td><td>9</td><td>6</td><td>2.94</td></tr>
-<tr><td>1</td><td>2.94</td><td>8.6436</td><td>5.88</td><td>2.8812</td></tr>
-<tr><td>2</td><td>2.8812</td><td>8.3013</td><td>5.7624</td><td>2.8236</td></tr>
-<tr><td>3</td><td>2.8236</td><td>7.9726</td><td>5.6472</td><td>2.7671</td></tr>
-<tr><td>4</td><td>2.7671</td><td>7.6569</td><td>5.5342</td><td>2.7118</td></tr>
-<tr><td>5</td><td>2.7118</td><td>7.3537</td><td>5.4235</td><td>2.6575</td></tr>
-<tr><td>6</td><td>2.6575</td><td>7.0625</td><td>5.3151</td><td>2.6044</td></tr>
-<tr><td>7</td><td>2.6044</td><td>6.7828</td><td>5.2088</td><td>2.5523</td></tr>
-<tr><td>8</td><td>2.5523</td><td>6.5142</td><td>5.1046</td><td>2.5012</td></tr>
-<tr><td>9</td><td>2.5012</td><td>6.2562</td><td>5.0025</td><td>2.4512</td></tr>
-<tr><td>10</td><td>2.4512</td><td>6.0085</td><td>4.9024</td><td>2.4022</td></tr>
-<tr><td>11</td><td>2.4022</td><td>5.7705</td><td>4.8044</td><td>2.3541</td></tr>
-<tr><td>12</td><td>2.3541</td><td>5.5420</td><td>4.7083</td><td>2.3071</td></tr>
-<tr><td>13</td><td>2.3071</td><td>5.3226</td><td>4.6141</td><td>2.2609</td></tr>
-<tr><td>14</td><td>2.2609</td><td>5.1118</td><td>4.5219</td><td>2.2157</td></tr>
-<tr><td>15</td><td>2.2157</td><td>4.9094</td><td>4.4314</td><td>2.1714</td></tr>
-<tr><td>16</td><td>2.1714</td><td>4.7149</td><td>4.3428</td><td>2.1280</td></tr>
-<tr><td>17</td><td>2.1280</td><td>4.5282</td><td>4.2559</td><td>2.0854</td></tr>
-<tr><td>18</td><td>2.0854</td><td>4.3489</td><td>4.1708</td><td>2.0437</td></tr>
-<tr><td>19</td><td>2.0437</td><td>4.1767</td><td>4.0874</td><td>2.0028</td></tr>
-
-</tbody>
-</table>
-
-<p>
-Como se observa, los valores de <b>Xi</b> van disminuyendo y se acercan a <b>x = 0</b>.
-</p>
-
-<hr>
-
-<h3>💻 Código en R (completo y funcional)</h3>
-<pre>
-# MÉTODO DEL GRADIENTE DESCENDENTE
-
-f <- function(x){ x^2 }
-f_deriv <- function(x){ 2*x }
-
-x0 <- 3
-n <- 0.01
-max_iter <- 100
-
-x_vals <- numeric(max_iter)
-f_vals <- numeric(max_iter)
-
-for (i in 1:max_iter) {
-  x_new <- x0 - n*f_deriv(x0)
-  x0 <- x_new
-  x_vals[i] <- x0
-  f_vals[i] <- f(x0)
-}
-
-cat("Mínimo aproximado en x =", x0, "  f(x) =", f(x0), "\n")
-
-# Gráfico
-x_seq <- seq(-3, 3, 0.1)
-plot(x_seq, f(x_seq), type="l", col="blue", lwd=2,
-     main="Método del Gradiente Descendente para f(x)=x^2",
-     xlab="x", ylab="f(x)")
-
-points(x_vals, f_vals, col="red", pch=19)
-lines(x_vals, f_vals, col="red", lwd=2)
-</pre>
-
-<hr>
-
-<h3>📌 Conclusión</h3>
-
-<p>
-El método del gradiente descendente es un algoritmo clave en optimización.  
-En este ejemplo se demostró cómo <b>x</b> converge de 3 → 0 con una tasa η = 0.01.  
-Es la base para redes neuronales, mínimos cuadrados y aprendizaje automático moderno.
-</p>
-
-</section>
-<!-- ========================================= -->
-<!-- 🍭 SIMULACIÓN DE REPARTO DE DULCES -->
-<!-- ========================================= -->
-<section id="dulces" style="margin-top:40px;">
-
-<h2>🍬🍭 Simulación de Reparto de Dulces y Chupetines</h2>
-
-<p>
-Este experimento simula el reparto de dulces entre 9 alumnos.  
-Los dulces pueden ser de los siguientes tipos:
-</p>
-
-<ul>
-  <li>🍬 Blanco</li>
-  <li>🍬 Redondo</li>
-  <li>🍬 Amarillo</li>
-</ul>
-
-<p>
-Cada alumno recibe 2 dulces al azar.  
-Según la combinación, puede recibir 1 o 2 chupetines.
-</p>
-
-<h3>📌 Reglas para obtener chupetines</h3>
-
-<div style="background:#ffe6f2; padding:20px; border-radius:15px;">
-<ul>
-  <li>✔ Si recibe los 3 tipos de caramelos → <b>1 chupetín 🍭</b></li>
-  <li>✔ Si recibe 2 de cada tipo (6 caramelos) → <b>2 chupetines 🍭🍭 + 1 caramelo extra</b></li>
-  <li>✔ Si no cumple los requisitos → <b>recibe 1 chupetín mínimo</b></li>
-</ul>
-</div>
-
-<hr>
-
-<h3>💻 Código completo en R</h3>
-
-<pre>
-set.seed(123)
-
-tipos_caramelo <- c("Blanco", "Redondo", "Amarillo")
-bolsa_caramelos <- sample(tipos_caramelo, 60, replace = TRUE)
-
-obtener_chupetines <- function(caramelos) {
-  n_blanco   <- sum(caramelos == "Blanco")
-  n_redondo  <- sum(caramelos == "Redondo")
-  n_amarillo <- sum(caramelos == "Amarillo")
-  
-  if (n_blanco >= 1 && n_redondo >= 1 && n_amarillo >= 1) return(1)
-  else if (n_blanco >= 2 && n_redondo >= 2 && n_amarillo >= 2) return(2)
-  else return(0)
-}
-
-alumnos <- paste("Alumno", 1:9)
-reparto <- list()
-
-for (i in 1:9) {
-  reparto[[alumnos[i]]] <- sample(bolsa_caramelos, 2)
-}
-
-chupetines <- sapply(reparto, obtener_chupetines)
-chupetines[chupetines == 0] <- 1
-
-print(reparto)
-print(chupetines)
-</pre>
-
-<hr>
-
-<h3>🎮 Simulación interactiva (HTML)</h3>
-
-<div class="simulacion" style="
-      margin-top: 30px;
-      background: #fffafc;
-      border: 2px solid #ffb6c1;
-      border-radius: 15px;
-      padding: 20px;
-      text-align: center;
-      font-size: 1.1rem;">
-      
-  <p>Haz clic en el botón para simular el reparto 👇</p>
-  <button onclick="repartir()" style="
-        background-color:#ff82b2;
-        color:white;
-        border:none;
-        padding:10px 25px;
-        border-radius:10px;
-        font-size:1.1rem;
-        cursor:pointer;
-        transition:0.3s;">🎲 Repartir Dulces</button>
-
-  <div id="resultado" style="margin-top:20px;"></div>
-</div>
-
-<script>
-  const tipos = ["🍬 Blanco", "🍭 Redondo", "🍫 Amarillo"];
-
-  function repartir() {
-    const resultadoDiv = document.getElementById("resultado");
-    resultadoDiv.innerHTML = ""; 
-
-    for (let i = 1; i <= 9; i++) {
-
-      let caramelos = [
-        tipos[Math.floor(Math.random() * 3)],
-        tipos[Math.floor(Math.random() * 3)]
-      ];
-
-      let tipos_unicos = [...new Set(caramelos.map(c => c.split(" ")[1]))];
-
-      let chupetines = 1;
-
-      resultadoDiv.innerHTML += `
-        <div class="alumno" style="
-          margin:15px 0;
-          background:#ffe4ec;
-          padding:12px;
-          border-radius:15px;">
-          
-          <strong>👩‍🎓 Alumno ${i}</strong><br>
-          Dulces: ${caramelos.join(" , ")}<br>
-          🍭 Chupetines: <b>${"🍭".repeat(chupetines)}</b>
-        </div>
-      `;
-    }
-  }
-</script>
-
-</section>
-<!-- ========================================= -->
-<!-- 📚 ÍNDICE GENERAL -->
-<!-- ========================================= -->
-<section id="indice" style="margin-top:40px;">
-<h2>📘 Índice General del Portafolio</h2>
-
-<ul style="line-height: 1.8;">
-  <li>✔ Introducción</li>
-  <li>✔ Diferenciación Numérica</li>
-  <li>✔ Métodos de Newton y Gradiente</li>
-  <li>✔ Simulación de Dulces y Chupetines</li>
-  <li>✔ Actividades Propuestas</li>
-  <li>✔ Conclusiones</li>
-  <li>✔ Referencias</li>
-</ul>
-</section>
-
-<hr>
-
-<!-- ========================================= -->
-<!-- 🧠 ACTIVIDADES PROPUESTAS -->
-<!-- ========================================= -->
-<section id="actividades" style="margin-top:40px;">
-<h2>📝 Actividades Propuestas</h2>
-
-<div style="background:#fff0f7; padding:25px; border-radius:15px;">
-
-<h3>📌 Actividad 1: Método del Gradiente</h3>
-<p>
-Aplicar el método del gradiente a la función:
-</p>
-<pre>f(x) = x³ − 4x</pre>
-<p>
-Usa una tasa de aprendizaje <b>n = 0.05</b> y un valor inicial <b>x₀ = 2</b>.
-</p>
-
-<hr>
-
-<h3>📌 Actividad 2: Simulación con Dulces</h3>
-<p>
-Simular 100 repartos aleatorios y estimar la probabilidad de que un alumno obtenga:
-</p>
-
-<ul>
-  <li>🍭 0 chupetines</li>
-  <li>🍭 1 chupetín</li>
-  <li>🍭 2 chupetines</li>
-</ul>
-
-<hr>
-
-<h3>📌 Actividad 3: Diferenciación Numérica</h3>
-<p>
-Utilizando la función:
-</p>
-<pre>f(x) = e^x</pre>
-
-Calcular:
-
-<ul>
-  <li>Diferenciación progresiva</li>
-  <li>Diferenciación regresiva</li>
-  <li>Diferenciación centrada</li>
-</ul>
-
-Para los valores:  
-<b>x = 1</b>, paso <b>h = 0.1</b>.
-</div>
-</section>
-
-<hr>
-
-<!-- ========================================= -->
-<!-- 📚 REFERENCIAS -->
-<!-- ========================================= -->
-<section id="referencias" style="margin-top:40px;">
-<h2>📚 Referencias</h2>
-
-<div style="background:#ffe6f2; padding:25px; border-radius:15px;">
-<ul>
-  <li>Burden, R. & Faires, J. (2011). *Análisis Numérico*.</li>
-  <li>Chapra, S. & Canale, R. (2015). *Métodos Numéricos para Ingenieros*.</li>
-  <li>Documentación oficial R: https://cran.r-project.org/</li>
-  <li>Material del curso de Métodos Numéricos – UNAP (2025).</li>
-</ul>
-</div>
-</section>
-
-<hr>
-
-<!-- ========================================= -->
-<!-- 🧑‍🏫 AUTORES Y CRÉDITOS -->
-<!-- ========================================= -->
-<section id="autores" style="margin-top:40px;">
-<h2>👩‍🎓GLENY CONDORI</h2>
-
-<div style="
-      background:#fff5fa; 
-      border:2px solid #ffb6c1;
-      border-radius:15px;
-      padding:20px;
-      max-width:400px;
-      text-align:center;">
-  
-  <img src="https://i.imgur.com/COtD1Qp.png" 
-       alt="Foto estudiante" 
-       style="width:120px; border-radius:50%; margin-bottom:15px;">
-  
-  <h3 style="margin:0;">Gleny Angélica Condori Mamani</h3>
-  <p>Estudiante de la Universidad Nacional del Altiplano – Puno</p>
-  <p><b>Carrera:</b> Ingeniería Estadistica e Informatica</p>
-  <p><b>Curso:</b> Programacion Numerica (2025)</p>
-</div>
-</section>
-
-<hr>
-
-<!-- ========================================= -->
-<!-- 🌸 PIE DE PÁGINA -->
-<!-- ========================================= -->
-<footer style="
-        background:#ffb6c1; 
-        color:white; 
-        text-align:center; 
-        padding:15px; 
-        border-radius:10px;
-        margin-top:40px;">
-  <p>© 2025 Portafolio Digital – Gleny A. C. Mamani</p>
-  <p>Desarrollado con amor 💕 y dedicación.</p>
-</footer>
+<p><b>Interpretación:</b> Este método aproxima la raíz de una función usando dos puntos sucesivos 
+para estimar la pendiente de la curva. Es útil cuando no se dispone de la derivada y 
+ofrece una buena velocidad de convergencia en comparación con otros métodos básicos.</p>
+<h3>🔹 Método de Punto Fijo</h3>
+<p>El <b>Método de Punto Fijo</b> transforma una ecuación f(x)=0 en una forma equivalente x = g(x), 
