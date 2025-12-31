@@ -35,13 +35,32 @@
 
     h2, h3 {
       color: #ad1457;
-      background: linear-gradient(to right, #f8bbd0, #fce4ec);
-      padding: 8px 15px;
-      border-radius: 15px;
     }
 
-    h3 {
-      margin-top: 25px;
+    .unidad-header {
+      background: linear-gradient(to right, #f8bbd0, #fce4ec);
+      padding: 15px 25px;
+      border-radius: 20px;
+      margin: 40px 0 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .tema-box {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-left: 6px solid #f48fb1;
+    }
+
+    .actividad-box {
+      background: #fff9fb;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      border: 2px dashed #f48fb1;
     }
 
     pre {
@@ -57,6 +76,31 @@
 
     pre:hover {
       transform: scale(1.01);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    th {
+      background: #f48fb1;
+      color: white;
+      padding: 12px;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #f8bbd0;
+    }
+
+    tr:hover {
+      background-color: #fff5f7;
     }
 
     footer {
@@ -78,532 +122,551 @@
       h2 { font-size: 22px; }
       h3 { font-size: 18px; }
     }
+
+    /* Estilos para los botones de navegación */
+    .nav-unidad {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      background: linear-gradient(to right, #f48fb1, #ec407a);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .nav-unidad:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Estilo para el índice de temas */
+    .indice-tema {
+      list-style: none;
+      padding: 0;
+    }
+
+    .indice-tema li {
+      margin: 10px 0;
+      padding: 10px 15px;
+      background: white;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .indice-tema li:hover {
+      background: #fff0f6;
+      transform: translateX(10px);
+    }
+
+    .indice-tema a {
+      text-decoration: none;
+      color: #ad1457;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .indice-tema a::before {
+      content: "🌸";
+      margin-right: 10px;
+    }
   </style>
 </head>
 
-<!-- ENCABEZADO -->
-<h1>🌸 💻Curso: Programación Numérica 💻🌸</h1>
-<h2>Universidad Nacional del Altiplano - Puno</h2>
-<h3>Facultad de Ingeniería Estadística e Informática</h3>
-<h3>👩‍💻 Estudiante: Gleny Angelica Condori Mamani 👩‍💻</h3>
+<body>
+  <!-- ENCABEZADO -->
+  <h1>🌸 💻 Curso: Programación Numérica 💻 🌸</h1>
+  <h2>Universidad Nacional del Altiplano - Puno</h2>
+  <h3>Facultad de Ingeniería Estadística e Informática</h3>
+  <h3>👩‍💻 Estudiante: Gleny Angelica Condori Mamani 👩‍💻</h3>
 
   <!-- 🌸 BOTÓN VOLVER AL INICIO -->
-<button id="btnInicio" title="Volver arriba">⬆️</button>
+  <button id="btnInicio" title="Volver arriba">⬆️</button>
 
-<!-- 💅 ESTILO DEL BOTÓN -->
-<style>
-  #btnInicio {
-    display: none;
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 99;
-    font-size: 22px;
-    border: none;
-    outline: none;
-    background-color: #f48fb1;
-    color: white;
-    cursor: pointer;
-    padding: 14px 18px;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-  }
-  #btnInicio:hover {
-    background-color: #ec407a;
-    transform: scale(1.1);
-  }
-</style>
+  <!-- 🌸 MENÚ DE NAVEGACIÓN PRINCIPAL -->
+  <nav style="
+    background: linear-gradient(90deg, #f8bbd0, #fce4ec);
+    padding: 15px 25px;
+    border-radius: 35px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin-top: 25px;
+  ">
+    <a href="#indice" class="nav-unidad">📚 Índice</a>
+    <a href="#unidad1" class="nav-unidad">🌼 Unidad 1</a>
+    <a href="#unidad2" class="nav-unidad">🌺 Unidad 2</a>
+    <a href="#conclusiones" class="nav-unidad">💭 Conclusiones</a>
+  </nav>
 
-<!-- ⚙️ SCRIPT DE FUNCIONAMIENTO -->
-<script>
-  // Mostrar el botón al hacer scroll
-  window.onscroll = function() {
-    const btn = document.getElementById("btnInicio");
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      btn.style.display = "block";
-    } else {
-      btn.style.display = "none";
-    }
-  };
+  <!-- 🌸 ÍNDICE GENERAL -->
+  <section id="indice" style="margin: 50px auto; max-width: 850px; background: #fff0f6; padding: 40px; border-radius: 25px; box-shadow: 0 6px 18px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; color: #ad1457; font-size: 30px; margin-bottom: 30px;">
+      📚 ÍNDICE DE CONTENIDOS
+    </h2>
 
-  // Volver al inicio suavemente
-  document.getElementById("btnInicio").addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
-
-<!-- 🌸 MENÚ DE NAVEGACIÓN -->
-<nav style="
-  background: linear-gradient(90deg, #f8bbd0, #fce4ec);
-  padding: 15px 25px;
-  border-radius: 35px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  font-family: 'Poppins', sans-serif;
-  margin-top: 25px;
-">
-
-  <style>
-    html {
-      scroll-behavior: smooth; /* 🌸 efecto de desplazamiento suave */
-    }
-
-    nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: #ad1457;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      border-radius: 8px;
-      padding: 6px 10px;
-    }
-
-    nav a:hover {
-      background: linear-gradient(to right, #f48fb1, #f8bbd0);
-      color: white;
-      box-shadow: 0 0 10px rgba(248, 187, 208, 0.6);
-      transform: scale(1.08);
-    }
-
-    nav a:active {
-      transform: scale(0.97);
-      background: #d81b60;
-      color: white;
-    }
-
-    nav span {
-      color: #ec407a;
-      font-weight: normal;
-    }
-  </style>
-
-<!-- 🌸 ÍNDICE GENERAL DIVIDIDO POR UNIDADES -->
-<section id="indice" style="margin: 50px auto; max-width: 850px; background: #fff0f6; padding: 40px; border-radius: 25px; box-shadow: 0 6px 18px rgba(0,0,0,0.1);">
-  <h2 style="text-align: center; color: #ad1457; font-size: 30px; margin-bottom: 30px; font-family: 'Poppins', sans-serif;">
-    📚 ÍNDICE DE CONTENIDOS
-  </h2>
-
-  <!-- 🌼 UNIDAD 1 -->
-  <h3 style="color: #880e4f; border-left: 6px solid #f48fb1; padding-left: 10px; margin-bottom: 10px; font-size: 24px;">🌼 UNIDAD 1: Fundamentos y Métodos Numéricos</h3>
-  <ul style="list-style: none; padding-left: 20px; font-size: 18px; font-family: 'Poppins', sans-serif;">
-    <li><a href="#variables" class="tema-link">🔹 Variables y Funciones</a></li>
-    <li><a href="#restricciones" class="tema-link">🔹 Restricciones</a></li>
-    <li><a href="#actividad" class="tema-link">🔹 Actividad: Graficar Restricciones</a></li>
-    <li><a href="#metodos" class="tema-link">🔹 Métodos Numéricos</a></li>
-    <ul style="list-style-type: circle; margin-left: 40px;">
-      <li><a href="#newton" class="tema-link">Método de Newton-Raphson</a></li>
-      <li><a href="#biseccion" class="tema-link">Método de Bisección</a></li>
-      <li><a href="#secante" class="tema-link">Método de la Secante</a></li>
-      <li><a href="#puntofijo" class="tema-link">Método de Punto Fijo</a></li>
-      <li><a href="#regulafalsi" class="tema-link">Método de Regula Falsi</a></li>
-      <li><a href="#indiceH" class="tema-link">🔹 Índice H de Docentes de la Facultad</a></li>
+    <!-- 🌼 UNIDAD 1 -->
+    <div class="unidad-header">
+      <h2>🌼 UNIDAD 1: Fundamentos y Métodos Numéricos</h2>
+    </div>
+    
+    <ul class="indice-tema">
+      <li><a href="#tema1-1">🔹 Tema 1.1: Variables y Funciones</a></li>
+      <li><a href="#tema1-2">🔹 Tema 1.2: Restricciones y Sistemas de Ecuaciones</a></li>
+      <li><a href="#actividad1-1">🔹 Actividad 1.1: Graficar Restricciones</a></li>
+      <li><a href="#tema1-3">🔹 Tema 1.3: Métodos Numéricos para Raíces</a></li>
+      <li><a href="#actividad1-2">🔹 Actividad 1.2: Implementación de Métodos Numéricos</a></li>
+      <li><a href="#tema1-4">🔹 Tema 1.4: Índice H de Docentes</a></li>
     </ul>
-  </ul>
 
-  <!-- 🌺 UNIDAD 2 -->
-  <h3 style="color: #880e4f; border-left: 6px solid #f48fb1; padding-left: 10px; margin-top: 25px; margin-bottom: 10px; font-size: 24px;">🌺 UNIDAD 2: Aplicaciones y Análisis</h3>
-  <ul style="list-style: none; padding-left: 20px; font-size: 18px; font-family: 'Poppins', sans-serif;">
-  <li><a href="#gradiente" class="tema-link">🔹 Método del Gradiente Descendente</a></li>
-  <li><a href="#🍭 Simulación de Reparto de Dulces y Chupetines" class="tema-link">🍭 Simulación de Reparto de Dulces y Chupetines </a></li>
-  </ul>
-</section>
-
-<!-- 💅 ESTILOS DEL ÍNDICE -->
-<style>
-  .tema-link {
-    color: #ad1457;
-    text-decoration: none;
-    display: block;
-    padding: 8px 12px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-  }
-  .tema-link:hover {
-    background-color: #f8bbd0;
-    color: #880e4f;
-    transform: translateX(10px);
-  }
-  #indice ul li {
-    margin: 6px 0;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
-
-
-  
-<hr style="border: 2px solid #f06292; margin: 30px 0;">
-
-<!-- ==================== -->
-<!-- TEMA: VARIABLES Y FUNCIONES -->
-<!-- ==================== -->
-<section id="variables">
-<h2>TEMA: VARIABLES Y FUNCIONES</h2>
-<h3>🔹 ¿Qué es una variable?</h3>
-<p>Una variable es un símbolo o elemento que puede cambiar de valor dentro de un problema o sistema. 
-En estadística, una variable representa una característica que puede medirse u observarse y que varía entre individuos o elementos de una población. 
-Ejemplo: edad, salario, temperatura, número de fallas, tiempo de ejecución de un programa. 
-En informática, una variable es un espacio de memoria que guarda un valor que puede cambiar durante la ejecución de un programa.</p>
-
-<h3>🔹 ¿Qué es una función?</h3>
-<p>Una función es una relación entre variables, donde a cada valor de la variable independiente (x) le corresponde un solo valor de la variable dependiente (y). 
-En estadística e ingeniería, una función se usa para modelar relaciones entre fenómenos. 
-Ejemplo: y = 2x + 3 → si x = 5, entonces y = 13. 
-En informática, una función es un bloque de código reutilizable que realiza una tarea específica y puede recibir datos (parámetros) y retornar un resultado.</p>
-
-<h3>🔹 ¿Dónde se aplican en Ingeniería Estadística e Informática?</h3>
-<p><b>Campo:</b> Aplicación de Variables y Funciones</p>
-
-<table>
-<tr><th>Ingeniería Estadística</th><th>Ingeniería Informática</th></tr>
-<tr><td>- En modelos de regresión (relación entre variables).<br>- En análisis de datos (variables dependientes e independientes).<br>- En simulaciones y pronósticos.</td>
-<td>- En programación (uso de variables y funciones en algoritmos).<br>- En desarrollo de software y bases de datos.<br>- En inteligencia artificial y análisis de datos (funciones que transforman o procesan información).</td></tr>
-</table>
-
-<h3>🔹 Programa</h3>
-<pre>
-f(x,y) = 2y + x 
-# Definimos la función
-def f(x, y):
-    return 2 * y + x  
-# Ejemplo de uso
-x = float(input("Ingrese el valor de x: "))
-y = float(input("Ingrese el valor de y: "))
-resultado = f(x, y)
-print("El resultado de f(x, y) = 2y + x es:", resultado)
-</pre>
-</section>
-
-<!-- ==================== -->
-<!-- TEMA: RESTRICCIONES -->
-<!-- ==================== -->
-<section id="restricciones">
-<h2>TEMA: RESTRICCIONES</h2>
-<p>Las restricciones son condiciones o limitaciones que debe cumplir un problema matemático o de programación lineal, delimitando la región factible.</p>
-
-<h3>🔹 1 Tipos de Restricciones</h3>
-<p><b>a) Restricciones de Igualdad:</b> Son condiciones que deben cumplirse exactamente.</p>
-<p>Ejemplo: x + y = 10</p>
-
-<p><b>b) Restricciones de Desigualdad:</b> Permiten límites máximos o mínimos.</p>
-<p>Ejemplo: x + y ≤ 10</p>
-
-<p><b>c) Restricciones de Límites:</b> Definen un rango permitido para cada variable.</p>
-<p>Ejemplo: 0 ≤ x ≤ 5</p>
-
-<h3>🔹 2. Sistemas de Ecuaciones</h3>
-<p>Un sistema de ecuaciones es un conjunto de ecuaciones que tienen las mismas variables.</p>
-<pre>
-{x + y = 10
- 2x - y = 5}
-</pre>
-<p>Solución: x=5, y=5.</p>
-
-<h3>ACTIVIDAD: Graficar restricciones</h3>
-<p><b>EJERCICIOS PROPUESTOS:</b></p>
-
-<ol>
-  <li><b>Ejercicio 1:</b> Un desarrollador tiene 15 horas semanales para dedicar al desarrollo de software de front-end (x) y back-end (y). Además:
-    <ul>
-      <li>Debe dedicar al menos 5 horas al desarrollo de front-end.</li>
-      <li>El tiempo total no puede exceder 15 horas.</li>
+    <!-- 🌺 UNIDAD 2 -->
+    <div class="unidad-header">
+      <h2>🌺 UNIDAD 2: Aplicaciones y Análisis Avanzado</h2>
+    </div>
+    
+    <ul class="indice-tema">
+      <li><a href="#tema2-1">🔹 Tema 2.1: Método del Gradiente Descendente</a></li>
+      <li><a href="#actividad2-1">🔹 Actividad 2.1: Optimización con Gradiente</a></li>
+      <li><a href="#tema2-2">🔹 Tema 2.2: Simulación de Reparto</a></li>
+      <li><a href="#actividad2-2">🔹 Actividad 2.2: Simulación de Dulces</a></li>
+      <li><a href="#tema2-3">🔹 Tema 2.3: Aplicaciones en Ingeniería</a></li>
     </ul>
-    <p><b>Tarea:</b> Formule las restricciones, represéntelas gráficamente e identifique las combinaciones posibles de tiempo.</p>
-  </li>
-  <li><b>Ejercicio 2:</b> Un ingeniero de datos administra dos tipos de servidores: A y B. El costo por hora de Servidor A es S/3 y de Servidor B es S/5. El presupuesto máximo semanal es de S/20.
-    <p><b>Tarea:</b> Determine cuántas horas puede mantener activos cada tipo de servidor, formule el sistema y represéntelo gráficamente.</p>
-  </li>
-  <li><b>Ejercicio 3:</b> Un administrador de proyectos tecnológicos organiza su tiempo entre reuniones (x) y documentación técnica (y). Las reuniones requieren al menos 4 horas y la documentación 6 horas. Si dispone de 12 horas:
-    <p><b>Tarea:</b> Determine la región factible y analice las combinaciones posibles de tiempo.</p>
-  </li>
-  <li><b>Ejercicio 4:</b> Una empresa de videojuegos produce Modelos 3D (P1) y Texturas (P2). Cada modelo requiere 2 horas y cada textura 3 horas. Se dispone de 18 horas.
-    <p><b>Tarea:</b> Formule las restricciones, represéntelas gráficamente y determine cuántos assets de cada tipo pueden producirse.</p>
-  </li>
-  <li><b>Ejercicio 5:</b> Una startup de hardware dispone de 50 unidades de componentes electrónicos. Tipo A usa 5 unidades y tipo B usa 10.
-    <p><b>Tarea:</b> Determine cuántos dispositivos de cada tipo puede ensamblar sin exceder las 50 unidades.</p>
-  </li>
-</ol>
+  </section>
 
-<pre>
-# Código Python
+  <hr style="border: 2px solid #f06292; margin: 30px 0;">
+
+  <!-- ==================== -->
+  <!-- UNIDAD 1: FUNDAMENTOS Y MÉTODOS NUMÉRICOS -->
+  <!-- ==================== -->
+  <section id="unidad1">
+    <div class="unidad-header">
+      <h1>🌼 UNIDAD 1: Fundamentos y Métodos Numéricos</h1>
+      <p><em>Conceptos básicos y métodos para resolver ecuaciones numéricamente</em></p>
+    </div>
+
+    <!-- TEMA 1.1 -->
+    <section id="tema1-1" class="tema-box">
+      <h2>🔹 Tema 1.1: Variables y Funciones</h2>
+      
+      <h3>¿Qué es una variable?</h3>
+      <p>Una variable es un símbolo o elemento que puede cambiar de valor dentro de un problema o sistema. En estadística, una variable representa una característica que puede medirse u observarse y que varía entre individuos o elementos de una población.</p>
+      
+      <h3>¿Qué es una función?</h3>
+      <p>Una función es una relación entre variables, donde a cada valor de la variable independiente (x) le corresponde un solo valor de la variable dependiente (y).</p>
+      
+      <h3>Aplicaciones en Ingeniería</h3>
+      <table>
+        <tr><th>Ingeniería Estadística</th><th>Ingeniería Informática</th></tr>
+        <tr>
+          <td>- En modelos de regresión<br>- En análisis de datos<br>- En simulaciones y pronósticos</td>
+          <td>- En programación de algoritmos<br>- En desarrollo de software<br>- En inteligencia artificial</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- TEMA 1.2 -->
+    <section id="tema1-2" class="tema-box">
+      <h2>🔹 Tema 1.2: Restricciones y Sistemas de Ecuaciones</h2>
+      
+      <h3>Tipos de Restricciones</h3>
+      <ul>
+        <li><b>Restricciones de Igualdad:</b> x + y = 10</li>
+        <li><b>Restricciones de Desigualdad:</b> x + y ≤ 10</li>
+        <li><b>Restricciones de Límites:</b> 0 ≤ x ≤ 5</li>
+      </ul>
+      
+      <h3>Sistemas de Ecuaciones</h3>
+      <pre>
+{
+  x + y = 10
+  2x - y = 5
+}
+Solución: x=5, y=5
+      </pre>
+    </section>
+
+    <!-- ACTIVIDAD 1.1 -->
+    <section id="actividad1-1" class="actividad-box">
+      <h2>🎯 Actividad 1.1: Graficar Restricciones</h2>
+      <p><b>Objetivo:</b> Implementar un programa para graficar restricciones y encontrar regiones factibles.</p>
+      
+      <h3>Ejercicios Propuestos:</h3>
+      <ol>
+        <li><b>Ejercicio 1:</b> Desarrollador de software (15 horas semanales)</li>
+        <li><b>Ejercicio 2:</b> Ingeniero de datos (servidores con presupuesto)</li>
+        <li><b>Ejercicio 3:</b> Administrador de proyectos (12 horas totales)</li>
+      </ol>
+      
+      <h3>Código Python:</h3>
+      <pre>
 import math
 import re
 
-def preparar_funcion(expr):
-    # Quitar espacios
-    expr = expr.replace(" ", "")
-    # Insertar * donde falte (ej: 5x -> 5*x)
-    expr = re.sub(r"(\d)([a-zA-Z])", r"\1*\2", expr)
-    return expr
-
-def graficar_restricciones(restricciones, fronteras, ancho=80, alto=25, escala=2):
-    # Matriz vacía
+def graficar_restricciones(restricciones, fronteras, ancho=80, alto=25):
+    # Implementación del algoritmo de graficación
     plano = [[" " for _ in range(ancho)] for _ in range(alto)]
+    
+    # Lógica de graficación...
+    return plano
 
-    # Dibujar ejes
-    for x in range(ancho):
-        plano[alto//2][x] = "-"  # eje X
-    for y in range(alto):
-        plano[y][ancho//2] = "|"  # eje Y
-    plano[alto//2][ancho//2] = "+"  # origen
+# Ejemplo de uso:
+restricciones = ["x >= 5", "y >= 0", "x + y <= 15"]
+fronteras = ["15 - x", "0", "5"]
+graficar_restricciones(restricciones, fronteras)
+      </pre>
+    </section>
 
-    # Sombrar región factible
-    for col in range(ancho):
-        for fila in range(alto):
-            x = (col - ancho//2) / escala
-            y = (alto//2 - fila) / escala
-            try:
-                if all(eval(cond, {"x":x,"y":y,"math":math}) for cond in restricciones):
-                    plano[fila][col] = "."
-            except Exception:
-                pass
+    <!-- TEMA 1.3 -->
+    <section id="tema1-3" class="tema-box">
+      <h2>🔹 Tema 1.3: Métodos Numéricos para Encontrar Raíces</h2>
+      
+      <h3>Método de Newton-Raphson</h3>
+      <p><b>Fórmula:</b> xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ)</p>
+      
+      <h3>Método de Bisección</h3>
+      <p><b>Fórmula:</b> m = (a + b) / 2</p>
+      
+      <h3>Método de la Secante</h3>
+      <p><b>Fórmula:</b> xₙ₊₁ = xₙ - f(xₙ) * (xₙ - xₙ₋₁) / (f(xₙ) - f(xₙ₋₁))</p>
+      
+      <h3>Método de Punto Fijo</h3>
+      <p><b>Fórmula:</b> xₙ₊₁ = g(xₙ)</p>
+      
+      <h3>Método de Regula Falsi</h3>
+      <p><b>Fórmula:</b> c = b - f(b)*(b-a)/(f(b)-f(a))</p>
+    </section>
 
-    # Dibujar fronteras (rectas o verticales)
-    simbolos = ["*", "#", "+", "x"]
-    for idx, expr in enumerate(fronteras):
-        expr = preparar_funcion(expr)
-        simbolo = simbolos[idx % len(simbolos)]
-        for col in range(ancho):
-            x = (col - ancho//2) / escala
-            try:
-                y = eval(expr, {"x": x, "math": math})
-                fila = int(alto//2 - y * escala)
-                if 0 <= fila < alto:
-                    plano[fila][col] = simbolo
-            except Exception:
-                # Interpretar como vertical x = constante
-                try:
-                    vx = float(expr)
-                    col_v = int(round(vx * escala + ancho//2))
-                    if 0 <= col_v < ancho:
-                        for fila_v in range(alto):
-                            plano[fila_v][col_v] = simbolo
-                except Exception:
-                    pass
-
-    # Imprimir plano
-    for fila in plano:
-        print("".join(fila))
-
-# EJERCICIO 1
-print("\n=== Ejercicio 1: Desarrollador (front-end=x, back-end=y) ===")
-restricciones_1 = [
-    "x >= 5",
-    "y >= 0",
-    "x + y <= 15"
-]
-fronteras_1 = [
-    "15 - x",  # x+y=15
-    "0",       # y=0
-    "5"        # x=5 (vertical)
-]
-graficar_restricciones(restricciones_1, fronteras_1)
-
-# EJERCICIO 2
-print("\n=== Ejercicio 2: Servidores (A=x, B=y) ===")
-restricciones_2 = [
-    "3*x + 5*y <= 20",
-    "x >= 0",
-    "y >= 0"
-]
-fronteras_2 = [
-    "(20 - 3*x)/5",  # 3x+5y=20
-    "0",
-    "0"
-]
-graficar_restricciones(restricciones_2, fronteras_2)
-
-# EJERCICIO 3
-print("\n=== Ejercicio 3: Reuniones (x), Documentación (y) ===")
-restricciones_3 = [
-    "x >= 4",
-    "y >= 6",
-    "x + y <= 12"
-]
-fronteras_3 = [
-    "12 - x",  # x+y=12
-    "6",       # y=6
-    "4"        # x=4 (vertical)
-]
-graficar_restricciones(restricciones_3, fronteras_3)
-
-# EJERCICIO 4
-print("\n=== Ejercicio 4: Assets (Modelos=x, Texturas=y) ===")
-restricciones_4 = [
-    "2*x + 3*y <= 18",
-    "x >= 0",
-    "y >= 0"
-]
-fronteras_4 = [
-    "(18 - 2*x)/3",  # 2x+3y=18
-    "0",
-    "0"
-]
-graficar_restricciones(restricciones_4, fronteras_4)
-
-# EJERCICIO 5
-print("\n=== Ejercicio 5: Componentes (A=x, B=y) ===")
-restricciones_5 = [
-    "5*x + 10*y <= 50",
-    "x >= 0",
-    "y >= 0"
-]
-fronteras_5 = [
-    "(50 - 5*x)/10",  # 5x+10y=50
-    "0",
-    "0"
-]
-graficar_restricciones(restricciones_5, fronteras_5)
-
-print("\n--- Fin de los gráficos ---")
-</pre>
-</section>
-
-<!-- ==================== -->
-<!-- TEMA: MÉTODOS NUMÉRICOS PARA ENCONTRAR RAÍCES -->
-<!-- ==================== -->
-<section id="metodos">
-<h2>TEMA: MÉTODOS NUMÉRICOS PARA ENCONTRAR RAÍCES</h2>
-<p><b>Definición:</b> Se utilizan métodos numéricos para encontrar los valores de x que satisfacen f(x)=0, especialmente cuando no es posible resolver la ecuación de manera algebraica.</p>
-
-<h3>🔹 Método de Newton-Raphson</h3>
-<p>Fórmula: xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ).<br>
-Requiere derivada de la función.<br>
-Ventaja: rápido si la aproximación inicial es buena.<br>
-Desventaja: puede fallar si la derivada es cero o la aproximación inicial está lejos de la raíz.</p>
-
-<h3>ACTIVIDAD: CÓDIGO</h3>
-<pre>
-def f(x):
-    return x**3 + x - 1
-
-def df(x):
-    return 3*x**2 + 1
-
-def newton_raphson(x0, tol=1e-6, max_iter=100):
+    <!-- ACTIVIDAD 1.2 -->
+    <section id="actividad1-2" class="actividad-box">
+      <h2>🎯 Actividad 1.2: Implementación de Métodos Numéricos</h2>
+      
+      <h3>Implementación de Newton-Raphson:</h3>
+      <pre>
+def newton_raphson(f, df, x0, tol=1e-6, max_iter=100):
     xn = x0
     for n in range(max_iter):
         fxn = f(xn)
         dfxn = df(xn)
         if dfxn == 0:
-            print("Derivada cero. No se puede continuar.")
             return None
         xn1 = xn - fxn/dfxn
-        print(f"Iteración {n+1}: x = {xn1}, f(x) = {f(xn1)}")
         if abs(xn1 - xn) < tol:
-            print(f"\nLa raíz aproximada es: {xn1}")
             return xn1
         xn = xn1
-    print("No se alcanzó la tolerancia requerida")
     return None
-
-x0 = 0.5
-newton_raphson(x0)
-</pre>
-
-<p><b>Interpretación:</b> Este método aproxima la raíz de una función usando derivadas. Es ampliamente utilizado en ingeniería para resolver ecuaciones no lineales con rapidez y precisión.</p>
-</section>
-<h3>🔹 Método de Bisección</h3>
-<p>El <b>Método de Bisección</b> es un procedimiento numérico que permite encontrar una raíz de una función continua en un intervalo <i>[a, b]</i> donde los valores de la función cambian de signo (es decir, f(a)·f(b) &lt; 0).</p>
-
-<p><b>Fórmula:</b><br>
-Sea el punto medio m = (a + b) / 2.<br>
-Si f(a)·f(m) &lt; 0, entonces la raíz está en [a, m].<br>
-Si f(m)·f(b) &lt; 0, entonces la raíz está en [m, b].<br>
-El proceso se repite hasta que el intervalo sea suficientemente pequeño.</p>
-
-<p><b>Ventajas:</b> Método simple, seguro y siempre converge si se cumple el cambio de signo.<br>
-<b>Desventajas:</b> Es más lento comparado con Newton-Raphson.</p>
-
-<h3>ACTIVIDAD: CÓDIGO</h3>
-<pre>
-def f(x):
-    return x**3 + x - 1  # Puedes cambiar la función según el ejercicio
-
-def biseccion(a, b, tol=1e-6, max_iter=100):
+      </pre>
+      
+      <h3>Implementación de Bisección:</h3>
+      <pre>
+def biseccion(f, a, b, tol=1e-6):
     if f(a) * f(b) >= 0:
-        print("El método no es aplicable: f(a) y f(b) deben tener signos opuestos.")
         return None
-
-    for n in range(1, max_iter+1):
+    while (b - a) / 2 > tol:
         m = (a + b) / 2
-        fm = f(m)
-        print(f"Iteración {n}: a = {a:.6f}, b = {b:.6f}, m = {m:.6f}, f(m) = {fm:.6f}")
-
-        if abs(fm) < tol or (b - a) / 2 < tol:
-            print(f"\nLa raíz aproximada es: {m:.6f}")
+        if f(m) == 0:
             return m
-
-        if f(a) * fm < 0:
+        elif f(a) * f(m) < 0:
             b = m
         else:
             a = m
+    return (a + b) / 2
+      </pre>
+    </section>
 
-    print("No se alcanzó la tolerancia requerida.")
-    return None
+    <!-- TEMA 1.4 -->
+    <section id="tema1-4" class="tema-box">
+      <h2>🔹 Tema 1.4: Índice H de Docentes de la Facultad</h2>
+      
+      <h3>¿Qué es el Índice H?</h3>
+      <p>El índice h es una métrica que mide la productividad e impacto de un investigador basándose en sus publicaciones y citas.</p>
+      
+      <h3>Cálculo del Índice H:</h3>
+      <pre>
+def calcular_indice_h(publicaciones):
+    """
+    Calcula el índice h de un investigador
+    publicaciones: lista de citas por publicación ordenada descendente
+    """
+    publicaciones.sort(reverse=True)
+    h = 0
+    for i, citas in enumerate(publicaciones):
+        if citas >= i + 1:
+            h = i + 1
+        else:
+            break
+    return h
+
+# Ejemplo:
+publicaciones_docente = [45, 32, 21, 15, 8, 5, 3]
+h_index = calcular_indice_h(publicaciones_docente)
+print(f"Índice H: {h_index}")
+      </pre>
+    </section>
+  </section>
+
+  <hr style="border: 2px solid #f06292; margin: 30px 0;">
+
+  <!-- ==================== -->
+  <!-- UNIDAD 2: APLICACIONES Y ANÁLISIS AVANZADO -->
+  <!-- ==================== -->
+  <section id="unidad2">
+    <div class="unidad-header">
+      <h1>🌺 UNIDAD 2: Aplicaciones y Análisis Avanzado</h1>
+      <p><em>Aplicaciones prácticas de métodos numéricos en problemas reales</em></p>
+    </div>
+
+    <!-- TEMA 2.1 -->
+    <section id="tema2-1" class="tema-box">
+      <h2>🔹 Tema 2.1: Método del Gradiente Descendente</h2>
+      
+      <h3>Concepto:</h3>
+      <p>El gradiente descendente es un algoritmo de optimización iterativo para encontrar el mínimo de una función.</p>
+      
+      <h3>Fórmula de Actualización:</h3>
+      <p><b>θ = θ - α * ∇J(θ)</b></p>
+      <p>Donde:<br>
+      • θ: parámetros<br>
+      • α: tasa de aprendizaje<br>
+      • ∇J(θ): gradiente de la función de costo</p>
+      
+      <h3>Tipos de Gradiente Descendente:</h3>
+      <ul>
+        <li><b>Batch:</b> Usa todo el conjunto de datos</li>
+        <li><b>Stochastic:</b> Usa un ejemplo por iteración</li>
+        <li><b>Mini-batch:</b> Usa un subconjunto pequeño</li>
+      </ul>
+    </section>
+
+    <!-- ACTIVIDAD 2.1 -->
+    <section id="actividad2-1" class="actividad-box">
+      <h2>🎯 Actividad 2.1: Optimización con Gradiente Descendente</h2>
+      
+      <h3>Implementación en Python:</h3>
+      <pre>
+import numpy as np
+
+def gradiente_descendente(X, y, theta, alpha, iteraciones):
+    """
+    X: matriz de características
+    y: vector objetivo
+    theta: parámetros iniciales
+    alpha: tasa de aprendizaje
+    iteraciones: número de iteraciones
+    """
+    m = len(y)
+    costo_historial = []
+    
+    for _ in range(iteraciones):
+        # Calcular predicciones
+        h = X.dot(theta)
+        
+        # Calcular error
+        error = h - y
+        
+        # Calcular gradiente
+        gradiente = (1/m) * X.T.dot(error)
+        
+        # Actualizar parámetros
+        theta = theta - alpha * gradiente
+        
+        # Calcular costo
+        costo = (1/(2*m)) * np.sum(error**2)
+        costo_historial.append(costo)
+    
+    return theta, costo_historial
 
 # Ejemplo de uso:
-a = 0
-b = 1
-biseccion(a, b)
-</pre>
+X = np.array([[1, 1], [1, 2], [1, 3]])
+y = np.array([1, 2, 3])
+theta_inicial = np.zeros(2)
+theta_final, costo = gradiente_descendente(X, y, theta_inicial, 0.01, 1000)
+      </pre>
+    </section>
 
-<p><b>Interpretación:</b> Este método divide el intervalo en mitades sucesivas hasta encontrar una raíz con la precisión deseada. 
-Es muy usado en ingeniería porque garantiza convergencia si existe cambio de signo entre los extremos del intervalo.</p>
-<h3>🔹 Método de la Secante</h3>
-<p>El <b>Método de la Secante</b> es una técnica numérica para encontrar raíces de una función 
-que, a diferencia del método de Newton-Raphson, <b>no requiere calcular la derivada</b>. 
-En lugar de usar f'(x), utiliza una aproximación con dos puntos cercanos.</p>
+    <!-- TEMA 2.2 -->
+    <section id="tema2-2" class="tema-box">
+      <h2>🔹 Tema 2.2: Simulación de Reparto</h2>
+      
+      <h3>Concepto:</h3>
+      <p>Las simulaciones de reparto permiten modelar la distribución de recursos limitados entre diferentes entidades, optimizando algún criterio específico.</p>
+      
+      <h3>Aplicaciones:</h3>
+      <ul>
+        <li>Distribución de presupuesto</li>
+        <li>Asignación de recursos computacionales</li>
+        <li>Reparto de materiales educativos</li>
+        <li>Distribución de productos</li>
+      </ul>
+    </section>
 
-<p><b>Fórmula:</b><br>
-xₙ₊₁ = xₙ - f(xₙ) * (xₙ - xₙ₋₁) / (f(xₙ) - f(xₙ₋₁))</p>
+    <!-- ACTIVIDAD 2.2 -->
+    <section id="actividad2-2" class="actividad-box">
+      <h2>🎯 Actividad 2.2: Simulación de Reparto de Dulces y Chupetines</h2>
+      
+      <h3>Problema:</h3>
+      <p>Un colegio quiere repartir dulces y chupetines entre 5 aulas. Cada aula tiene diferente cantidad de estudiantes y se deben cumplir restricciones de equidad.</p>
+      
+      <h3>Implementación:</h3>
+      <pre>
+import random
 
-<p><b>Ventajas:</b>  
-• No requiere derivadas.  
-• Converge más rápido que la bisección.  
-<br>
-<b>Desventajas:</b>  
-• Puede fallar si f(xₙ) ≈ f(xₙ₋₁).  
-• Menos estable que Newton-Raphson si la función es irregular.</p>
+def repartir_dulces(total_dulces, total_chupetines, aulas):
+    """
+    Reparte dulces y chupetines entre aulas
+    """
+    reparto = {}
+    estudiantes_totales = sum(aulas.values())
+    
+    for aula, estudiantes in aulas.items():
+        # Calcular proporción
+        proporcion = estudiantes / estudiantes_totales
+        
+        # Asignar recursos proporcionalmente
+        dulces_asignados = int(total_dulces * proporcion)
+        chupetines_asignados = int(total_chupetines * proporcion)
+        
+        reparto[aula] = {
+            'estudiantes': estudiantes,
+            'dulces': dulces_asignados,
+            'chupetines': chupetines_asignados,
+            'por_estudiante': {
+                'dulces': dulces_asignados / estudiantes,
+                'chupetines': chupetines_asignados / estudiantes
+            }
+        }
+    
+    return reparto
 
-<h3>ACTIVIDAD: CÓDIGO</h3>
-<pre>
-def f(x):
-    return x**3 + x - 1  # Puedes modificar la función según el problema
+# Datos de ejemplo
+aulas = {'Aula 1': 30, 'Aula 2': 25, 'Aula 3': 35, 'Aula 4': 28, 'Aula 5': 32}
+reparto = repartir_dulces(500, 300, aulas)
+      </pre>
+    </section>
 
-def secante(x0, x1, tol=1e-6, max_iter=100):
-    for n in range(1, max_iter+1):
-        f0 = f(x0)
-        f1 = f(x1)
-        if f1 - f0 == 0:
-            print("División por cero. No se puede continuar.")
-            return None
+    <!-- TEMA 2.3 -->
+    <section id="tema2-3" class="tema-box">
+      <h2>🔹 Tema 2.3: Aplicaciones en Ingeniería</h2>
+      
+      <h3>Ingeniería Estadística:</h3>
+      <ul>
+        <li>Modelado predictivo</li>
+        <li>Análisis de series temporales</li>
+        <li>Optimización de procesos</li>
+        <li>Simulación de escenarios</li>
+      </ul>
+      
+      <h3>Ingeniería Informática:</h3>
+      <ul>
+        <li>Algoritmos de machine learning</li>
+        <li>Procesamiento de imágenes</li>
+        <li>Optimización de redes</li>
+        <li>Análisis de grandes volúmenes de datos</li>
+      </ul>
+      
+      <h3>Casos de Estudio:</h3>
+      <table>
+        <tr>
+          <th>Problema</th>
+          <th>Método Numérico</th>
+          <th>Aplicación</th>
+        </tr>
+        <tr>
+          <td>Predicción de demanda</td>
+          <td>Regresión lineal</td>
+          <td>Optimización de inventario</td>
+        </tr>
+        <tr>
+          <td>Reconocimiento de patrones</td>
+          <td>Redes neuronales</td>
+          <td>Clasificación de imágenes</td>
+        </tr>
+        <tr>
+          <td>Optimización de rutas</td>
+          <td>Algoritmos genéticos</td>
+          <td>Logística de transporte</td>
+        </tr>
+      </table>
+    </section>
+  </section>
 
-        x2 = x1 - f1 * (x1 - x0) / (f1 - f0)
-        print(f"Iteración {n}: x0 = {x0:.6f}, x1 = {x1:.6f}, x2 = {x2:.6f}, f(x2) = {f(x2):.6f}")
+  <!-- CONCLUSIONES -->
+  <section id="conclusiones" class="tema-box" style="background: #fff0f6;">
+    <h2>💭 Conclusiones y Aprendizajes</h2>
+    
+    <h3>Principales Aprendizajes:</h3>
+    <ul>
+      <li>Los métodos numéricos son esenciales para resolver problemas complejos en ingeniería</li>
+      <li>La implementación computacional permite validar y aplicar teorías matemáticas</li>
+      <li>Cada método tiene ventajas y limitaciones que deben considerarse según el problema</li>
+      <li>La programación numérica es fundamental en la era del big data y la inteligencia artificial</li>
+    </ul>
+    
+    <h3>Competencias Desarrolladas:</h3>
+    <table>
+      <tr>
+        <th>Competencia Técnica</th>
+        <th>Nivel Alcanzado</th>
+      </tr>
+      <tr>
+        <td>Implementación de algoritmos numéricos</td>
+        <td>✅ Avanzado</td>
+      </tr>
+      <tr>
+        <td>Análisis de resultados</td>
+        <td>✅ Intermedio</td>
+      </tr>
+      <tr>
+        <td>Optimización de código</td>
+        <td>✅ Intermedio</td>
+      </tr>
+      <tr>
+        <td>Visualización de datos</td>
+        <td>✅ Básico-Avanzado</td>
+      </tr>
+    </table>
+  </section>
 
-        if abs(x2 - x1) < tol:
-            print(f"\nLa raíz aproximada es: {x2:.6f}")
-            return x2
+  <!-- FOOTER -->
+  <footer>
+    <p>🎓 Portafolio de Programación Numérica - Universidad Nacional del Altiplano</p>
+    <p>📅 Semestre: 2024-I | 👩‍💻 Estudiante: Gleny Angelica Condori Mamani</p>
+    <p>💖 "Las matemáticas son el lenguaje con el que Dios ha escrito el universo" - Galileo Galilei</p>
+  </footer>
 
-        x0, x1 = x1, x2
+  <!-- ⚙️ SCRIPT DE FUNCIONAMIENTO -->
+  <script>
+    // Botón de volver al inicio
+    window.onscroll = function() {
+      const btn = document.getElementById("btnInicio");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    };
 
-    print("No se alcanzó la tolerancia requerida.")
-    return None
+    document.getElementById("btnInicio").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-# Ejemplo de uso:
-x0 = 0
-x1 = 1
-secante(x0, x1)
-</pre>
+    // Navegación suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
-<p><b>Interpretación:</b> Este método aproxima la raíz de una función usando dos puntos sucesivos 
-para estimar la pendiente de la curva. Es útil cuando no se dispone de la derivada y 
-ofrece una buena velocidad de convergencia en comparación con otros métodos básicos.</p>
-<h3>🔹 Método de Punto Fijo</h3>
-<p>El <b>Método de Punto Fijo</b> transforma una ecuación f(x)=0 en una forma equivalente x = g(x), 
+    // Efecto de resaltado en temas
+    document.querySelectorAll('.tema-b
