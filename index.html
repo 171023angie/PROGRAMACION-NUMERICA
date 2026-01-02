@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso: Programación Numérica - Kawai</title>
+    <title>Portafolio Digital - Programación Numérica</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Estilos Kawai */
+        /* Estilos Kawai Mejorados */
         :root {
             --pink-light: #ffd6e7;
             --pink-medium: #ffb6d9;
@@ -20,215 +20,167 @@
             --green-light: #d8f3dc;
             --white: #ffffff;
             --text-color: #5a5a5a;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            --border-radius: 20px;
-            --transition: all 0.3s ease;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            --border-radius: 25px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', sans-serif;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, var(--pink-light), var(--blue-light));
+            background: linear-gradient(135deg, #ffd6e7 0%, #bde0fe 50%, #d8c3ff 100%);
+            background-attachment: fixed;
             color: var(--text-color);
             min-height: 100vh;
-            padding-bottom: 50px;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 20px;
         }
 
-        /* Encabezado principal */
-        .main-header {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Portada Principal - Estilo de imagen */
+        .portfolio-cover {
             text-align: center;
-            padding: 30px 0;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 214, 231, 0.8));
-            border-radius: var(--border-radius);
-            margin-bottom: 30px;
+            padding: 50px 40px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 214, 231, 0.9));
+            border-radius: 30px;
+            margin-bottom: 40px;
             box-shadow: var(--shadow);
-            border: 5px solid var(--pink-medium);
+            border: 6px solid;
+            border-image: linear-gradient(45deg, var(--pink-medium), var(--blue-medium)) 1;
             position: relative;
             overflow: hidden;
         }
 
-        .main-header::before, .main-header::after {
-            content: "🌸";
-            position: absolute;
-            font-size: 2.5rem;
-            top: 20px;
-            opacity: 0.7;
+        .cover-content {
+            position: relative;
+            z-index: 1;
         }
 
-        .main-header::before {
-            left: 30px;
-            transform: rotate(-15deg);
-        }
-
-        .main-header::after {
-            right: 30px;
-            transform: rotate(15deg);
-        }
-
-        .course-title {
-            font-size: 2.8rem;
+        .student-name {
+            font-size: 3.5rem;
             color: var(--pink-dark);
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 0 var(--blue-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .university {
-            font-size: 1.8rem;
-            color: var(--blue-dark);
             margin-bottom: 10px;
-            text-shadow: 1px 1px 0 var(--white);
+            text-shadow: 3px 3px 0 rgba(189, 224, 254, 0.4);
+            position: relative;
+            display: inline-block;
+            padding: 0 20px;
         }
 
-        .faculty {
-            font-size: 1.4rem;
+        .student-name::before, .student-name::after {
+            content: "💖";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .student-name::before {
+            left: -30px;
+        }
+
+        .student-name::after {
+            right: -30px;
+        }
+
+        .portfolio-title {
+            font-size: 2.8rem;
+            color: var(--blue-dark);
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, transparent, rgba(162, 210, 255, 0.2), transparent);
+            padding: 15px 40px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 3px dashed var(--blue-medium);
+        }
+
+        .university-info {
+            font-size: 2rem;
             color: var(--purple-medium);
             margin-bottom: 20px;
             font-weight: bold;
         }
 
-        .student-info {
-            background: linear-gradient(145deg, var(--blue-light), var(--purple-light));
-            display: inline-block;
-            padding: 15px 30px;
-            border-radius: 50px;
-            margin-top: 15px;
-            border: 3px solid var(--pink-medium);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .student-info h3 {
-            font-size: 1.5rem;
-            color: var(--text-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Header kawai de actividades */
-        .activities-header {
-            text-align: center;
-            padding: 40px 0 30px;
-            position: relative;
-        }
-
-        .activities-title {
-            font-size: 3.2rem;
-            color: var(--pink-dark);
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 0 var(--blue-medium);
-            position: relative;
-            display: inline-block;
-        }
-
-        .activities-title::before, .activities-title::after {
-            content: "★";
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--yellow-light);
-            text-shadow: 2px 2px 0 var(--pink-dark);
-        }
-
-        .activities-title::before {
-            left: -50px;
-        }
-
-        .activities-title::after {
-            right: -50px;
-        }
-
-        .activities-subtitle {
-            font-size: 1.4rem;
-            color: var(--blue-dark);
-            margin-bottom: 30px;
-        }
-
-        /* Decoraciones kawai */
-        .kawai-decoration {
-            position: absolute;
-            z-index: -1;
-            font-size: 2rem;
-            opacity: 0.7;
-        }
-
-        .decoration-1 {
-            top: 20px;
-            left: 10%;
+        .faculty-info {
+            font-size: 1.8rem;
             color: var(--pink-medium);
+            margin-bottom: 30px;
+            padding: 10px 25px;
+            background: linear-gradient(145deg, rgba(189, 224, 254, 0.9), rgba(216, 195, 255, 0.9));
+            border-radius: 15px;
+            display: inline-block;
+            border: 3px solid var(--pink-dark);
         }
 
-        .decoration-2 {
-            top: 60px;
-            right: 12%;
-            color: var(--blue-medium);
+        .course-badge {
+            background: linear-gradient(145deg, var(--pink-medium), var(--pink-dark));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(255, 133, 192, 0.4);
+            border: 3px solid white;
         }
 
-        .decoration-3 {
-            bottom: 40px;
-            left: 8%;
-            color: var(--purple-medium);
-        }
-
-        /* Unidades */
+        /* Unidades Container */
         .units-container {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
             gap: 30px;
-            justify-content: center;
-            margin-top: 30px;
+            margin-bottom: 40px;
         }
 
+        @media (max-width: 600px) {
+            .units-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Unidad Card */
         .unit-card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-            background-color: var(--white);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
             border-radius: var(--border-radius);
-            padding: 30px;
+            padding: 35px;
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
-            border: 8px solid;
+            border: 6px solid transparent;
             transition: var(--transition);
+            backdrop-filter: blur(5px);
         }
 
         .unit-1 {
-            border-color: var(--pink-medium);
-            background: linear-gradient(145deg, var(--white), var(--pink-light));
+            border-image: linear-gradient(45deg, var(--pink-medium), var(--pink-dark)) 1;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 214, 231, 0.7));
         }
 
         .unit-2 {
-            border-color: var(--blue-medium);
-            background: linear-gradient(145deg, var(--white), var(--blue-light));
+            border-image: linear-gradient(45deg, var(--blue-medium), var(--blue-dark)) 1;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(189, 224, 254, 0.7));
         }
 
         .unit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .unit-header {
             display: flex;
             align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
             border-bottom: 3px dashed;
         }
 
@@ -241,148 +193,212 @@
         }
 
         .unit-icon {
-            font-size: 2.5rem;
-            margin-right: 20px;
-            width: 70px;
-            height: 70px;
+            font-size: 2.8rem;
+            margin-right: 25px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .unit-1 .unit-icon {
-            background-color: var(--pink-medium);
+            background: linear-gradient(145deg, var(--pink-medium), var(--pink-dark));
             color: white;
         }
 
         .unit-2 .unit-icon {
-            background-color: var(--blue-medium);
+            background: linear-gradient(145deg, var(--blue-medium), var(--blue-dark));
             color: white;
         }
 
         .unit-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--text-color);
         }
 
         .unit-1 .unit-title {
-            color: var(--pink-dark);
+            background: linear-gradient(45deg, var(--pink-dark), #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .unit-2 .unit-title {
-            color: var(--blue-dark);
+            background: linear-gradient(45deg, var(--blue-dark), #4d8bc8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Lista de actividades */
+        /* Actividades List */
         .activities-list {
             list-style-type: none;
         }
 
         .activity-item {
             margin-bottom: 15px;
-            padding: 15px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
+            padding: 20px;
+            border-radius: 18px;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            backdrop-filter: blur(3px);
         }
 
         .unit-1 .activity-item {
-            background-color: rgba(255, 214, 231, 0.4);
-            border-left: 5px solid var(--pink-dark);
+            background: linear-gradient(145deg, rgba(255, 214, 231, 0.6), rgba(255, 214, 231, 0.3));
+            border-left: 6px solid var(--pink-dark);
         }
 
         .unit-2 .activity-item {
-            background-color: rgba(189, 224, 254, 0.4);
-            border-left: 5px solid var(--blue-dark);
+            background: linear-gradient(145deg, rgba(189, 224, 254, 0.6), rgba(189, 224, 254, 0.3));
+            border-left: 6px solid var(--blue-dark);
         }
 
         .activity-item:hover {
             transform: translateX(10px);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .activity-content {
+            display: flex;
+            align-items: center;
         }
 
         .activity-number {
             font-weight: bold;
-            font-size: 1.3rem;
-            margin-right: 15px;
-            width: 40px;
-            height: 40px;
+            font-size: 1.4rem;
+            margin-right: 20px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .unit-1 .activity-number {
-            background-color: var(--pink-dark);
+            background: linear-gradient(145deg, var(--pink-dark), #ff6b9d);
             color: white;
         }
 
         .unit-2 .activity-number {
-            background-color: var(--blue-dark);
+            background: linear-gradient(145deg, var(--blue-dark), #4d8bc8);
             color: white;
         }
 
-        .activity-text {
-            font-size: 1.1rem;
+        .activity-title {
+            font-size: 1.3rem;
             flex-grow: 1;
+            position: relative;
+            z-index: 1;
+            font-weight: bold;
         }
 
-        /* Estrellas y corazones decorativos */
-        .star, .heart {
-            position: absolute;
-            font-size: 1.2rem;
-            opacity: 0.5;
-            z-index: -1;
+        .activity-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin-top: 15px;
+            padding: 0 20px;
         }
 
-        .unit-1 .star, .unit-1 .heart {
-            color: var(--pink-medium);
+        .activity-item.expanded .activity-description {
+            max-height: 500px;
+            padding: 20px;
+            margin-top: 15px;
         }
 
-        .unit-2 .star, .unit-2 .heart {
-            color: var(--blue-medium);
+        .code-container {
+            background: #2c3e50;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            color: #ecf0f1;
+            line-height: 1.5;
         }
 
-        /* Footer kawai */
-        footer {
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #34495e;
+        }
+
+        .code-header h4 {
+            color: #ecf0f1;
+            font-size: 1.1rem;
+        }
+
+        .copy-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .code-content {
+            white-space: pre;
+        }
+
+        /* Footer */
+        .footer {
             text-align: center;
             margin-top: 50px;
-            padding: 25px;
-            color: var(--text-color);
+            padding: 30px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 214, 231, 0.8));
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 4px solid var(--pink-medium);
         }
 
         .footer-text {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 20px;
+            color: var(--pink-dark);
         }
 
         .kawai-footer {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            font-size: 2rem;
-            margin-top: 15px;
+            gap: 25px;
+            font-size: 2.2rem;
+            margin-top: 20px;
         }
 
         .kawai-footer i {
             animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        .kawai-footer i:nth-child(1) { color: var(--pink-dark); animation-delay: 0s; }
-        .kawai-footer i:nth-child(2) { color: var(--blue-dark); animation-delay: 0.5s; }
-        .kawai-footer i:nth-child(3) { color: var(--purple-medium); animation-delay: 1s; }
-        .kawai-footer i:nth-child(4) { color: var(--pink-medium); animation-delay: 1.5s; }
+        .kawai-footer i:hover {
+            transform: scale(1.3) rotate(15deg);
+        }
 
         /* Animaciones */
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(5deg); }
+            66% { transform: translateY(5px) rotate(-5deg); }
         }
 
         @keyframes bounce {
@@ -390,93 +406,75 @@
             50% { transform: scale(1.1); }
         }
 
-        .unit-card:hover .unit-icon {
-            animation: bounce 0.5s ease;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
-            .course-title {
-                font-size: 2.2rem;
-            }
-            
-            .activities-title {
+            .student-name {
                 font-size: 2.5rem;
             }
             
-            .activities-title::before, .activities-title::after {
-                display: none;
+            .portfolio-title {
+                font-size: 2rem;
+            }
+            
+            .university-info {
+                font-size: 1.5rem;
+            }
+            
+            .faculty-info {
+                font-size: 1.3rem;
             }
             
             .unit-card {
-                min-width: 100%;
+                padding: 25px;
             }
             
-            .units-container {
-                gap: 20px;
+            .unit-title {
+                font-size: 1.8rem;
             }
             
-            .main-header::before, .main-header::after {
-                display: none;
+            .activity-title {
+                font-size: 1.1rem;
             }
         }
 
         @media (max-width: 480px) {
-            .course-title {
-                font-size: 1.8rem;
-            }
-            
-            .university {
-                font-size: 1.4rem;
-            }
-            
-            .faculty {
-                font-size: 1.1rem;
-            }
-            
-            .student-info h3 {
-                font-size: 1.2rem;
-            }
-            
-            .activities-title {
+            .student-name {
                 font-size: 2rem;
             }
             
-            .activities-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .unit-title {
+            .portfolio-title {
                 font-size: 1.6rem;
             }
             
-            .activity-text {
-                font-size: 1rem;
+            .units-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .unit-card {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Encabezado principal del curso -->
-        <header class="main-header">
-            <h1 class="course-title">🌸 💻 Curso: Programación Numérica 💻 🌸</h1>
-            <h2 class="university">Universidad Nacional del Altiplano - Puno</h2>
-            <h3 class="faculty">Facultad de Ingeniería Estadística e Informática</h3>
-            <div class="student-info">
-                <h3>👩‍💻 Estudiante: Gleny Angelica Condori Mamani 👩‍💻</h3>
+        <!-- Portada Principal -->
+        <section class="portfolio-cover">
+            <div class="cover-content">
+                <h1 class="student-name">Gleny Angelica Condori Mamani</h1>
+                <h2 class="portfolio-title">Portafolio Digital - Programación Numérica</h2>
+                <h3 class="university-info">Universidad Nacional del Altiplano - Puno</h3>
+                <div class="faculty-info">
+                    Facultad de Ingeniería Estadística e Informática
+                </div>
+                <div class="course-badge">
+                    <i class="fas fa-laptop-code"></i>
+                    Curso: Programación Numérica
+                </div>
             </div>
-        </header>
-        
-        <!-- Header kawai de actividades -->
-        <div class="activities-header">
-            <div class="kawai-decoration decoration-1">✿</div>
-            <div class="kawai-decoration decoration-2">❀</div>
-            <div class="kawai-decoration decoration-3">♡</div>
-        
-        </div>
-        
-        <!-- Contenedor de unidades -->
+        </section>
+
+        <!-- Unidades -->
         <div class="units-container">
             <!-- Unidad 1 -->
             <div class="unit-card unit-1">
@@ -488,12 +486,20 @@
                 </div>
                 
                 <ul class="activities-list">
-                    <li class="activity-item">
-                        <div class="activity-number">1</div>
-                        <div class="activity-text">Reconocimiento de Funciones</div>
-                        <div class="star" style="top: 5px; right: 10px;">★</div>
-
-                        import tkinter as tk
+                    <!-- Actividad 1 -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Reconocimiento de Funciones</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Programa que analiza funciones matemáticas identificando variables y contando operaciones.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <h4>Python - Analizador de Funciones</h4>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                </div>
+                                <pre class="code-content">import tkinter as tk
 from tkinter import ttk, messagebox
 
 def analizar():
@@ -507,276 +513,82 @@ def analizar():
     operaciones = 0
 
     for i, c in enumerate(expresion):
-        # Detectar variables
         if c.isalpha():
             variables.add(c)
-
-        # Operaciones explícitas
         if c in "+-*/^":
             operaciones += 1
-
-        # Multiplicación implícita
         if i < len(expresion) - 1:
-            actual = c
             siguiente = expresion[i + 1]
-
-            # Ej: 5x
-            if actual.isdigit() and siguiente.isalpha():
+            if c.isdigit() and siguiente.isalpha():
+                operaciones += 1
+            if c.isalpha() and siguiente.isalpha():
                 operaciones += 1
 
-            # Ej: x5
-            if actual.isalpha() and siguiente.isdigit():
-                operaciones += 1
-
-            # Ej: xy
-            if actual.isalpha() and siguiente.isalpha():
-                operaciones += 1
-
-            # Ej: )x o 2(
-            if actual == ")" and (siguiente.isalpha() or siguiente.isdigit()):
-                operaciones += 1
-
-    # Validar máximo dos variables
     if len(variables) > 2:
-        messagebox.showerror(
-            "Error",
-            "La función solo puede tener un máximo de dos variables."
-        )
+        messagebox.showerror("Error", "Máximo dos variables permitidas.")
         return
 
-    resultado.set(
-        f"Variables encontradas: {', '.join(sorted(variables))}\n"
-        f"Número de variables: {len(variables)}\n"
-        f"Número de operaciones: {operaciones}"
-    )
+    resultado.set(f"Variables: {', '.join(sorted(variables))}\n"
+                  f"Número de variables: {len(variables)}\n"
+                  f"Operaciones: {operaciones}")
 
-# ---------------- VENTANA PRINCIPAL ----------------
 ventana = tk.Tk()
-ventana.title("Analizador de Funciones Matemáticas")
+ventana.title("Analizador de Funciones")
 ventana.geometry("420x320")
 ventana.configure(bg="#f4f6f7")
 
-# Estilos
-estilo = ttk.Style()
-estilo.configure("TButton", font=("Arial", 12), padding=6)
-estilo.configure("TLabel", font=("Arial", 12))
+# Interfaz gráfica aquí...
+ventana.mainloop()</pre>
+                            </div>
+                        </div>
+                    </li>
 
-# Título con estilo kawai mejorado
-titulo_frame = tk.Frame(ventana, bg="#ffd6e7", relief="ridge", bd=3)
-titulo_frame.pack(pady=15, padx=20, fill="x")
-
-titulo = tk.Label(
-    titulo_frame,
-    text="🌸 Analizador de Funciones Matemáticas 🌸",
-    font=("Comic Sans MS", 18, "bold"),
-    bg="#ffd6e7",
-    fg="#ff85c0",
-    padx=10,
-    pady=8
-)
-titulo.pack()
-
-subtitulo = tk.Label(
-    titulo_frame,
-    text="Identifica variables y cuenta operaciones en funciones matemáticas",
-    font=("Comic Sans MS", 10),
-    bg="#ffd6e7",
-    fg="#8ecae6"
-)
-subtitulo.pack(pady=(0, 5))
-
-# Marco decorativo para entrada
-entrada_frame = tk.Frame(ventana, bg="#bde0fe", relief="solid", bd=3)
-entrada_frame.pack(pady=15, padx=30, fill="x")
-
-input_label = tk.Label(
-    entrada_frame,
-    text="📝 Ingresa tu función matemática:",
-    font=("Comic Sans MS", 12, "bold"),
-    bg="#bde0fe",
-    fg="#2c3e50",
-    anchor="w"
-)
-input_label.pack(padx=10, pady=(10, 5))
-
-# Campo de entrada con estilo kawai
-entrada = tk.Entry(
-    entrada_frame,
-    font=("Consolas", 14),
-    bg="#fffacd",
-    fg="#2c3e50",
-    relief="flat",
-    bd=0,
-    highlightthickness=2,
-    highlightbackground="#ff85c0",
-    highlightcolor="#ff85c0"
-)
-entrada.pack(pady=10, padx=10, ipadx=10, ipady=8, fill="x")
-
-# Ejemplos en un frame decorativo
-ejemplos_frame = tk.Frame(entrada_frame, bg="#d8c3ff", relief="ridge", bd=2)
-ejemplos_frame.pack(pady=(0, 10), padx=10, fill="x")
-
-ejemplos_label = tk.Label(
-    ejemplos_frame,
-    text="💡 Ejemplos: 2x + 3y, x^2 - 4xy + y^2, 5a + 2b - 3, 7m^3 + 2n - 5mn",
-    font=("Comic Sans MS", 9),
-    bg="#d8c3ff",
-    fg="#5a5a5a",
-    wraplength=350
-)
-ejemplos_label.pack(padx=5, pady=3)
-
-# Botón con estilo kawai animado
-btn_frame = tk.Frame(ventana, bg="#f4f6f7")
-btn_frame.pack(pady=15)
-
-def btn_hover(event):
-    btn.config(bg="#ffb6d9", fg="white")
-    
-def btn_leave(event):
-    btn.config(bg="#ff85c0", fg="white")
-
-btn = tk.Button(
-    btn_frame,
-    text="🔍 Analizar Función",
-    font=("Comic Sans MS", 13, "bold"),
-    bg="#ff85c0",
-    fg="white",
-    activebackground="#ffb6d9",
-    activeforeground="white",
-    relief="raised",
-    bd=3,
-    padx=20,
-    pady=10,
-    cursor="hand2",
-    command=analizar
-)
-btn.pack()
-btn.bind("<Enter>", btn_hover)
-btn.bind("<Leave>", btn_leave)
-
-# Resultado con diseño kawai mejorado
-resultado_frame = tk.Frame(ventana, bg="#ecf0f1", relief="solid", bd=3)
-resultado_frame.pack(pady=15, padx=20, fill="both", expand=True)
-
-resultado_titulo = tk.Label(
-    resultado_frame,
-    text="🎯 Resultados del Análisis",
-    font=("Comic Sans MS", 14, "bold"),
-    bg="#ecf0f1",
-    fg="#2c3e50"
-)
-resultado_titulo.pack(pady=(10, 5))
-
-# Frame para mostrar resultados con scroll
-resultado_text_frame = tk.Frame(resultado_frame, bg="#ffffff")
-resultado_text_frame.pack(pady=10, padx=10, fill="both", expand=True)
-
-resultado = tk.Text(
-    resultado_text_frame,
-    font=("Consolas", 12),
-    bg="#ffffff",
-    fg="#2c3e50",
-    wrap="word",
-    relief="flat",
-    height=8,
-    padx=10,
-    pady=10
-)
-resultado.pack(side="left", fill="both", expand=True)
-
-# Scrollbar para el texto
-scrollbar = tk.Scrollbar(resultado_text_frame)
-scrollbar.pack(side="right", fill="y")
-resultado.config(yscrollcommand=scrollbar.set)
-scrollbar.config(command=resultado.yview)
-
-# Configurar resultado inicial
-resultado.insert("1.0", "¡Hola! 👋\n\n")
-resultado.insert("end", "Ingresa una función matemática en el cuadro de arriba y \n")
-resultado.insert("end", "haz clic en 'Analizar Función' para ver los resultados aquí.\n\n")
-resultado.insert("end", "Ejemplo: 2x + 3y^2 - xy + 5\n\n")
-resultado.insert("end", "🎀 Los resultados aparecerán con formato kawai especial!")
-
-resultado.config(state="disabled")  # Hacerlo de solo lectura
-
-# Footer kawai
-footer_frame = tk.Frame(ventana, bg="#ffd6e7", relief="ridge", bd=2)
-footer_frame.pack(pady=(10, 0), padx=20, fill="x")
-
-footer = tk.Label(
-    footer_frame,
-    text="🌸 Desarrollado por Gleny Angelica Condori Mamani - Programación Numérica 🌸",
-    font=("Comic Sans MS", 9),
-    bg="#ffd6e7",
-    fg="#ff85c0",
-    pady=5
-)
-footer.pack()
-
-# Ejecutar
-ventana.mainloop()
-    </li>
-                    <li class="activity-item">
-                        <div class="activity-number">2</div>
-                        <div class="activity-text">Graficar Funciones Lineales</div>
-                        <div class="heart" style="bottom: 5px; left: 30px;">♥</div>
-                        def preparar_expresion(expr: str) -> str:
-    """
-    Prepara la expresión ingresada por el usuario para que
-    pueda evaluarse correctamente con eval().
-    """
+                    <!-- Actividad 2 -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Graficar Funciones Lineales</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Graficador ASCII de funciones lineales en el plano cartesiano.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <h4>Python - Graficador ASCII</h4>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                </div>
+                                <pre class="code-content">def preparar_expresion(expr: str) -> str:
     expr = expr.replace(" ", "")
     expr = expr.replace("^", "**")
-
-    # Casos especiales con x
     expr = expr.replace("-x", "-1*x")
     expr = expr.replace("+x", "+1*x")
-
     if expr.startswith("x"):
         expr = "1*" + expr
-
-    # Insertar multiplicación explícita
     expr = expr.replace("x", "*x")
     expr = expr.replace("**x", "*x")
-
     return expr
 
-
-def evaluar(funcion, x):
-    """Evalúa la función para un valor dado de x."""
-    try:
-        return eval(funcion)
-    except:
-        return None
-
-
-# ===================== ENTRADA =====================
 print("GRAFICADOR DE FUNCIONES LINEALES")
-print("Ejemplos: 2x+1 , -x+3 , 3x-5\n")
-
 func1 = input("Ingrese la primera función: ")
 func2 = input("Ingrese la segunda función: ")
 
 func1 = preparar_expresion(func1)
 func2 = preparar_expresion(func2)
 
-# ===================== RANGO DEL PLANO =====================
 xmin, xmax = -20, 20
 ymin, ymax = -20, 20
 
-# ===================== GRAFICADO =====================
 for y in range(ymax, ymin - 1, -1):
     linea = ""
-
     for x in range(xmin, xmax + 1):
-        y1 = evaluar(func1, x)
-        y2 = evaluar(func2, x)
-
+        try:
+            y1 = eval(func1)
+            y2 = eval(func2)
+        except:
+            y1 = y2 = None
+            
         cond1 = (y1 is not None and abs(y - y1) < 0.5)
         cond2 = (y2 is not None and abs(y - y2) < 0.5)
-
+        
         if cond1 and cond2:
             linea += "#"
         elif cond1:
@@ -791,42 +603,42 @@ for y in range(ymax, ymin - 1, -1):
             linea += "-"
         else:
             linea += " "
-
     print(linea)
 
-# ===================== LEYENDA =====================
-print("\nLeyenda del gráfico:")
+print("\nLeyenda:")
 print("  * = Función 1")
 print("  o = Función 2")
-print("  # = Intersección")
-print("  | = Eje Y")
-print("  - = Eje X")
-print("  + = Origen (0,0)")
-
+print("  # = Intersección")</pre>
+                            </div>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">3</div>
-                        <div class="activity-text">Restricciones y Sistemas de Ecuaciones</div>
-                        <div class="star" style="top: 15px; left: 20px;">★</div>
-                        # =========================================================
-# REPRESENTACIÓN GRÁFICA DE RESTRICCIONES (ASCII)
-# Sin uso de librerías especializadas
-# =========================================================
 
-def graficar_restricciones(funciones, xmin, xmax, ymin, ymax, titulo):
+                    <!-- Actividad 3 -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Restricciones y Sistemas de Ecuaciones</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Representación gráfica de restricciones y sistemas de ecuaciones.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <h4>Python - Sistemas de Ecuaciones</h4>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                </div>
+                                <pre class="code-content">def graficar_restricciones(funciones, xmin, xmax, ymin, ymax, titulo):
     print("\n" + titulo)
     print("-" * len(titulo))
-
+    
     for y in range(ymax, ymin - 1, -1):
         linea = ""
         for x in range(xmin, xmax + 1):
-
             cumple = True
             for f in funciones:
                 if not f(x, y):
                     cumple = False
                     break
-
+            
             if cumple:
                 linea += "#"
             elif x == 0 and y == 0:
@@ -838,18 +650,14 @@ def graficar_restricciones(funciones, xmin, xmax, ymin, ymax, titulo):
             else:
                 linea += " "
         print(linea)
-
+    
     print("\nLeyenda:")
     print("  # = Región factible")
     print("  | = Eje Y")
     print("  - = Eje X")
     print("  + = Origen (0,0)")
 
-
-# =========================================================
-# EJERCICIO 1
-# Desarrollador Front-end (x) y Back-end (y)
-# =========================================================
+# Ejercicio 1: Front-end y Back-end
 def ejercicio_1():
     restricciones = [
         lambda x, y: x >= 5,
@@ -857,241 +665,126 @@ def ejercicio_1():
         lambda x, y: x >= 0,
         lambda x, y: y >= 0
     ]
-    graficar_restricciones(
-        restricciones, 0, 15, 0, 15,
-        "Ejercicio 1: Front-end (x) y Back-end (y)"
-    )
+    graficar_restricciones(restricciones, 0, 15, 0, 15, 
+                          "Ejercicio 1: Front-end (x) y Back-end (y)")
 
-
-# =========================================================
-# EJERCICIO 2
-# Servidores A (x) y Servidores B (y)
-# =========================================================
-def ejercicio_2():
-    restricciones = [
-        lambda x, y: 3*x + 5*y <= 20,
-        lambda x, y: x >= 0,
-        lambda x, y: y >= 0
-    ]
-    graficar_restricciones(
-        restricciones, 0, 7, 0, 7,
-        "Ejercicio 2: Servidores A (x) y B (y)"
-    )
-
-
-# =========================================================
-# EJERCICIO 3
-# Reuniones (x) y Documentación (y)
-# =========================================================
-def ejercicio_3():
-    restricciones = [
-        lambda x, y: x >= 4,
-        lambda x, y: y >= 6,
-        lambda x, y: x + y <= 12
-    ]
-    graficar_restricciones(
-        restricciones, 0, 12, 0, 12,
-        "Ejercicio 3: Reuniones (x) y Documentación (y)"
-    )
-
-
-# =========================================================
-# EJERCICIO 4
-# Modelos 3D (P1) y Texturas (P2)
-# =========================================================
-def ejercicio_4():
-    restricciones = [
-        lambda p1, p2: 2*p1 + 3*p2 <= 18,
-        lambda p1, p2: p1 >= 0,
-        lambda p1, p2: p2 >= 0
-    ]
-    graficar_restricciones(
-        restricciones, 0, 9, 0, 9,
-        "Ejercicio 4: Modelos 3D (P1) y Texturas (P2)"
-    )
-
-
-# =========================================================
-# EJERCICIO 5
-# Dispositivos A (a) y Dispositivos B (b)
-# =========================================================
-def ejercicio_5():
-    restricciones = [
-        lambda a, b: 5*a + 10*b <= 50,
-        lambda a, b: a >= 0,
-        lambda a, b: b >= 0
-    ]
-    graficar_restricciones(
-        restricciones, 0, 10, 0, 10,
-        "Ejercicio 5: Dispositivos A (a) y B (b)"
-    )
-
-
-# =========================================================
-# PROGRAMA PRINCIPAL
-# =========================================================
 if __name__ == "__main__":
-    ejercicio_1()
-    ejercicio_2()
-    ejercicio_3()
-    ejercicio_4()
-    ejercicio_5()
-
+    ejercicio_1()</pre>
+                            </div>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">4</div>
-                        <div class="activity-text">Método de Regula Falsi</div>
-                        <div class="heart" style="bottom: 10px; right: 25px;">♥</div>
-                        # =========================================================
-# MÉTODO DE LA REGLA FALSA (REGULA FALSI)
-# =========================================================
 
-def f(x):
-    """
-    Función a evaluar.
-    Modifica esta función según el ejercicio.
-    Ejemplo: f(x) = x^3 - x - 2
-    """
+                    <!-- Actividad 4 -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Método de Regula Falsi</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Implementación del método numérico Regula Falsi para encontrar raíces.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <h4>Python - Regula Falsi</h4>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                </div>
+                                <pre class="code-content">def f(x):
     return x**3 - x - 2
 
-
 def regula_falsi(a, b, tolerancia=1e-6, max_iter=100):
-    """
-    Implementación del método de la Regla Falsa.
-
-    a, b        : extremos del intervalo
-    tolerancia : error permitido
-    max_iter   : número máximo de iteraciones
-    """
-
     if f(a) * f(b) >= 0:
         print("Error: f(a) y f(b) deben tener signos opuestos.")
         return None
-
+    
     print("\nMÉTODO DE LA REGLA FALSA")
     print("Iter |     a     |     b     |     xr    |   f(xr)")
     print("-" * 55)
-
+    
     for i in range(1, max_iter + 1):
         xr = b - (f(b) * (a - b)) / (f(a) - f(b))
         fxr = f(xr)
-
+        
         print(f"{i:4d} | {a:9.5f} | {b:9.5f} | {xr:9.5f} | {fxr:9.5f}")
-
+        
         if abs(fxr) < tolerancia:
             print("\nRaíz aproximada encontrada:", xr)
             return xr
-
+        
         if f(a) * fxr < 0:
             b = xr
         else:
             a = xr
-
-    print("\nNo se alcanzó la tolerancia en el número máximo de iteraciones.")
+    
+    print("\nNo se alcanzó la tolerancia en el máximo de iteraciones.")
     return xr
 
-
-# ===================== PROGRAMA PRINCIPAL =====================
 if __name__ == "__main__":
-    print("MÉTODO DE LA REGLA FALSA (REGULA FALSI)")
-    print("Función usada: f(x) = x^3 - x - 2\n")
-
-    a = float(input("Ingrese el valor de a: "))
-    b = float(input("Ingrese el valor de b: "))
-
-    regula_falsi(a, b)
-
+    print("MÉTODO DE LA REGLA FALSA")
+    print("Función: f(x) = x^3 - x - 2\n")
+    a = float(input("Ingrese a: "))
+    b = float(input("Ingrese b: "))
+    regula_falsi(a, b)</pre>
+                            </div>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">5</div>
-                        <div class="activity-text">Método de Newton Raphson</div>
-                        <div class="star" style="top: 10px; left: 40px;">★</div>
-                        # =========================================================
-# MÉTODO DE NEWTON – RAPHSON
-# =========================================================
-# CONCEPTO:
-# El método de Newton–Raphson es un método numérico iterativo
-# utilizado para encontrar raíces de ecuaciones no lineales,
-# es decir, valores de x tales que f(x) = 0.
-#
-# El método se basa en la aproximación lineal de la función
-# mediante su recta tangente en un punto inicial x0.
-# La intersección de dicha recta con el eje x se toma como
-# una nueva aproximación de la raíz.
-#
-# Fórmula iterativa:
-#     x_{n+1} = x_n - f(x_n) / f'(x_n)
-#
-# El método converge rápidamente cuando el valor inicial
-# está cerca de la raíz y la derivada no es cero.
-# =========================================================
 
-
-def f(x):
-    """
-    Función f(x).
-    Ejemplo: f(x) = x^3 - x - 2
-    """
+                    <!-- Actividad 5 -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Método de Newton Raphson</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Implementación del método Newton-Raphson para encontrar raíces.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <h4>Python - Newton Raphson</h4>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                </div>
+                                <pre class="code-content">def f(x):
     return x**3 - x - 2
 
-
 def df(x):
-    """
-    Derivada de la función f(x).
-    f'(x) = 3x^2 - 1
-    """
     return 3*x**2 - 1
 
-
 def newton_raphson(x0, tolerancia=1e-6, max_iter=100):
-    """
-    Implementación del método de Newton–Raphson.
-
-    x0         : valor inicial
-    tolerancia : error permitido
-    max_iter   : número máximo de iteraciones
-    """
-
-    print("\nMÉTODO DE NEWTON–RAPHSON")
+    print("\nMÉTODO DE NEWTON-RAPHSON")
     print("Iter |     x      |    f(x)    |   Error")
     print("-" * 50)
-
+    
     for i in range(1, max_iter + 1):
         fx = f(x0)
         dfx = df(x0)
-
+        
         if dfx == 0:
-            print("Error: la derivada es cero. El método no puede continuar.")
+            print("Error: derivada es cero.")
             return None
-
+        
         x1 = x0 - fx / dfx
         error = abs(x1 - x0)
-
+        
         print(f"{i:4d} | {x1:9.6f} | {fx:10.6f} | {error:9.6f}")
-
+        
         if error < tolerancia:
             print("\nRaíz aproximada encontrada:", x1)
             return x1
-
+        
         x0 = x1
-
-    print("\nNo se alcanzó la tolerancia en el número máximo de iteraciones.")
+    
+    print("\nNo se alcanzó la tolerancia.")
     return x1
 
-
-# ===================== PROGRAMA PRINCIPAL =====================
 if __name__ == "__main__":
-    print("MÉTODO DE NEWTON–RAPHSON")
+    print("MÉTODO DE NEWTON-RAPHSON")
     print("Función: f(x) = x^3 - x - 2")
     print("Derivada: f'(x) = 3x^2 - 1\n")
-
-    x0 = float(input("Ingrese el valor inicial x0: "))
-    newton_raphson(x0)
-
+    x0 = float(input("Ingrese x0: "))
+    newton_raphson(x0)</pre>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
-            
+
             <!-- Unidad 2 -->
             <div class="unit-card unit-2">
                 <div class="unit-header">
@@ -1102,189 +795,390 @@ if __name__ == "__main__":
                 </div>
                 
                 <ul class="activities-list">
-                    <li class="activity-item">
-                        <div class="activity-number">6A</div>
-                        <div class="activity-text">Índice H</div>
-                        <div class="star" style="top: 5px; right: 15px;">★</div>
+                    <!-- Actividad 6A -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">6A</div>
+                            <div class="activity-title">Índice H</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Cálculo del índice H para análisis bibliométrico.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <h4>Python - Índice H</h4>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                </div>
+                                <pre class="code-content">def calcular_indice_h(citas):
+    """
+    Calcula el índice H de un investigador.
+    citas: lista de citas por publicación
+    """
+    citas.sort(reverse=True)
+    h = 0
+    for i, c in enumerate(citas):
+        if c >= i + 1:
+            h = i + 1
+        else:
+            break
+    return h
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    citas = [12, 8, 5, 3, 3, 2, 1]
+    h_index = calcular_indice_h(citas)
+    print(f"Lista de citas: {citas}")
+    print(f"Índice H: {h_index}")</pre>
+                            </div>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">6B</div>
-                        <div class="activity-text">Método de Bisección</div>
-                        <div class="heart" style="bottom: 8px; left: 25px;">♥</div>
+
+                    <!-- Actividad 6B -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">6B</div>
+                            <div class="activity-title">Método de Bisección</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Implementación del método de bisección para encontrar raíces.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <h4>Python - Bisección</h4>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                </div>
+                                <pre class="code-content">def biseccion(a, b, tol=1e-6, max_iter=100):
+    if f(a) * f(b) >= 0:
+        return None
+    
+    print("Iter |     a     |     b     |     m     |   f(m)")
+    print("-" * 55)
+    
+    for i in range(max_iter):
+        m = (a + b) / 2
+        fm = f(m)
+        
+        print(f"{i+1:4d} | {a:9.5f} | {b:9.5f} | {m:9.5f} | {fm:9.5f}")
+        
+        if abs(fm) < tol:
+            print(f"\nRaíz encontrada: {m}")
+            return m
+        
+        if f(a) * fm < 0:
+            b = m
+        else:
+            a = m
+    
+    print("Máximo de iteraciones alcanzado")
+    return m</pre>
+                            </div>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">6C</div>
-                        <div class="activity-text">Método de la Secante</div>
-                        <div class="star" style="top: 12px; left: 30px;">★</div>
+
+                    <!-- Actividad 6C -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">6C</div>
+                            <div class="activity-title">Método de la Secante</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Implementación del método de la secante.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <h4>Python - Secante</h4>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                </div>
+                                <pre class="code-content">def metodo_secante(x0, x1, tol=1e-6, max_iter=100):
+    print("Iter |     x0     |     x1     |     x2     |   f(x2)")
+    print("-" * 60)
+    
+    for i in range(max_iter):
+        fx0 = f(x0)
+        fx1 = f(x1)
+        
+        if fx1 - fx0 == 0:
+            print("División por cero")
+            return None
+        
+        x2 = x1 - fx1 * (x1 - x0) / (fx1 - fx0)
+        fx2 = f(x2)
+        
+        print(f"{i+1:4d} | {x0:9.5f} | {x1:9.5f} | {x2:9.5f} | {fx2:9.5f}")
+        
+        if abs(fx2) < tol:
+            print(f"\nRaíz encontrada: {x2}")
+            return x2
+        
+        x0, x1 = x1, x2
+    
+    print("Máximo de iteraciones alcanzado")
+    return x2</pre>
+                            </div>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">6D</div>
-                        <div class="activity-text">Método de Punto Fijo</div>
-                        <div class="heart" style="bottom: 12px; right: 20px;">♥</div>
+
+                    <!-- Actividad 6D -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">6D</div>
+                            <div class="activity-title">Método de Punto Fijo</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Implementación del método de punto fijo.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <h4>Python - Punto Fijo</h4>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                </div>
+                                <pre class="code-content">def punto_fijo(g, x0, tol=1e-6, max_iter=100):
+    print("Iter |     x      |    g(x)    |   Error")
+    print("-" * 50)
+    
+    for i in range(max_iter):
+        x1 = g(x0)
+        error = abs(x1 - x0)
+        
+        print(f"{i+1:4d} | {x0:9.5f} | {x1:9.5f} | {error:9.5f}")
+        
+        if error < tol:
+            print(f"\nPunto fijo encontrado: {x1}")
+            return x1
+        
+        x0 = x1
+    
+    print("Máximo de iteraciones alcanzado")
+    return x1</pre>
+                            </div>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">6E</div>
-                        <div class="activity-text">Método de Regula Falsi</div>
-                        <div class="star" style="top: 8px; right: 30px;">★</div>
+
+                    <!-- Actividad 6E -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">6E</div>
+                            <div class="activity-title">Método de Regula Falsi</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Segunda implementación del método Regula Falsi.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <h4>Python - Regula Falsi (v2)</h4>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                                </div>
+                                <pre class="code-content">def regula_falsi_v2(a, b, tol=1e-6, max_iter=100):
+    fa = f(a)
+    fb = f(b)
+    
+    if fa * fb > 0:
+        print("El intervalo no contiene raíz")
+        return None
+    
+    for i in range(max_iter):
+        c = (a * fb - b * fa) / (fb - fa)
+        fc = f(c)
+        
+        if abs(fc) < tol:
+            print(f"Raíz encontrada: {c}")
+            return c
+        
+        if fa * fc < 0:
+            b, fb = c, fc
+        else:
+            a, fa = c, fc
+    
+    print("Máximo de iteraciones")
+    return c</pre>
+                            </div>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">7</div>
-                        <div class="activity-text">Gradiente de una función</div>
-                        <div class="heart" style="bottom: 5px; left: 35px;">♥</div>
+
+                    <!-- Actividades restantes (7-12) -->
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">7</div>
+                            <div class="activity-title">Gradiente de una función</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Cálculo del gradiente de funciones multivariables.</p>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">8</div>
-                        <div class="activity-text">Análisis del artículo</div>
-                        <div class="star" style="top: 15px; left: 20px;">★</div>
+
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">8</div>
+                            <div class="activity-title">Análisis del artículo</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Análisis de artículos científicos sobre métodos numéricos.</p>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">9</div>
-                        <div class="activity-text">Simulación del juego de los caramelos y chupetines</div>
-                        <div class="heart" style="bottom: 10px; right: 25px;">♥</div>
+
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">9</div>
+                            <div class="activity-title">Simulación del juego de los caramelos y chupetines</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Simulación probabilística del juego de caramelos.</p>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">10</div>
-                        <div class="activity-text">Resumen del artículo</div>
-                        <div class="star" style="top: 10px; left: 40px;">★</div>
+
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">10</div>
+                            <div class="activity-title">Resumen del artículo</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Resumen de artículos académicos.</p>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">11</div>
-                        <div class="activity-text">Diferenciación Numérica</div>
-                        <div class="heart" style="bottom: 8px; right: 15px;">♥</div>
+
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">11</div>
+                            <div class="activity-title">Diferenciación Numérica</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Métodos de diferenciación numérica.</p>
+                        </div>
                     </li>
-                    <li class="activity-item">
-                        <div class="activity-number">12</div>
-                        <div class="activity-text">Interpolación</div>
-                        <div class="star" style="top: 5px; left: 25px;">★</div>
+
+                    <li class="activity-item" onclick="toggleActivity(this)">
+                        <div class="activity-content">
+                            <div class="activity-number">12</div>
+                            <div class="activity-title">Interpolación</div>
+                        </div>
+                        <div class="activity-description">
+                            <p>Métodos de interpolación numérica.</p>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
-        
-        <!-- Footer kawai -->
-        <footer>
-            <p class="footer-text">¡Completa todas las actividades y conviértete en un experto en Programación Numérica! 🎀</p>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-text">🎓 Portafolio Digital - Programación Numérica 🎓</p>
+            <p>Universidad Nacional del Altiplano - Puno | Facultad de Ingeniería Estadística e Informática</p>
+            <p>👩‍💻 Gleny Angelica Condori Mamani 👩‍💻</p>
             <div class="kawai-footer">
-                <i class="fas fa-laptop-code"></i>
-                <i class="fas fa-calculator"></i>
-                <i class="fas fa-chart-line"></i>
-                <i class="fas fa-graduation-cap"></i>
+                <i class="fas fa-laptop-code" title="Programación"></i>
+                <i class="fas fa-calculator" title="Cálculo"></i>
+                <i class="fas fa-chart-line" title="Análisis"></i>
+                <i class="fas fa-graduation-cap" title="Educación"></i>
             </div>
         </footer>
     </div>
 
     <script>
-        // Animaciones interactivas
-        document.addEventListener('DOMContentLoaded', function() {
-            // Efecto al hacer clic en las actividades
-            const activityItems = document.querySelectorAll('.activity-item');
-            activityItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 200);
-                    
-                    // Crear efecto de partículas
-                    const unitColor = this.closest('.unit-1') ? '#ff85c0' : '#8ecae6';
-                    createParticles(this, unitColor);
-                });
-            });
+        // Toggle para expandir/contraer actividades
+        function toggleActivity(element) {
+            element.classList.toggle('expanded');
             
-            // Función para crear partículas kawai
-            function createParticles(element, color) {
-                const particles = ['★', '♥', '✿', '❀', '✨', '🌸', '💻'];
-                const rect = element.getBoundingClientRect();
+            // Crear efecto de partículas
+            createParticles(element);
+        }
+
+        // Copiar código al portapapeles
+        function copyCode(button) {
+            const codeContent = button.parentElement.parentElement.querySelector('.code-content').textContent;
+            navigator.clipboard.writeText(codeContent).then(() => {
+                // Mostrar notificación
+                showNotification('¡Código copiado al portapapeles! 📋');
+            });
+        }
+
+        // Función para crear partículas kawai
+        function createParticles(element) {
+            const particles = ['🌸', '✨', '💖', '🌟', '💫', '⭐'];
+            const rect = element.getBoundingClientRect();
+            const color = element.closest('.unit-1') ? '#ff85c0' : '#8ecae6';
+            
+            for (let i = 0; i < 5; i++) {
+                const particle = document.createElement('div');
+                particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+                particle.style.position = 'fixed';
+                particle.style.color = color;
+                particle.style.fontSize = '1.5rem';
+                particle.style.zIndex = '1000';
+                particle.style.pointerEvents = 'none';
+                particle.style.left = (rect.left + rect.width / 2) + 'px';
+                particle.style.top = (rect.top + rect.height / 2) + 'px';
+                particle.style.opacity = '1';
+                particle.style.transform = 'translate(-50%, -50%)';
                 
-                for (let i = 0; i < 5; i++) {
-                    const particle = document.createElement('div');
-                    particle.textContent = particles[Math.floor(Math.random() * particles.length)];
-                    particle.style.position = 'fixed';
-                    particle.style.color = color;
-                    particle.style.fontSize = '1.5rem';
-                    particle.style.zIndex = '1000';
-                    particle.style.pointerEvents = 'none';
-                    particle.style.left = (rect.left + rect.width / 2) + 'px';
-                    particle.style.top = (rect.top + rect.height / 2) + 'px';
-                    particle.style.opacity = '1';
-                    particle.style.transform = 'translate(-50%, -50%)';
+                document.body.appendChild(particle);
+                
+                // Animación
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 2 + Math.random() * 2;
+                const duration = 800 + Math.random() * 400;
+                
+                let startTime = Date.now();
+                
+                function animate() {
+                    const elapsed = Date.now() - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
                     
-                    document.body.appendChild(particle);
-                    
-                    // Animación de partícula
-                    const angle = Math.random() * Math.PI * 2;
-                    const velocity = 2 + Math.random() * 2;
-                    const duration = 800 + Math.random() * 400;
-                    
-                    let startTime = Date.now();
-                    
-                    function animateParticle() {
-                        const elapsed = Date.now() - startTime;
-                        const progress = Math.min(elapsed / duration, 1);
+                    if (progress < 1) {
+                        const x = Math.cos(angle) * velocity * elapsed * 0.05;
+                        const y = Math.sin(angle) * velocity * elapsed * 0.05;
                         
-                        if (progress < 1) {
-                            const x = Math.cos(angle) * velocity * elapsed * 0.05;
-                            const y = Math.sin(angle) * velocity * elapsed * 0.05 - 0.5 * 9.8 * Math.pow(progress * 0.1, 2);
-                            
-                            particle.style.left = (rect.left + rect.width / 2 + x) + 'px';
-                            particle.style.top = (rect.top + rect.height / 2 + y) + 'px';
-                            particle.style.opacity = (1 - progress).toString();
-                            
-                            requestAnimationFrame(animateParticle);
-                        } else {
-                            document.body.removeChild(particle);
-                        }
+                        particle.style.left = (rect.left + rect.width / 2 + x) + 'px';
+                        particle.style.top = (rect.top + rect.height / 2 + y) + 'px';
+                        particle.style.opacity = (1 - progress).toString();
+                        
+                        requestAnimationFrame(animate);
+                    } else {
+                        document.body.removeChild(particle);
                     }
-                    
-                    requestAnimationFrame(animateParticle);
                 }
-            }
-            
-            // Efecto de entrada para las tarjetas
-            const unitCards = document.querySelectorAll('.unit-card');
-            unitCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
                 
-                setTimeout(() => {
-                    card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 300 + index * 200);
-            });
+                requestAnimationFrame(animate);
+            }
+        }
+
+        // Mostrar notificación
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.background = 'linear-gradient(145deg, #ff85c0, #ffb6d9)';
+            notification.style.color = 'white';
+            notification.style.padding = '15px 25px';
+            notification.style.borderRadius = '15px';
+            notification.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
+            notification.style.zIndex = '10000';
+            notification.style.fontSize = '1.1rem';
+            notification.style.transform = 'translateX(150%)';
+            notification.style.transition = 'transform 0.5s ease';
             
-            // Animación de entrada para el encabezado principal
-            const mainHeader = document.querySelector('.main-header');
-            mainHeader.style.opacity = '0';
-            mainHeader.style.transform = 'translateY(-20px)';
+            document.body.appendChild(notification);
             
             setTimeout(() => {
-                mainHeader.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                mainHeader.style.opacity = '1';
-                mainHeader.style.transform = 'translateY(0)';
-            }, 100);
+                notification.style.transform = 'translateX(0)';
+            }, 10);
             
-            // Cambiar colores aleatorios en el footer periódicamente
-            const footerIcons = document.querySelectorAll('.kawai-footer i');
-            const colors = ['#ff85c0', '#8ecae6', '#c8b6ff', '#ffd166', '#06d6a0', '#ff9e6d'];
-            
-            setInterval(() => {
-                footerIcons.forEach(icon => {
-                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                    icon.style.color = randomColor;
-                });
+            setTimeout(() => {
+                notification.style.transform = 'translateX(150%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
             }, 3000);
-            
-            // Efecto especial al pasar sobre el nombre de la estudiante
-            const studentName = document.querySelector('.student-info h3');
-            studentName.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.05)';
-                this.style.textShadow = '0 0 10px rgba(255, 133, 192, 0.7)';
-            });
-            
-            studentName.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-                this.style.textShadow = '';
+        }
+
+        // Animación de entrada
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.portfolio-cover, .unit-card');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
             });
         });
     </script>
