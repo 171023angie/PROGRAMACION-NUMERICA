@@ -492,26 +492,602 @@
                         <div class="activity-number">1</div>
                         <div class="activity-text">Reconocimiento de Funciones</div>
                         <div class="star" style="top: 5px; right: 10px;">★</div>
-                    </li>
+
+                        import tkinter as tk
+from tkinter import ttk, messagebox
+
+def analizar():
+    expresion = entrada.get().replace(" ", "")
+
+    if not expresion:
+        messagebox.showwarning("Error", "Por favor ingresa una función matemática.")
+        return
+
+    variables = set()
+    operaciones = 0
+
+    for i, c in enumerate(expresion):
+        # Detectar variables
+        if c.isalpha():
+            variables.add(c)
+
+        # Operaciones explícitas
+        if c in "+-*/^":
+            operaciones += 1
+
+        # Multiplicación implícita
+        if i < len(expresion) - 1:
+            actual = c
+            siguiente = expresion[i + 1]
+
+            # Ej: 5x
+            if actual.isdigit() and siguiente.isalpha():
+                operaciones += 1
+
+            # Ej: x5
+            if actual.isalpha() and siguiente.isdigit():
+                operaciones += 1
+
+            # Ej: xy
+            if actual.isalpha() and siguiente.isalpha():
+                operaciones += 1
+
+            # Ej: )x o 2(
+            if actual == ")" and (siguiente.isalpha() or siguiente.isdigit()):
+                operaciones += 1
+
+    # Validar máximo dos variables
+    if len(variables) > 2:
+        messagebox.showerror(
+            "Error",
+            "La función solo puede tener un máximo de dos variables."
+        )
+        return
+
+    resultado.set(
+        f"Variables encontradas: {', '.join(sorted(variables))}\n"
+        f"Número de variables: {len(variables)}\n"
+        f"Número de operaciones: {operaciones}"
+    )
+
+# ---------------- VENTANA PRINCIPAL ----------------
+ventana = tk.Tk()
+ventana.title("Analizador de Funciones Matemáticas")
+ventana.geometry("420x320")
+ventana.configure(bg="#f4f6f7")
+
+# Estilos
+estilo = ttk.Style()
+estilo.configure("TButton", font=("Arial", 12), padding=6)
+estilo.configure("TLabel", font=("Arial", 12))
+
+# Título con estilo kawai mejorado
+titulo_frame = tk.Frame(ventana, bg="#ffd6e7", relief="ridge", bd=3)
+titulo_frame.pack(pady=15, padx=20, fill="x")
+
+titulo = tk.Label(
+    titulo_frame,
+    text="🌸 Analizador de Funciones Matemáticas 🌸",
+    font=("Comic Sans MS", 18, "bold"),
+    bg="#ffd6e7",
+    fg="#ff85c0",
+    padx=10,
+    pady=8
+)
+titulo.pack()
+
+subtitulo = tk.Label(
+    titulo_frame,
+    text="Identifica variables y cuenta operaciones en funciones matemáticas",
+    font=("Comic Sans MS", 10),
+    bg="#ffd6e7",
+    fg="#8ecae6"
+)
+subtitulo.pack(pady=(0, 5))
+
+# Marco decorativo para entrada
+entrada_frame = tk.Frame(ventana, bg="#bde0fe", relief="solid", bd=3)
+entrada_frame.pack(pady=15, padx=30, fill="x")
+
+input_label = tk.Label(
+    entrada_frame,
+    text="📝 Ingresa tu función matemática:",
+    font=("Comic Sans MS", 12, "bold"),
+    bg="#bde0fe",
+    fg="#2c3e50",
+    anchor="w"
+)
+input_label.pack(padx=10, pady=(10, 5))
+
+# Campo de entrada con estilo kawai
+entrada = tk.Entry(
+    entrada_frame,
+    font=("Consolas", 14),
+    bg="#fffacd",
+    fg="#2c3e50",
+    relief="flat",
+    bd=0,
+    highlightthickness=2,
+    highlightbackground="#ff85c0",
+    highlightcolor="#ff85c0"
+)
+entrada.pack(pady=10, padx=10, ipadx=10, ipady=8, fill="x")
+
+# Ejemplos en un frame decorativo
+ejemplos_frame = tk.Frame(entrada_frame, bg="#d8c3ff", relief="ridge", bd=2)
+ejemplos_frame.pack(pady=(0, 10), padx=10, fill="x")
+
+ejemplos_label = tk.Label(
+    ejemplos_frame,
+    text="💡 Ejemplos: 2x + 3y, x^2 - 4xy + y^2, 5a + 2b - 3, 7m^3 + 2n - 5mn",
+    font=("Comic Sans MS", 9),
+    bg="#d8c3ff",
+    fg="#5a5a5a",
+    wraplength=350
+)
+ejemplos_label.pack(padx=5, pady=3)
+
+# Botón con estilo kawai animado
+btn_frame = tk.Frame(ventana, bg="#f4f6f7")
+btn_frame.pack(pady=15)
+
+def btn_hover(event):
+    btn.config(bg="#ffb6d9", fg="white")
+    
+def btn_leave(event):
+    btn.config(bg="#ff85c0", fg="white")
+
+btn = tk.Button(
+    btn_frame,
+    text="🔍 Analizar Función",
+    font=("Comic Sans MS", 13, "bold"),
+    bg="#ff85c0",
+    fg="white",
+    activebackground="#ffb6d9",
+    activeforeground="white",
+    relief="raised",
+    bd=3,
+    padx=20,
+    pady=10,
+    cursor="hand2",
+    command=analizar
+)
+btn.pack()
+btn.bind("<Enter>", btn_hover)
+btn.bind("<Leave>", btn_leave)
+
+# Resultado con diseño kawai mejorado
+resultado_frame = tk.Frame(ventana, bg="#ecf0f1", relief="solid", bd=3)
+resultado_frame.pack(pady=15, padx=20, fill="both", expand=True)
+
+resultado_titulo = tk.Label(
+    resultado_frame,
+    text="🎯 Resultados del Análisis",
+    font=("Comic Sans MS", 14, "bold"),
+    bg="#ecf0f1",
+    fg="#2c3e50"
+)
+resultado_titulo.pack(pady=(10, 5))
+
+# Frame para mostrar resultados con scroll
+resultado_text_frame = tk.Frame(resultado_frame, bg="#ffffff")
+resultado_text_frame.pack(pady=10, padx=10, fill="both", expand=True)
+
+resultado = tk.Text(
+    resultado_text_frame,
+    font=("Consolas", 12),
+    bg="#ffffff",
+    fg="#2c3e50",
+    wrap="word",
+    relief="flat",
+    height=8,
+    padx=10,
+    pady=10
+)
+resultado.pack(side="left", fill="both", expand=True)
+
+# Scrollbar para el texto
+scrollbar = tk.Scrollbar(resultado_text_frame)
+scrollbar.pack(side="right", fill="y")
+resultado.config(yscrollcommand=scrollbar.set)
+scrollbar.config(command=resultado.yview)
+
+# Configurar resultado inicial
+resultado.insert("1.0", "¡Hola! 👋\n\n")
+resultado.insert("end", "Ingresa una función matemática en el cuadro de arriba y \n")
+resultado.insert("end", "haz clic en 'Analizar Función' para ver los resultados aquí.\n\n")
+resultado.insert("end", "Ejemplo: 2x + 3y^2 - xy + 5\n\n")
+resultado.insert("end", "🎀 Los resultados aparecerán con formato kawai especial!")
+
+resultado.config(state="disabled")  # Hacerlo de solo lectura
+
+# Footer kawai
+footer_frame = tk.Frame(ventana, bg="#ffd6e7", relief="ridge", bd=2)
+footer_frame.pack(pady=(10, 0), padx=20, fill="x")
+
+footer = tk.Label(
+    footer_frame,
+    text="🌸 Desarrollado por Gleny Angelica Condori Mamani - Programación Numérica 🌸",
+    font=("Comic Sans MS", 9),
+    bg="#ffd6e7",
+    fg="#ff85c0",
+    pady=5
+)
+footer.pack()
+
+# Ejecutar
+ventana.mainloop()
+    </li>
                     <li class="activity-item">
                         <div class="activity-number">2</div>
                         <div class="activity-text">Graficar Funciones Lineales</div>
                         <div class="heart" style="bottom: 5px; left: 30px;">♥</div>
+                        def preparar_expresion(expr: str) -> str:
+    """
+    Prepara la expresión ingresada por el usuario para que
+    pueda evaluarse correctamente con eval().
+    """
+    expr = expr.replace(" ", "")
+    expr = expr.replace("^", "**")
+
+    # Casos especiales con x
+    expr = expr.replace("-x", "-1*x")
+    expr = expr.replace("+x", "+1*x")
+
+    if expr.startswith("x"):
+        expr = "1*" + expr
+
+    # Insertar multiplicación explícita
+    expr = expr.replace("x", "*x")
+    expr = expr.replace("**x", "*x")
+
+    return expr
+
+
+def evaluar(funcion, x):
+    """Evalúa la función para un valor dado de x."""
+    try:
+        return eval(funcion)
+    except:
+        return None
+
+
+# ===================== ENTRADA =====================
+print("GRAFICADOR DE FUNCIONES LINEALES")
+print("Ejemplos: 2x+1 , -x+3 , 3x-5\n")
+
+func1 = input("Ingrese la primera función: ")
+func2 = input("Ingrese la segunda función: ")
+
+func1 = preparar_expresion(func1)
+func2 = preparar_expresion(func2)
+
+# ===================== RANGO DEL PLANO =====================
+xmin, xmax = -20, 20
+ymin, ymax = -20, 20
+
+# ===================== GRAFICADO =====================
+for y in range(ymax, ymin - 1, -1):
+    linea = ""
+
+    for x in range(xmin, xmax + 1):
+        y1 = evaluar(func1, x)
+        y2 = evaluar(func2, x)
+
+        cond1 = (y1 is not None and abs(y - y1) < 0.5)
+        cond2 = (y2 is not None and abs(y - y2) < 0.5)
+
+        if cond1 and cond2:
+            linea += "#"
+        elif cond1:
+            linea += "*"
+        elif cond2:
+            linea += "o"
+        elif x == 0 and y == 0:
+            linea += "+"
+        elif x == 0:
+            linea += "|"
+        elif y == 0:
+            linea += "-"
+        else:
+            linea += " "
+
+    print(linea)
+
+# ===================== LEYENDA =====================
+print("\nLeyenda del gráfico:")
+print("  * = Función 1")
+print("  o = Función 2")
+print("  # = Intersección")
+print("  | = Eje Y")
+print("  - = Eje X")
+print("  + = Origen (0,0)")
+
                     </li>
                     <li class="activity-item">
                         <div class="activity-number">3</div>
                         <div class="activity-text">Restricciones y Sistemas de Ecuaciones</div>
                         <div class="star" style="top: 15px; left: 20px;">★</div>
+                        # =========================================================
+# REPRESENTACIÓN GRÁFICA DE RESTRICCIONES (ASCII)
+# Sin uso de librerías especializadas
+# =========================================================
+
+def graficar_restricciones(funciones, xmin, xmax, ymin, ymax, titulo):
+    print("\n" + titulo)
+    print("-" * len(titulo))
+
+    for y in range(ymax, ymin - 1, -1):
+        linea = ""
+        for x in range(xmin, xmax + 1):
+
+            cumple = True
+            for f in funciones:
+                if not f(x, y):
+                    cumple = False
+                    break
+
+            if cumple:
+                linea += "#"
+            elif x == 0 and y == 0:
+                linea += "+"
+            elif x == 0:
+                linea += "|"
+            elif y == 0:
+                linea += "-"
+            else:
+                linea += " "
+        print(linea)
+
+    print("\nLeyenda:")
+    print("  # = Región factible")
+    print("  | = Eje Y")
+    print("  - = Eje X")
+    print("  + = Origen (0,0)")
+
+
+# =========================================================
+# EJERCICIO 1
+# Desarrollador Front-end (x) y Back-end (y)
+# =========================================================
+def ejercicio_1():
+    restricciones = [
+        lambda x, y: x >= 5,
+        lambda x, y: x + y <= 15,
+        lambda x, y: x >= 0,
+        lambda x, y: y >= 0
+    ]
+    graficar_restricciones(
+        restricciones, 0, 15, 0, 15,
+        "Ejercicio 1: Front-end (x) y Back-end (y)"
+    )
+
+
+# =========================================================
+# EJERCICIO 2
+# Servidores A (x) y Servidores B (y)
+# =========================================================
+def ejercicio_2():
+    restricciones = [
+        lambda x, y: 3*x + 5*y <= 20,
+        lambda x, y: x >= 0,
+        lambda x, y: y >= 0
+    ]
+    graficar_restricciones(
+        restricciones, 0, 7, 0, 7,
+        "Ejercicio 2: Servidores A (x) y B (y)"
+    )
+
+
+# =========================================================
+# EJERCICIO 3
+# Reuniones (x) y Documentación (y)
+# =========================================================
+def ejercicio_3():
+    restricciones = [
+        lambda x, y: x >= 4,
+        lambda x, y: y >= 6,
+        lambda x, y: x + y <= 12
+    ]
+    graficar_restricciones(
+        restricciones, 0, 12, 0, 12,
+        "Ejercicio 3: Reuniones (x) y Documentación (y)"
+    )
+
+
+# =========================================================
+# EJERCICIO 4
+# Modelos 3D (P1) y Texturas (P2)
+# =========================================================
+def ejercicio_4():
+    restricciones = [
+        lambda p1, p2: 2*p1 + 3*p2 <= 18,
+        lambda p1, p2: p1 >= 0,
+        lambda p1, p2: p2 >= 0
+    ]
+    graficar_restricciones(
+        restricciones, 0, 9, 0, 9,
+        "Ejercicio 4: Modelos 3D (P1) y Texturas (P2)"
+    )
+
+
+# =========================================================
+# EJERCICIO 5
+# Dispositivos A (a) y Dispositivos B (b)
+# =========================================================
+def ejercicio_5():
+    restricciones = [
+        lambda a, b: 5*a + 10*b <= 50,
+        lambda a, b: a >= 0,
+        lambda a, b: b >= 0
+    ]
+    graficar_restricciones(
+        restricciones, 0, 10, 0, 10,
+        "Ejercicio 5: Dispositivos A (a) y B (b)"
+    )
+
+
+# =========================================================
+# PROGRAMA PRINCIPAL
+# =========================================================
+if __name__ == "__main__":
+    ejercicio_1()
+    ejercicio_2()
+    ejercicio_3()
+    ejercicio_4()
+    ejercicio_5()
+
                     </li>
                     <li class="activity-item">
                         <div class="activity-number">4</div>
                         <div class="activity-text">Método de Regula Falsi</div>
                         <div class="heart" style="bottom: 10px; right: 25px;">♥</div>
+                        # =========================================================
+# MÉTODO DE LA REGLA FALSA (REGULA FALSI)
+# =========================================================
+
+def f(x):
+    """
+    Función a evaluar.
+    Modifica esta función según el ejercicio.
+    Ejemplo: f(x) = x^3 - x - 2
+    """
+    return x**3 - x - 2
+
+
+def regula_falsi(a, b, tolerancia=1e-6, max_iter=100):
+    """
+    Implementación del método de la Regla Falsa.
+
+    a, b        : extremos del intervalo
+    tolerancia : error permitido
+    max_iter   : número máximo de iteraciones
+    """
+
+    if f(a) * f(b) >= 0:
+        print("Error: f(a) y f(b) deben tener signos opuestos.")
+        return None
+
+    print("\nMÉTODO DE LA REGLA FALSA")
+    print("Iter |     a     |     b     |     xr    |   f(xr)")
+    print("-" * 55)
+
+    for i in range(1, max_iter + 1):
+        xr = b - (f(b) * (a - b)) / (f(a) - f(b))
+        fxr = f(xr)
+
+        print(f"{i:4d} | {a:9.5f} | {b:9.5f} | {xr:9.5f} | {fxr:9.5f}")
+
+        if abs(fxr) < tolerancia:
+            print("\nRaíz aproximada encontrada:", xr)
+            return xr
+
+        if f(a) * fxr < 0:
+            b = xr
+        else:
+            a = xr
+
+    print("\nNo se alcanzó la tolerancia en el número máximo de iteraciones.")
+    return xr
+
+
+# ===================== PROGRAMA PRINCIPAL =====================
+if __name__ == "__main__":
+    print("MÉTODO DE LA REGLA FALSA (REGULA FALSI)")
+    print("Función usada: f(x) = x^3 - x - 2\n")
+
+    a = float(input("Ingrese el valor de a: "))
+    b = float(input("Ingrese el valor de b: "))
+
+    regula_falsi(a, b)
+
                     </li>
                     <li class="activity-item">
                         <div class="activity-number">5</div>
                         <div class="activity-text">Método de Newton Raphson</div>
                         <div class="star" style="top: 10px; left: 40px;">★</div>
+                        # =========================================================
+# MÉTODO DE NEWTON – RAPHSON
+# =========================================================
+# CONCEPTO:
+# El método de Newton–Raphson es un método numérico iterativo
+# utilizado para encontrar raíces de ecuaciones no lineales,
+# es decir, valores de x tales que f(x) = 0.
+#
+# El método se basa en la aproximación lineal de la función
+# mediante su recta tangente en un punto inicial x0.
+# La intersección de dicha recta con el eje x se toma como
+# una nueva aproximación de la raíz.
+#
+# Fórmula iterativa:
+#     x_{n+1} = x_n - f(x_n) / f'(x_n)
+#
+# El método converge rápidamente cuando el valor inicial
+# está cerca de la raíz y la derivada no es cero.
+# =========================================================
+
+
+def f(x):
+    """
+    Función f(x).
+    Ejemplo: f(x) = x^3 - x - 2
+    """
+    return x**3 - x - 2
+
+
+def df(x):
+    """
+    Derivada de la función f(x).
+    f'(x) = 3x^2 - 1
+    """
+    return 3*x**2 - 1
+
+
+def newton_raphson(x0, tolerancia=1e-6, max_iter=100):
+    """
+    Implementación del método de Newton–Raphson.
+
+    x0         : valor inicial
+    tolerancia : error permitido
+    max_iter   : número máximo de iteraciones
+    """
+
+    print("\nMÉTODO DE NEWTON–RAPHSON")
+    print("Iter |     x      |    f(x)    |   Error")
+    print("-" * 50)
+
+    for i in range(1, max_iter + 1):
+        fx = f(x0)
+        dfx = df(x0)
+
+        if dfx == 0:
+            print("Error: la derivada es cero. El método no puede continuar.")
+            return None
+
+        x1 = x0 - fx / dfx
+        error = abs(x1 - x0)
+
+        print(f"{i:4d} | {x1:9.6f} | {fx:10.6f} | {error:9.6f}")
+
+        if error < tolerancia:
+            print("\nRaíz aproximada encontrada:", x1)
+            return x1
+
+        x0 = x1
+
+    print("\nNo se alcanzó la tolerancia en el número máximo de iteraciones.")
+    return x1
+
+
+# ===================== PROGRAMA PRINCIPAL =====================
+if __name__ == "__main__":
+    print("MÉTODO DE NEWTON–RAPHSON")
+    print("Función: f(x) = x^3 - x - 2")
+    print("Derivada: f'(x) = 3x^2 - 1\n")
+
+    x0 = float(input("Ingrese el valor inicial x0: "))
+    newton_raphson(x0)
+
                     </li>
                 </ul>
             </div>
