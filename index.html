@@ -827,7 +827,29 @@ if __name__ == "__main__":
     citas = [12, 8, 5, 3, 3, 2, 1]
     h_index = calcular_indice_h(citas)
     print(f"Lista de citas: {citas}")
-    print(f"Índice H: {h_index}")</pre>
+    print(f"Índice H: {h_index}")
+                                El índice H (o índice de Hirsch) es un indicador utilizado para medir la productividad científica y el impacto de un investigador, grupo o institución. Se basa en la cantidad de publicaciones y el número de citas que estas reciben. Un autor tiene un índice H igual a h si ha publicado h artículos que han sido citados al menos h veces cada uno.Índice H de docentes de la Facultad de Ingeniería Estadística e Informática
+Docente	Índice H	Número de publicaciones
+Torres-Cruz, Fred	4	40
+Coyla-Idme, Leonel	1	5
+Tumi-Figueroa, Ernesto Nayer	3	6
+Tito Lipa, José Pánfilo	0	3
+Canqui-Flores, Bernabé	3	8
+Gonzales, Leonid Alemán	0	4
+Mendoza-Mollocondo, Charles Ignacio	3	8
+Huata-Panca, Percy	2	3
+Apaza-Tarqui, Alejandro	1	5
+Carpio Vargas, Edgar Eloy	3	9
+Javier Quispe Carita, Angel	1	1
+López-Cueva, Milton Antonio	1	6
+Ibañez-Quispe, Vladimiro	5	21
+Melgarejo-Bolivar, Romel P.	3	6
+Herrera-Urtiaga, Alain Paul	0	3
+Laura Murillo, Ramiro	1	2
+Choquejahua-Acero, Remo	1	2
+Gonzalo Copari Romero, Fredy	0	2 
+
+                                </pre>
                             </div>
                         </div>
                     </li>
@@ -869,6 +891,85 @@ if __name__ == "__main__":
     
     print("Máximo de iteraciones alcanzado")
     return m</pre>
+            # =========================================================
+# MÉTODO DE BISECCIÓN
+# =========================================================
+# CONCEPTO:
+# El método de bisección es un método numérico iterativo
+# utilizado para encontrar raíces de ecuaciones no lineales
+# (valores de x tales que f(x) = 0).
+#
+# Se basa en el Teorema del Valor Intermedio, el cual afirma
+# que si una función continua cambia de signo en un intervalo
+# [a, b], entonces existe al menos una raíz en dicho intervalo.
+#
+# El método consiste en dividir el intervalo en dos partes
+# iguales y seleccionar el subintervalo donde ocurre el cambio
+# de signo. Este proceso se repite hasta alcanzar la tolerancia.
+#
+# Fórmula del punto medio:
+#     xr = (a + b) / 2
+#
+# Es un método simple y siempre converge, aunque su convergencia
+# es más lenta que otros métodos numéricos.
+# =========================================================
+
+
+def f(x):
+    """
+    Función f(x).
+    Modificar según el ejercicio.
+    Ejemplo: f(x) = x^3 - x - 2
+    """
+    return x**3 - x - 2
+
+
+def biseccion(a, b, tolerancia=1e-6, max_iter=100):
+    """
+    Implementación del método de bisección.
+
+    a, b        : extremos del intervalo
+    tolerancia : error permitido
+    max_iter   : número máximo de iteraciones
+    """
+
+    if f(a) * f(b) >= 0:
+        print("Error: f(a) y f(b) deben tener signos opuestos.")
+        return None
+
+    print("\nMÉTODO DE BISECCIÓN")
+    print("Iter |     a     |     b     |     xr    |   f(xr)")
+    print("-" * 55)
+
+    for i in range(1, max_iter + 1):
+        xr = (a + b) / 2
+        fxr = f(xr)
+
+        print(f"{i:4d} | {a:9.5f} | {b:9.5f} | {xr:9.5f} | {fxr:9.5f}")
+
+        if abs(fxr) < tolerancia or abs(b - a) < tolerancia:
+            print("\nRaíz aproximada encontrada:", xr)
+            return xr
+
+        if f(a) * fxr < 0:
+            b = xr
+        else:
+            a = xr
+
+    print("\nNo se alcanzó la tolerancia en el número máximo de iteraciones.")
+    return xr
+
+
+# ===================== PROGRAMA PRINCIPAL =====================
+if __name__ == "__main__":
+    print("MÉTODO DE BISECCIÓN")
+    print("Función usada: f(x) = x^3 - x - 2\n")
+
+    a = float(input("Ingrese el valor de a: "))
+    b = float(input("Ingrese el valor de b: "))
+
+    biseccion(a, b)
+
                             </div>
                         </div>
                     </li>
@@ -886,6 +987,88 @@ if __name__ == "__main__":
                                     <h4>Python - Secante</h4>
                                     <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
                                 </div>
+                                # =========================================================
+# MÉTODO DE LA SECANTE
+# =========================================================
+# CONCEPTO:
+# El método de la secante es un método numérico iterativo
+# utilizado para encontrar raíces de ecuaciones no lineales
+# f(x) = 0.
+#
+# A diferencia del método de bisección, el método de la
+# secante no requiere que la función cambie de signo en
+# un intervalo. En su lugar, utiliza dos aproximaciones
+# iniciales x0 y x1 para construir una recta secante que
+# aproxima la función.
+#
+# La intersección de esta recta con el eje x proporciona
+# una nueva aproximación de la raíz.
+#
+# Fórmula iterativa:
+#     x_{n+1} = x_n - f(x_n) * (x_n - x_{n-1})
+#               --------------------------------
+#               f(x_n) - f(x_{n-1})
+#
+# El método de la secante converge más rápido que el método
+# de bisección, aunque no siempre garantiza convergencia.
+# =========================================================
+
+
+def f(x):
+    """
+    Función f(x).
+    Modificar según el problema.
+    Ejemplo: f(x) = x^3 - x - 2
+    """
+    return x**3 - x - 2
+
+
+def secante(x0, x1, tolerancia=1e-6, max_iter=100):
+    """
+    Implementación del método de la secante.
+
+    x0, x1     : valores iniciales
+    tolerancia : error permitido
+    max_iter   : número máximo de iteraciones
+    """
+
+    print("\nMÉTODO DE LA SECANTE")
+    print("Iter |    x_n-1   |    x_n     |   x_n+1    |  f(x_n+1)")
+    print("-" * 65)
+
+    for i in range(1, max_iter + 1):
+        f_x0 = f(x0)
+        f_x1 = f(x1)
+
+        if f_x1 - f_x0 == 0:
+            print("Error: división entre cero.")
+            return None
+
+        x2 = x1 - f_x1 * (x1 - x0) / (f_x1 - f_x0)
+        f_x2 = f(x2)
+
+        print(f"{i:4d} | {x0:10.6f} | {x1:10.6f} | {x2:10.6f} | {f_x2:10.6f}")
+
+        if abs(x2 - x1) < tolerancia or abs(f_x2) < tolerancia:
+            print("\nRaíz aproximada encontrada:", x2)
+            return x2
+
+        x0, x1 = x1, x2
+
+    print("\nNo se alcanzó la tolerancia en el número máximo de iteraciones.")
+    return x2
+
+
+# ===================== PROGRAMA PRINCIPAL =====================
+if __name__ == "__main__":
+    print("MÉTODO DE LA SECANTE")
+    print("Función usada: f(x) = x^3 - x - 2\n")
+
+    x0 = float(input("Ingrese el valor inicial x0: "))
+    x1 = float(input("Ingrese el valor inicial x1: "))
+
+    secante(x0, x1)
+
                                 <pre class="code-content">def metodo_secante(x0, x1, tol=1e-6, max_iter=100):
     print("Iter |     x0     |     x1     |     x2     |   f(x2)")
     print("-" * 60)
@@ -928,6 +1111,70 @@ if __name__ == "__main__":
                                     <h4>Python - Punto Fijo</h4>
                                     <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
                                 </div>
+                                # =========================================================
+# MÉTODO DEL PUNTO FIJO
+# =========================================================
+# CONCEPTO:
+# El método del punto fijo busca resolver ecuaciones
+# de la forma f(x) = 0 transformándolas en x = g(x).
+#
+# A partir de un valor inicial x0 se genera la sucesión:
+#     x_{n+1} = g(x_n)
+#
+# Si la sucesión converge, el valor límite es la raíz
+# aproximada de la ecuación.
+#
+# El método converge si |g'(x)| < 1 cerca de la solución.
+# =========================================================
+
+
+def g(x):
+    """
+    Función de iteración g(x).
+    Ejemplo:
+    f(x) = x^3 - x - 2 = 0
+    Despeje: x = (x + 2)^(1/3)
+    """
+    return (x + 2) ** (1 / 3)
+
+
+def punto_fijo(x0, tolerancia=1e-6, max_iter=100):
+    """
+    Implementación del método del punto fijo.
+
+    x0         : valor inicial
+    tolerancia : error permitido
+    max_iter   : máximo número de iteraciones
+    """
+
+    print("\nMÉTODO DEL PUNTO FIJO")
+    print("Iter |     x_n     |    x_n+1   |   Error")
+    print("-" * 55)
+
+    for i in range(1, max_iter + 1):
+        x1 = g(x0)
+        error = abs(x1 - x0)
+
+        print(f"{i:4d} | {x0:10.6f} | {x1:10.6f} | {error:10.6f}")
+
+        if error < tolerancia:
+            print("\nRaíz aproximada encontrada:", x1)
+            return x1
+
+        x0 = x1
+
+    print("\nNo se alcanzó la tolerancia en el número máximo de iteraciones.")
+    return x1
+
+
+# ===================== PROGRAMA PRINCIPAL =====================
+if __name__ == "__main__":
+    print("MÉTODO DEL PUNTO FIJO")
+    print("Ejemplo: f(x) = x^3 - x - 2\n")
+
+    x0 = float(input("Ingrese el valor inicial x0: "))
+    punto_fijo(x0)
+
                                 <pre class="code-content">def punto_fijo(g, x0, tol=1e-6, max_iter=100):
     print("Iter |     x      |    g(x)    |   Error")
     print("-" * 50)
@@ -963,6 +1210,73 @@ if __name__ == "__main__":
                                     <h4>Python - Regula Falsi (v2)</h4>
                                     <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
                                 </div>
+                                # =========================================================
+# MÉTODO DE LA REGLA FALSA (REGULA FALSI)
+# =========================================================
+# CONCEPTO:
+# Método numérico para encontrar raíces de ecuaciones
+# no lineales f(x) = 0, usando un intervalo [a, b]
+# donde f(a)*f(b) < 0.
+#
+# Se aproxima la raíz mediante la intersección de la
+# recta secante con el eje x.
+# =========================================================
+
+
+def f(x):
+    """
+    Función a evaluar
+    Ejemplo: f(x) = x^3 - x - 2
+    """
+    return x**3 - x - 2
+
+
+def regula_falsi(a, b, tolerancia=1e-6, max_iter=100):
+    """
+    Implementación del método de la Regla Falsa
+    """
+
+    if f(a) * f(b) >= 0:
+        print("Error: No hay cambio de signo en el intervalo.")
+        return None
+
+    print("\nMÉTODO DE LA REGLA FALSA")
+    print("Iter |    a     |    b     |    xr    |   f(xr)   |   Error")
+    print("-" * 70)
+
+    xr_anterior = a
+
+    for i in range(1, max_iter + 1):
+        xr = b - (f(b) * (a - b)) / (f(a) - f(b))
+        error = abs(xr - xr_anterior)
+
+        print(f"{i:4d} | {a:8.5f} | {b:8.5f} | {xr:8.5f} | {f(xr):9.5f} | {error:9.5f}")
+
+        if abs(f(xr)) < tolerancia or error < tolerancia:
+            print("\nRaíz aproximada encontrada:", xr)
+            return xr
+
+        if f(a) * f(xr) < 0:
+            b = xr
+        else:
+            a = xr
+
+        xr_anterior = xr
+
+    print("\nNo se alcanzó la tolerancia en el número máximo de iteraciones.")
+    return xr
+
+
+# ===================== PROGRAMA PRINCIPAL =====================
+if __name__ == "__main__":
+    print("MÉTODO DE LA REGLA FALSA")
+    print("Ejemplo: f(x) = x^3 - x - 2\n")
+
+    a = float(input("Ingrese el valor de a: "))
+    b = float(input("Ingrese el valor de b: "))
+
+    regula_falsi(a, b)
+
                                 <pre class="code-content">def regula_falsi_v2(a, b, tol=1e-6, max_iter=100):
     fa = f(a)
     fb = f(b)
@@ -995,10 +1309,119 @@ if __name__ == "__main__":
                         <div class="activity-content">
                             <div class="activity-number">7</div>
                             <div class="activity-title">Gradiente de una función</div>
+                            # =========================================================
+# GRADIENTE DE UNA FUNCIÓN DE DOS VARIABLES
+# =========================================================
+# CONCEPTO:
+# El gradiente de una función escalar f(x, y) es un vector
+# formado por las derivadas parciales respecto a cada
+# variable.
+#
+# ∇f(x, y) = (∂f/∂x, ∂f/∂y)
+# =========================================================
+
+
+def gradiente(fx, fy, x, y):
+    """
+    Retorna el gradiente evaluado en el punto (x, y)
+
+    fx: derivada parcial respecto a x
+    fy: derivada parcial respecto a y
+    """
+    return fx(x, y), fy(x, y)
+
+
+# ===================== FUNCIÓN DE EJEMPLO =====================
+def f_x(x, y):
+    return 2 * x
+
+
+def f_y(x, y):
+    return 2 * y
+
+
+# ===================== PROGRAMA PRINCIPAL =====================
+if __name__ == "__main__":
+    print("GRADIENTE DE UNA FUNCIÓN")
+    print("Ejemplo: f(x, y) = x^2 + y^2\n")
+
+    x = float(input("Ingrese el valor de x: "))
+    y = float(input("Ingrese el valor de y: "))
+
+    grad = gradiente(f_x, f_y, x, y)
+
+    print("\nGradiente en el punto (x, y):")
+    print(f"∇f({x}, {y}) = {grad}")
+
                         </div>
                         <div class="activity-description">
                             <p>Cálculo del gradiente de funciones multivariables.</p>
                         </div>
+                     # =========================================================
+# CÁLCULO DEL GRADIENTE DE FUNCIONES MULTIVARIABLES
+# =========================================================
+# CONCEPTO:
+# El gradiente de una función f(x1, x2, ..., xn) es el vector
+# formado por las derivadas parciales respecto a cada
+# variable.
+#
+# ∇f = (∂f/∂x1, ∂f/∂x2, ..., ∂f/∂xn)
+# =========================================================
+
+
+def gradiente(derivadas, punto):
+    """
+    Calcula el gradiente evaluado en un punto dado.
+
+    derivadas: lista de funciones (derivadas parciales)
+    punto    : lista de valores [x1, x2, ..., xn]
+    """
+    return tuple(d(*punto) for d in derivadas)
+
+
+# ===================== EJEMPLOS =====================
+
+# f(x, y) = x^2 + 3y^2
+def df_dx(x, y):
+    return 2 * x
+
+
+def df_dy(x, y):
+    return 6 * y
+
+
+# f(x, y, z) = x^2 + y^2 + z^2
+def df_dx3(x, y, z):
+    return 2 * x
+
+
+def df_dy3(x, y, z):
+    return 2 * y
+
+
+def df_dz3(x, y, z):
+    return 2 * z
+
+
+# ===================== PROGRAMA PRINCIPAL =====================
+if __name__ == "__main__":
+    print("CÁLCULO DEL GRADIENTE DE FUNCIONES MULTIVARIABLES\n")
+
+    print("Ejemplo 1: f(x, y) = x^2 + 3y^2")
+    x = float(input("Ingrese x: "))
+    y = float(input("Ingrese y: "))
+
+    grad2 = gradiente([df_dx, df_dy], [x, y])
+    print(f"∇f({x}, {y}) = {grad2}\n")
+
+    print("Ejemplo 2: f(x, y, z) = x^2 + y^2 + z^2")
+    x = float(input("Ingrese x: "))
+    y = float(input("Ingrese y: "))
+    z = float(input("Ingrese z: "))
+
+    grad3 = gradiente([df_dx3, df_dy3, df_dz3], [x, y, z])
+    print(f"∇f({x}, {y}, {z}) = {grad3}")
+   
                     </li>
 
                     <li class="activity-item" onclick="toggleActivity(this)">
@@ -1006,49 +1429,1004 @@ if __name__ == "__main__":
                             <div class="activity-number">8</div>
                             <div class="activity-title">Análisis del artículo</div>
                         </div>
+                        
                         <div class="activity-description">
                             <p>Análisis de artículos científicos sobre métodos numéricos.</p>
                         </div>
+                        \documentclass[12pt,a4paper]{article}
+
+% ==================== PAQUETES ====================
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{setspace}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+
+% ==================== DATOS ====================
+\title{\textbf{Comparación entre el Pseudoinverso de Moore--Penrose y el Descenso de Gradiente en Regresión Lineal}}
+\author{Gleny Angélica Condori Mamani}
+\date{Universidad Nacional del Altiplano -- Puno}
+
+\begin{document}
+\maketitle
+
+% ==================== RESUMEN ====================
+\section*{Resumen}
+
+Este trabajo presenta una comparación entre dos métodos fundamentales para resolver problemas de regresión lineal: el pseudoinverso de Moore--Penrose y el método de descenso de gradiente. Ambos enfoques buscan estimar los parámetros que minimizan el error cuadrático medio, pero difieren significativamente en estabilidad numérica, costo computacional y escalabilidad. Se analizan sus fundamentos teóricos, su comportamiento experimental y su rendimiento computacional en distintos tamaños de conjuntos de datos.
+
+% ==================== INTRODUCCIÓN ====================
+\section{Introducción}
+
+La regresión lineal es una de las técnicas más utilizadas en estadística, aprendizaje automático y análisis de datos. Su objetivo es modelar la relación entre una variable dependiente y una o más variables independientes minimizando la suma de los errores cuadrados, conocido como el método de mínimos cuadrados ordinarios (OLS).
+
+Existen múltiples métodos para resolver este problema, entre los cuales destacan el pseudoinverso de Moore--Penrose y el descenso de gradiente. La elección del método adecuado depende de factores como el tamaño del conjunto de datos, la dimensionalidad y la estabilidad numérica del sistema.
+
+% ==================== MARCO TEÓRICO ====================
+\section{Marco Teórico}
+
+\subsection{Regresión Lineal}
+
+Sea un conjunto de datos representado por una matriz de características $X \in \mathbb{R}^{n \times d}$ y un vector de salidas $y \in \mathbb{R}^{n}$. El modelo de regresión lineal se define como:
+
+\[
+y = X\beta + \varepsilon
+\]
+
+donde $\beta$ es el vector de parámetros a estimar y $\varepsilon$ representa el error.
+
+El problema de mínimos cuadrados consiste en minimizar:
+
+\[
+\min_{\beta} \|X\beta - y\|^2
+\]
+
+\subsection{Pseudoinverso de Moore--Penrose}
+
+El pseudoinverso de Moore--Penrose proporciona una solución analítica exacta al problema de mínimos cuadrados:
+
+\[
+\beta = X^{+} y
+\]
+
+donde $X^{+}$ es el pseudoinverso de $X$, calculado generalmente mediante descomposición en valores singulares (SVD). Este método garantiza la solución de mínimo error, pero puede ser computacionalmente costoso y numéricamente inestable cuando la matriz está mal condicionada o es de gran tamaño.
+
+\subsection{Descenso de Gradiente}
+
+El descenso de gradiente es un método iterativo que ajusta los parámetros en la dirección opuesta al gradiente del error:
+
+\[
+\beta^{(k+1)} = \beta^{(k)} - \alpha \nabla J(\beta)
+\]
+
+donde $\alpha$ es la tasa de aprendizaje y $J(\beta)$ es la función de costo. Aunque no garantiza una solución exacta, es altamente escalable y adecuado para grandes volúmenes de datos.
+
+% ==================== METODOLOGÍA ====================
+\section{Metodología}
+
+Los experimentos se realizaron utilizando datos sintéticos y datos reales. En los datos sintéticos se controlaron parámetros como el número de muestras, la dimensionalidad y el factor de condición de la matriz $X$.
+
+Para los datos reales se utilizaron los conjuntos:
+\begin{itemize}
+    \item California Housing: 20,640 muestras y 8 variables.
+    \item Diabetes: 442 muestras y 10 variables.
+\end{itemize}
+
+Las métricas evaluadas fueron:
+\begin{itemize}
+    \item Tiempo de ejecución.
+    \item Error cuadrático medio (MSE).
+    \item Número de iteraciones hasta la convergencia (para descenso de gradiente).
+\end{itemize}
+
+El pseudoinverso se implementó mediante la función \texttt{pinv()}, mientras que el descenso de gradiente utilizó una tasa de aprendizaje $\alpha = 0.01$ y una tolerancia de $10^{-6}$.
+
+% ==================== RESULTADOS ====================
+\section{Resultados}
+
+Los resultados muestran que el pseudoinverso es más rápido y preciso en conjuntos pequeños o moderados, manteniendo una alta estabilidad numérica. En contraste, el descenso de gradiente requiere más iteraciones y su rendimiento depende fuertemente del escalado de las variables y del valor de la tasa de aprendizaje.
+
+Sin embargo, en escenarios de alta dimensionalidad o grandes volúmenes de datos, el descenso de gradiente y sus variantes resultan más eficientes y escalables.
+
+% ==================== COMPARACIÓN DE RENDIMIENTO ====================
+\section{Comparación de Rendimiento entre Métodos de Optimización}
+
+Se evaluó la eficiencia computacional del método de regresión lineal \texttt{lm()} de R frente al algoritmo de descenso de gradiente. Se midieron el tiempo de ejecución y el uso de memoria para diferentes tamaños de datos.
+
+\begin{table}[H]
+\centering
+\caption{Comparación de tiempo y memoria}
+\begin{tabular}{cccc}
+\toprule
+Tamaño & Método & Tiempo (s) & Memoria (bytes) \\
+\midrule
+100 & lm & 5.431 & 104,573,176 \\
+100 & Gradiente & 0.005 & 143,432 \\
+1000 & lm & 2.769 & 967,960,000 \\
+1000 & Gradiente & 0.030 & 800,048 \\
+5000 & lm & 16.215 & 4,934,680,000 \\
+5000 & Gradiente & 0.566 & 4,000,048 \\
+10000 & lm & 10.175 & 9,862,360,000 \\
+10000 & Gradiente & 0.352 & 8,000,048 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Los resultados evidencian una ventaja clara del descenso de gradiente frente al método \texttt{lm()}, especialmente en grandes volúmenes de datos.
+
+% ==================== GRÁFICOS ====================
+\section{Gráficos de Rendimiento}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{tiempo_ejecucion.png}
+\caption{Comparación del tiempo de ejecución}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{uso_memoria.png}
+\caption{Comparación del uso de memoria}
+\end{figure}
+
+% ==================== CONCLUSIONES ====================
+\section{Conclusiones}
+
+El pseudoinverso de Moore--Penrose es ideal para conjuntos de datos pequeños o bien condicionados, proporcionando soluciones exactas con bajo error. Por otro lado, el descenso de gradiente es más adecuado para problemas de gran escala, aunque requiere un ajuste cuidadoso de hiperparámetros y preprocesamiento de los datos.
+
+Ambos métodos son fundamentales en el análisis de regresión lineal, y su elección debe basarse en un equilibrio entre exactitud, estabilidad numérica y costo computacional.
+
+\end{document}
+
                     </li>
 
                     <li class="activity-item" onclick="toggleActivity(this)">
                         <div class="activity-content">
                             <div class="activity-number">9</div>
                             <div class="activity-title">Simulación del juego de los caramelos y chupetines</div>
+                            Esta simulación modela un juego cooperativo en el que varios jugadores comparten una bolsa común de caramelos de tres tipos: A, B y C, con el objetivo de producir un bien final denominado chupetín (D).
+
+Cada jugador inicia con dos caramelos asignados aleatoriamente, incorporando un componente estocástico al sistema. El juego avanza por iteraciones, en las que se aplican reglas de combinación e intercambio según el estado de la bolsa común.
+
+La simulación finaliza cuando se obtiene al menos un chupetín por jugador o cuando se alcanza un número máximo de iteraciones. Este problema ilustra el uso de simulaciones estocásticas y bucles en el lenguaje R para modelar sistemas con aleatoriedad y reglas dinámicas.
                         </div>
                         <div class="activity-description">
                             <p>Simulación probabilística del juego de caramelos.</p>
                         </div>
+                        # ==============================
+# SIMULACIÓN DEL JUEGO DE LOS CARAMELOS
+# ==============================
+
+set.seed(123)  # Reproducibilidad
+
+# Parámetros
+num_jugadores <- 4
+max_iter <- 1000
+tipos <- c("A", "B", "C")
+
+# Inicialización: cada jugador recibe 2 caramelos aleatorios
+bolsa <- sample(tipos, size = num_jugadores * 2, replace = TRUE)
+chupetines <- 0
+
+# Función para contar caramelos
+contar <- function(bolsa, tipo) {
+  sum(bolsa == tipo)
+}
+
+# Simulación
+for (iter in 1:max_iter) {
+
+  A <- contar(bolsa, "A")
+  B <- contar(bolsa, "B")
+  C <- contar(bolsa, "C")
+
+  # Regla 2: doble chupetín
+  if (A >= 2 && B >= 2 && C >= 2) {
+    bolsa <- bolsa[-match(c("A","A","B","B","C","C"), bolsa)]
+    chupetines <- chupetines + 2
+    bolsa <- c(bolsa, sample(tipos, 1))
+
+  # Regla 1: chupetín simple
+  } else if (A >= 1 && B >= 1 && C >= 1) {
+    bolsa <- bolsa[-match(c("A","B","C"), bolsa)]
+    chupetines <- chupetines + 1
+
+  # Regla 3: intercambio
+  } else if (chupetines >= 1) {
+    chupetines <- chupetines - 1
+    bolsa <- c(bolsa, sample(tipos, 3, replace = TRUE))
+  }
+
+  # Condición de éxito
+  if (chupetines >= num_jugadores) {
+    cat("✅ Éxito en la iteración:", iter, "\n")
+    break
+  }
+}
+
+# Resultados finales
+cat("\n📊 Resultados finales\n")
+cat("Iteraciones:", iter, "\n")
+cat("Chupetines obtenidos:", chupetines, "\n")
+cat("Caramelos restantes:\n")
+print(table(bolsa))
+
                     </li>
 
                     <li class="activity-item" onclick="toggleActivity(this)">
                         <div class="activity-content">
                             <div class="activity-number">10</div>
-                            <div class="activity-title">Resumen del artículo</div>
+                            <div class="activity-title">Diferenciacion Numerica</div>
                         </div>
                         <div class="activity-description">
-                            <p>Resumen de artículos académicos.</p>
+                            <p>Diferenciacion Numerica.</p>
                         </div>
+                        🧠 Introducción
+
+La diferenciación numérica es una técnica del análisis numérico que permite aproximar la derivada de una función a partir de valores discretos, como datos tabulados o resultados experimentales. Este enfoque es fundamental cuando la derivada analítica no está disponible o resulta difícil de calcular.
+
+La derivada de una función 
+𝑓
+(
+𝑥
+)
+f(x) se define matemáticamente como:
+
+𝑓
+′
+(
+𝑥
+)
+=
+lim
+⁡
+ℎ
+→
+0
+𝑓
+(
+𝑥
++
+ℎ
+)
+−
+𝑓
+(
+𝑥
+)
+ℎ
+f
+′
+(x)=
+h→0
+lim
+	​
+
+h
+f(x+h)−f(x)
+	​
+
+
+En la práctica computacional, el incremento 
+ℎ
+h no puede ser exactamente cero, por lo que se utilizan valores pequeños y finitos. Esto da origen a los métodos de diferencias finitas, que aproximan derivadas usando puntos cercanos al valor de interés.
+
+📌 Métodos de Diferencias Finitas
+🔹 Diferencia hacia adelante
+
+Utiliza los puntos 
+𝑥
+x y 
+𝑥
++
+ℎ
+x+h.
+Es adecuada para puntos ubicados al inicio del intervalo.
+
+𝑓
+′
+(
+𝑥
+)
+≈
+𝑓
+(
+𝑥
++
+ℎ
+)
+−
+𝑓
+(
+𝑥
+)
+ℎ
+f
+′
+(x)≈
+h
+f(x+h)−f(x)
+	​
+
+🔹 Diferencia hacia atrás
+
+Emplea los puntos 
+𝑥
+x y 
+𝑥
+−
+ℎ
+x−h.
+Se usa principalmente en el extremo final del intervalo.
+
+𝑓
+′
+(
+𝑥
+)
+≈
+𝑓
+(
+𝑥
+)
+−
+𝑓
+(
+𝑥
+−
+ℎ
+)
+ℎ
+f
+′
+(x)≈
+h
+f(x)−f(x−h)
+	​
+
+🔹 Diferencia centrada
+
+Considera los puntos 
+𝑥
+−
+ℎ
+x−h y 
+𝑥
++
+ℎ
+x+h.
+Ofrece mayor precisión, ya que aprovecha la simetría.
+
+𝑓
+′
+(
+𝑥
+)
+≈
+𝑓
+(
+𝑥
++
+ℎ
+)
+−
+𝑓
+(
+𝑥
+−
+ℎ
+)
+2
+ℎ
+f
+′
+(x)≈
+2h
+f(x+h)−f(x−h)
+	​
+
+🔁 Aproximación de la Segunda Derivada
+
+La segunda derivada, relacionada con la concavidad y curvatura de la función, puede aproximarse mediante:
+
+𝑓
+′
+′
+(
+𝑥
+)
+≈
+𝑓
+(
+𝑥
++
+ℎ
+)
+−
+2
+𝑓
+(
+𝑥
+)
++
+𝑓
+(
+𝑥
+−
+ℎ
+)
+ℎ
+2
+f
+′′
+(x)≈
+h
+2
+f(x+h)−2f(x)+f(x−h)
+	​
+
+🧪 Implementación en Python
+
+El siguiente código implementa los métodos de diferencias finitas para aproximar la primera y segunda derivada de una función.
+
+import math
+
+# ==============================
+# FUNCIÓN A ANALIZAR
+# ==============================
+def f(x):
+    return math.sin(x)
+
+# ==============================
+# MÉTODOS DE DIFERENCIACIÓN
+# ==============================
+def diferencia_adelante(f, x, h):
+    return (f(x + h) - f(x)) / h
+
+def diferencia_atras(f, x, h):
+    return (f(x) - f(x - h)) / h
+
+def diferencia_centrada(f, x, h):
+    return (f(x + h) - f(x - h)) / (2 * h)
+
+def segunda_derivada(f, x, h):
+    return (f(x + h) - 2*f(x) + f(x - h)) / h**2
+
+# ==============================
+# PARÁMETROS
+# ==============================
+x = math.pi / 4
+h = 0.01
+
+# ==============================
+# RESULTADOS
+# ==============================
+print("Derivada exacta:", math.cos(x))
+print("Diferencia hacia adelante:", diferencia_adelante(f, x, h))
+print("Diferencia hacia atrás:", diferencia_atras(f, x, h))
+print("Diferencia centrada:", diferencia_centrada(f, x, h))
+print("Segunda derivada aproximada:", segunda_derivada(f, x, h))
                     </li>
 
                     <li class="activity-item" onclick="toggleActivity(this)">
                         <div class="activity-content">
                             <div class="activity-number">11</div>
-                            <div class="activity-title">Diferenciación Numérica</div>
+                            <div class="activity-title">Métodos de interpolación numérica</div>
                         </div>
                         <div class="activity-description">
-                            <p>Métodos de diferenciación numérica.</p>
+                            <p>Métodos de interpolación numérica.</p>
                         </div>
+                        📈 Interpolación Numérica
+🧠 Introducción
+
+La interpolación numérica es una técnica fundamental del análisis numérico que permite estimar valores desconocidos de una función a partir de un conjunto discreto de puntos conocidos. El objetivo principal es construir una función aproximada 
+𝑃
+(
+𝑥
+)
+P(x) que pase exactamente por los datos dados, es decir:
+
+𝑃
+(
+𝑥
+𝑖
+)
+=
+𝑓
+(
+𝑥
+𝑖
+)
+,
+𝑖
+=
+0
+,
+1
+,
+…
+,
+𝑛
+P(x
+i
+	​
+
+)=f(x
+i
+	​
+
+),i=0,1,…,n
+
+Los métodos de interpolación permiten obtener funciones continuas que modelan el comportamiento de datos experimentales o simulados, siendo herramientas esenciales en áreas como la ingeniería, la economía, la física y las ciencias computacionales.
+
+📌 Métodos de Interpolación Numérica
+🔹 Interpolación lineal
+
+Es el método más simple. Aproxima la función mediante segmentos de recta entre puntos consecutivos.
+Dados dos puntos 
+(
+𝑥
+0
+,
+𝑦
+0
+)
+(x
+0
+	​
+
+,y
+0
+	​
+
+) y 
+(
+𝑥
+1
+,
+𝑦
+1
+)
+(x
+1
+	​
+
+,y
+1
+	​
+
+), el polinomio interpolante es:
+
+𝑃
+1
+(
+𝑥
+)
+=
+𝑦
+0
++
+𝑦
+1
+−
+𝑦
+0
+𝑥
+1
+−
+𝑥
+0
+(
+𝑥
+−
+𝑥
+0
+)
+P
+1
+	​
+
+(x)=y
+0
+	​
+
++
+x
+1
+	​
+
+−x
+0
+	​
+
+y
+1
+	​
+
+−y
+0
+	​
+
+	​
+
+(x−x
+0
+	​
+
+)
+
+✔ Ventaja: sencillo y rápido
+✖ Desventaja: baja precisión en funciones no lineales
+
+🔹 Interpolación de Lagrange
+
+Construye un polinomio de grado 
+𝑛
+n que pasa por todos los puntos conocidos. Su forma general es:
+
+𝑃
+𝑛
+(
+𝑥
+)
+=
+∑
+𝑖
+=
+0
+𝑛
+𝑦
+𝑖
+ℓ
+𝑖
+(
+𝑥
+)
+P
+n
+	​
+
+(x)=
+i=0
+∑
+n
+	​
+
+y
+i
+	​
+
+ℓ
+i
+	​
+
+(x)
+
+donde
+
+ℓ
+𝑖
+(
+𝑥
+)
+=
+∏
+𝑗
+=
+0
+
+
+𝑗
+≠
+𝑖
+𝑛
+𝑥
+−
+𝑥
+𝑗
+𝑥
+𝑖
+−
+𝑥
+𝑗
+ℓ
+i
+	​
+
+(x)=
+j=0
+j
+
+=i
+	​
+
+∏
+n
+	​
+
+x
+i
+	​
+
+−x
+j
+	​
+
+x−x
+j
+	​
+
+	​
+
+
+✔ Ventaja: fórmula directa
+✖ Desventaja: costosa computacionalmente para muchos puntos
+
+🔹 Interpolación de Newton (diferencias divididas)
+
+Utiliza una forma recursiva basada en diferencias divididas, lo que facilita agregar nuevos puntos sin recalcular todo el polinomio.
+
+𝑃
+𝑛
+(
+𝑥
+)
+=
+𝑎
+0
++
+𝑎
+1
+(
+𝑥
+−
+𝑥
+0
+)
++
+𝑎
+2
+(
+𝑥
+−
+𝑥
+0
+)
+(
+𝑥
+−
+𝑥
+1
+)
++
+…
+P
+n
+	​
+
+(x)=a
+0
+	​
+
++a
+1
+	​
+
+(x−x
+0
+	​
+
+)+a
+2
+	​
+
+(x−x
+0
+	​
+
+)(x−x
+1
+	​
+
+)+…
+
+donde los coeficientes 
+𝑎
+𝑖
+a
+i
+	​
+
+ se obtienen mediante diferencias divididas.
+
+✔ Ventaja: eficiente y flexible
+✔ Mejor estabilidad numérica que Lagrange
+
+🔹 Interpolación cuadrática
+
+Emplea un polinomio de segundo grado, ajustado generalmente con tres puntos:
+
+𝑃
+2
+(
+𝑥
+)
+=
+𝑎
+𝑥
+2
++
+𝑏
+𝑥
++
+𝑐
+P
+2
+	​
+
+(x)=ax
+2
++bx+c
+
+Este método captura mejor la curvatura de los datos que la interpolación lineal, ofreciendo mayor precisión en intervalos pequeños.
+
+🔹 Splines cúbicos
+
+Dividen el intervalo total en subintervalos, ajustando en cada uno un polinomio cúbico. Garantizan continuidad en:
+
+La función 
+𝑓
+(
+𝑥
+)
+f(x)
+
+La primera derivada 
+𝑓
+′
+(
+𝑥
+)
+f
+′
+(x)
+
+La segunda derivada 
+𝑓
+′
+′
+(
+𝑥
+)
+f
+′′
+(x)
+
+𝑆
+𝑖
+(
+𝑥
+)
+=
+𝑎
+𝑖
++
+𝑏
+𝑖
+(
+𝑥
+−
+𝑥
+𝑖
+)
++
+𝑐
+𝑖
+(
+𝑥
+−
+𝑥
+𝑖
+)
+2
++
+𝑑
+𝑖
+(
+𝑥
+−
+𝑥
+𝑖
+)
+3
+S
+i
+	​
+
+(x)=a
+i
+	​
+
++b
+i
+	​
+
+(x−x
+i
+	​
+
+)+c
+i
+	​
+
+(x−x
+i
+	​
+
+)
+2
++d
+i
+	​
+
+(x−x
+i
+	​
+
+)
+3
+
+✔ Alta precisión
+✔ Excelente estabilidad numérica
+✔ Muy usados en aplicaciones reales
+
+🧪 Ejemplo básico en Python (Interpolación de Lagrange)
+import numpy as np
+
+def lagrange(x, y, xp):
+    n = len(x)
+    yp = 0
+    for i in range(n):
+        L = 1
+        for j in range(n):
+            if i != j:
+                L *= (xp - x[j]) / (x[i] - x[j])
+        yp += y[i] * L
+    return yp
+
+# Datos
+x = np.array([1, 2, 3])
+y = np.array([2, 3, 5])
+
+# Interpolación
+xp = 2.5
+print("Valor interpolado:", lagrange(x, y, xp))
                     </li>
 
                     <li class="activity-item" onclick="toggleActivity(this)">
                         <div class="activity-content">
                             <div class="activity-number">12</div>
-                            <div class="activity-title">Interpolación</div>
+                            <div class="activity-title">TRABAJO FINAL</div>
                         </div>
                         <div class="activity-description">
-                            <p>Métodos de interpolación numérica.</p>
+                            <p>TRABAJO FINAL.</p>
                         </div>
+                        El libro del curso de Programación Numérica constituye una guía fundamental para el estudio y aplicación de métodos computacionales orientados a la solución de problemas matemáticos que no pueden resolverse de manera exacta mediante técnicas analíticas tradicionales.
+
+A lo largo del texto se desarrollan los principales métodos numéricos, tales como la solución de ecuaciones no lineales, sistemas de ecuaciones lineales, interpolación y aproximación de funciones, integración y diferenciación numérica, así como la resolución de ecuaciones diferenciales ordinarias. Cada tema es presentado de manera progresiva, combinando fundamentos teóricos con algoritmos prácticos.
+
+El libro enfatiza el uso de lenguajes de programación y herramientas computacionales (como Python, MATLAB o R) para implementar los algoritmos numéricos, permitiendo al estudiante analizar la precisión, estabilidad y eficiencia de cada método. Asimismo, se incluyen ejemplos resueltos, ejercicios propuestos y aplicaciones reales en ingeniería, ciencias y estadística.
+
+Este material busca desarrollar en el estudiante habilidades de análisis, modelamiento y resolución de problemas, promoviendo el pensamiento lógico y el uso adecuado de la computación como herramienta clave en la solución de problemas científicos y tecnológicos.
                     </li>
                 </ul>
             </div>
